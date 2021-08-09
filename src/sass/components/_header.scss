@@ -1,40 +1,65 @@
 .header {
   height: 230px;
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-    url(../images/header_desc.jpg);
+    url(../images/header_mobile.jpg);
   background-repeat: no-repeat;
-  background-size: 1024px 230px, contain;
-  background-position: center;
-  margin: 0 auto;
+  background-size: cover;
+
+  @media (min-width: $tablet) {
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/header_tablet.jpg);
+  }
+
+  @media (min-width: $desktop) {
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/header_desc@2x.jpg);
+  }
 }
 
 .header__box {
   display: flex;
-  padding-top: 41px;
-}
+  flex-wrap: wrap;
+  vertical-align: bottom;
+  padding-top: 45px;
 
-.logo__title {
-  @include flex-center;
-
-  color: $light-text-color;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 30px;
-  line-height: 1.16;
-  margin-right: 90px;
+  @media (min-width: $tablet) {
+    padding-top: 40px;
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .logo__icon {
   width: 24px;
   height: 24px;
-  margin-right: 10px;
+  // margin-right: 10px;
+}
+
+.logo__title {
+  width: 24px;
+  height: 24px;
+  margin-right: 109px;
+
+  @media (min-width: $tablet) {
+    margin-right: 300px;
+    width: 165px;
+    color: $light-text-color;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.16;
+  }
+
+  @media (min-width: $desktop) {
+    margin-right: 565px;
+  }
 }
 
 .search__form {
   display: flex;
-  margin-top: 73px;
-  margin-right: 107px;
+  margin-top: 45px;
+  // margin-right: 107px;
   height: 20px;
 }
 
@@ -54,27 +79,37 @@
 }
 
 .search__text {
-  width: 316px;
+  width: 260px;
   height: 20px;
   background-color: transparent;
-  color: $light-text-color;
+  color: #ffffff;
   border: none;
   border-bottom: 0.5px solid #ffffff;
+
+  @media (min-width: $tablet) {
+    width: 320px;
+  }
 }
 
 .search__text::placeholder {
-  color: $light-text-color;
   font-family: Roboto;
+  font-style: normal;
   font-weight: normal;
   font-size: 14px;
-  line-height: 1.16;
+  line-height: 16px;
   display: flex;
   align-items: center;
+
+  color: #ffffff;
 }
 
 .search__text:hover,
 .search__text:focus {
   outline: none;
+}
+
+.library_form {
+  display: flex;
 }
 
 .home__btn {
@@ -129,16 +164,17 @@
 }
 
 .footer__logo {
+  margin: 0 10px;
   width: 14px;
   height: 14px;
 }
 
 .footer__info {
-  margin: 0 auto;
-}
-
-.test {
-  width: 150px;
-  height: 150px;
-  background-color: red;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.16;
+  align-items: center;
+  text-align: center;
 }
