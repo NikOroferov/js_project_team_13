@@ -8,7 +8,8 @@
         "base/_base.scss",
         "base/_container.scss",
         "base/_hidden.scss",
-        "components/_header.scss"
+        "components/_header.scss",
+        "components/_header-filter"
     ],
     "names": [],
     "file": "main.css"
