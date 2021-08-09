@@ -1,16 +1,23 @@
 {{#each this}}
-<div class="film__item">
+<li class="film__item">
 	<div class="poster__thumb">
 		<img 
-		src="" 
-		alt="" 
+		src=https://image.tmdb.org/t/p/w500{{poster_path}}
+		alt="{{title}}" 
 		class="film__poster">
 	</div>
 	<div class="film__info">
-		<h2 class="film__name"></h2>
-		<p class="film__genres"></p>
-		<p class="film__year"></p>
-		<p class="film__grade"></p>
+		<h2 class="film__name">
+			{{title}}
+		</h2>
+		<p class="film__genres">
+			{{genre_ids}}
+		</p>
+		<p class="film__year">
+			{{release_date}}
+		</p>
+		<p class="film__grade">
+			{{vote_average}}
+		</p>
 	</div>
-</div>
-{{/each}}
+</li>
