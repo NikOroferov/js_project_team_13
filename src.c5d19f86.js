@@ -3,4 +3,4 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 },{"./../images/header_desc.jpg":[["header_desc.df8e2772.jpg","FzVl"],"FzVl"]}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss");class t{constructor(){this.KEY="8b01b570d2ebdf9fc3f47ddefbdd70fc",this.URL="https://api.themoviedb.org/3/",this.page=1,this.type="search",this.media_type="movie",this.query="Небо",this.language="ru-RU",this.adult=!1}async getMoviesRequest(){const t=`${this.URL}${this.type}/${this.media_type}?api_key=${this.KEY}&query=${this.query}&language=${this.language}&page=${this.page}&include_adult=${this.adult}`,e=await axios.get(t);return console.log(e.data),e.data}resetPage(){this.page=1}}
 },{"./sass/main.scss":"clu1"}]},{},["Focm"], null)
-//# sourceMappingURL=/test-repository/src.fb4099a5.js.map
+//# sourceMappingURL=/js_project_team_13/src.c5d19f86.js.map
