@@ -1,5 +1,10 @@
 import './sass/main.scss';
- class NewsApiService{
+import axios from 'axios';
+import Notiflix from 'notiflix';
+import { debounce } from 'lodash';
+
+
+class NewsApiService{
     constructor() {
         
         this.KEY = "8b01b570d2ebdf9fc3f47ddefbdd70fc";
@@ -12,14 +17,15 @@ import './sass/main.scss';
         this.adult = false;
     }
     
- async getMoviesRequest() {
-     const URL = `${this.URL}${this.type}/${this.media_type}?api_key=${this.KEY}&query=${this.query}&language=${this.language}&page=${this.page}&include_adult=${this.adult}`;
-     const response = await axios.get(URL);
-     console.log(response.data);
-     return response.data;
+    async getMoviesRequest() {
+        const URL = `${this.URL}${this.type}/${this.media_type}?api_key=${this.KEY}&query=${this.query}&language=${this.language}&page=${this.page}&include_adult=${this.adult}`;
+        const response = await axios.get(URL);
+        console.log(response.data);
+        return response.data;
     };
 
     resetPage() {
         this.page = 1;
     };
 }
+
