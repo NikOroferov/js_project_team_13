@@ -1,22 +1,22 @@
 {
-  "name": "test-repository",
+  "name": "js_project_team_13",
   "version": "1.1.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://NikOroferov.github.io/test-repository",
+  "homepage": "https://NikOroferov.github.io/js_project_team_13",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /test-repository/"
+    "build": "parcel build src/*.html --public-url /js_project_team_13/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NikOroferov/test-repository.git"
+    "url": "git+https://github.com/NikOroferov/js_project_team_13.git"
   },
   "keywords": [],
-  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
+  "author": "Team 13",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/NikOroferov/test-repository/issues"
+    "url": "https://github.com/NikOroferov/js_project_team_13/issues"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.5",
@@ -24,5 +24,11 @@
     "parcel-plugin-nuke-dist": "^1.0.1",
     "posthtml-include": "^1.6.2",
     "sass": "^1.32.8"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "handlebars": "^4.7.7",
+    "lodash.debounce": "^4.0.8",
+    "notiflix": "^3.0.1"
   }
 }
