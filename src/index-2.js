@@ -11,6 +11,7 @@ logo.addEventListener ('click', hideBtns);
 home.addEventListener ('click', hideBtns);
 
 function openBtns (evt) {
+    
     header.style.backgroundImage = 'url(../images/library_desc@2x.jpg)';    
     libraryFilter.style.visibility = 'visible';
     libraryFilter.style.display = "block";
@@ -19,6 +20,7 @@ function openBtns (evt) {
 }
 
 function hideBtns (e){
+    header.style.backgroundImage = 'url(../images/header_desc@2x.jpg)'; 
     libraryFilter.style.visibility = 'hidden';
     libraryFilter.style.display = "none";
     searshForm.style.visibility = "visible";
