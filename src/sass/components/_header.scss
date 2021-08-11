@@ -137,10 +137,11 @@
 }
 
 .filter {
-  display:block;
-}  
+  display:none;
+  visibility: hidden;
+  margin-top: 45px;}
 
-.button {
+ .button {
 background-color: transparent;
 color: white;
 width: 130px;
