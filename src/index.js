@@ -24,6 +24,15 @@ async function getTrendFilms() {
 	}
 }
 
+
+
+
+
+
+
+
+
+
 function clearGallery () {
     refs.filmList.innerHTML = '';
 }

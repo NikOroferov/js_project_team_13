@@ -20,9 +20,17 @@ export default class FilmApiService {
       .then(({ results }) => {
         console.log(results);
         return this.fetchFilmGenre().then(genres => {
-          console.log(genres);
-          console.log(...results);
-          return results.map(result => ({
+          console.log('GENRES', genres);
+          console.log('Arrays', ...results);
+          console.log(results.map(result => ({ //Массив обьектов с данными фильмов
+            ...result,
+            release_date: result.release_date
+              ? result.release_date.slice(0, 4)
+              : result.release_date,
+            genres: this.filterGenres(genres, result),
+          })));
+          
+          return results.map(result => ({ //Массив обьектов с данными фильмов
             ...result,
             release_date: result.release_date
               ? result.release_date.slice(0, 4)
@@ -39,6 +47,13 @@ export default class FilmApiService {
       .then(response => response.json())
       .then(({ results }) => {
         return this.fetchFilmGenre().then(genres => {
+          console.log(results.map(result => ({
+            ...result,
+            release_date: result.release_date
+              ? result.release_date.slice(0, 4)
+              : result.release_date,
+            genres: this.filterGenres(genres, result),
+          })));
           return results.map(result => ({
             ...result,
             release_date: result.release_date
@@ -118,6 +133,7 @@ export default class FilmApiService {
     return fetch(url)
       .then(response => response.json())
       .then(({ genres }) => {
+        console.log('GENRES', genres);
         return genres;
       });
   }
