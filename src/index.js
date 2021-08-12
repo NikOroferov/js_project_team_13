@@ -1,6 +1,5 @@
 import './sass/main.scss';
 import './js/headerLibrary.js';
-//import './js/temporaryInfiniteScroll.js'
 
 import axios from 'axios';
 import Notiflix from 'notiflix';
@@ -23,28 +22,44 @@ async function getTrendFilms() {
 	}
 }
 
-refs.searchButton.addEventListener('click', onClick);
+refs.searchForm.addEventListener('submit', onClick);
 
 async function onClick(e) {
 	e.preventDefault();
-	apiService.query = refs.searchInput.value.trim('');
-	console.log(apiService.query);
+	apiService.query = e.currentTarget.elements.searchQuery.value.trim('');
+	//console.log(apiService.query);
+	
+	apiService.resetPage();
 
 	try {
-		clearGallery();
 		let films = await apiService.fetchSearch();
+
 		if (films.length !== 0) {
+			clearGallery();
 			appendMarkup(films);
+			apiService.incrementPage();
+			loadMore()
 		}
-			
 	} catch (error) {
 		console.log(error);
 	}
 }
 
+function loadMore() {
+  const onEntry = entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && apiService.query !== '') {
+        getNewPage();
+      }
+    });
+  };
 
-
-
+  const options = {
+    rootMargin: '330px',
+  };
+  const observer = new IntersectionObserver(onEntry, options);
+  observer.observe(refs.observerElement);
+}
 
 async function getNewPage() {
 	let data = await apiService.fetchSearch();
@@ -52,13 +67,14 @@ async function getNewPage() {
 	setTimeout(renderingNewPage, 300);
 
 	function renderingNewPage() {
-		appendMarkup(data);
 		apiService.incrementPage();
+		appendMarkup(data);
 	}
 
-    // if (data.length === 0) {
-    //   return Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
-    // }
+	if (data.length === 0) {
+		console.log("End of search results.")
+		return;
+    }
 }
 
 
