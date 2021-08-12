@@ -12,9 +12,56 @@
 
 .film__item {
   width: 274px;
-  height: 350px;
+  height: 440px;
   margin-top: 30px;
   margin-left: 30px;
   border-radius: 5px;
   overflow: hidden;
+}
+
+.film__poster {
+  width: 274px;
+  height: 398px;
+  border-radius: 5px;
+}
+
+.film__name {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  text-transform: uppercase;
+}
+
+.film__genres,
+.film__year {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #ff6b08;
+}
+
+.film__info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.film__grade {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  /* identical to box height */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+
+  background-color: #ff6b08;
+  color: #ffffff;
 }
