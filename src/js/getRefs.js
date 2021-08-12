@@ -1,5 +1,4 @@
-export default function getRefs() {
-    return {
+export  const refs = {
 
         headerLogo: document.querySelector('.logo__title'),
 
@@ -21,4 +20,4 @@ export default function getRefs() {
         addToWatched: document.querySelector('.addToWatched__btn'),
         addToQueue: document.querySelector('.addToQueue__btn'),
     }
-};
+

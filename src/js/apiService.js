@@ -1,19 +1,27 @@
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = '92ffb34e08e714eb390805a25b0a06d3';
+
+
 let currentPage = 1;
+
+
 export default class FilmApiService {
   constructor() {
     this.searchQuery = '';
-    this.page = 1;
+    this.page = '1';
     this.id = '';
   }
+
   fetchTrendingMovies() {
     return fetch(
       `${BASE_URL}/trending/movie/week?api_key=${API_KEY}&language=en-US&page=${this.page}`,
     )
       .then(response => response.json())
       .then(({ results }) => {
+        console.log(results);
         return this.fetchFilmGenre().then(genres => {
+          console.log(genres);
+          console.log(...results);
           return results.map(result => ({
             ...result,
             release_date: result.release_date
@@ -24,6 +32,7 @@ export default class FilmApiService {
         });
       });
   }
+
   fetchSearch() {
     const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&page=${this.page}&query=${this.searchQuery}`;
     return fetch(url)
@@ -40,6 +49,7 @@ export default class FilmApiService {
         });
       });
   }
+
   fetchPagination(currentPage) {
     return fetch(
       `${BASE_URL}/trending/movie/week?api_key=${API_KEY}&language=en-US&page=${this.page}`,
@@ -79,6 +89,7 @@ export default class FilmApiService {
         return data.genres;
       });
   }
+
   insertGenresToMovieObj() {
     return this.fetchPopularArticles().then(data => {
       return this.fetchGenres().then(genresList => {
@@ -90,6 +101,7 @@ export default class FilmApiService {
       });
     });
   }
+
   getFullMovieInfo(movie_id) {
     const url = `${BASE_URL}/movie/${movie_id}?api_key=${API_KEY}&language=en-US`;
     return fetch(url)
@@ -100,6 +112,7 @@ export default class FilmApiService {
         genres: this.filterGenresLibrary(result),
       }));
   }
+
   fetchFilmGenre() {
     const url = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`;
     return fetch(url)
@@ -108,6 +121,7 @@ export default class FilmApiService {
         return genres;
       });
   }
+  
   filterGenres(genres, result) {
     let genreList = result.genre_ids
       .map(id => genres.filter(genre => genre.id === id).map(genre => genre.name))
@@ -124,6 +138,7 @@ export default class FilmApiService {
       return (genreList = `${genreList[0]}, ${genreList[1]}, Other`);
     }
   }
+
   filterGenresLibrary(result) {
     let genreList = result.genres.map(genre => genre.name).flat();
     if (genreList.length === 0) {
@@ -138,27 +153,35 @@ export default class FilmApiService {
       return (genreList = `${genreList[0]}, ${genreList[1]}, Other`);
     }
   }
+
   incrementPage() {
     this.page += 1;
   }
+
   resetPage() {
     this.page = 1;
   }
+
   get query() {
     return this.searchQuery;
   }
+
   set query(newQuery) {
     this.searchQuery = newQuery;
   }
+
   get pageNum() {
     return this.page;
   }
+
   set pageNum(newPage) {
     this.page = newPage;
   }
+
   watchedLocalStorage(id) {
     const savedItems = JSON.parse(localStorage.getItem('watched'));
     let filmsArray;
+
     if (savedItems) {
       filmsArray = savedItems.MovieIDW;
     }
@@ -178,6 +201,7 @@ export default class FilmApiService {
 
     localStorage.setItem('watched', JSON.stringify(movieIdStorageW));
   }
+
   queueLocalStorage(id) {
     const savedItems = JSON.parse(localStorage.getItem('queue'));
     let filmsArray;
