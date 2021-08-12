@@ -1,8 +1,4 @@
 @charset "UTF-8";
-/*
- * Главный файл стилей.
- * Все паршалы подключаются сюда.
- */
 body {
   height: 100%;
   margin: 0;
@@ -91,6 +87,9 @@ button {
 
 .header {
   height: 230px;
+}
+
+.first-image {
   background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.56)), to(rgba(0, 0, 0, 0.56))), url(../images/header_mobile.jpg);
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/header_mobile.jpg);
   background-repeat: no-repeat;
@@ -98,16 +97,38 @@ button {
 }
 
 @media (min-width: 768px) {
-  .header {
+  .first-image {
     background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.56)), to(rgba(0, 0, 0, 0.56))), url(../images/header_tablet.jpg);
     background-image: linear-gradient(to top, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/header_tablet.jpg);
   }
 }
 
 @media (min-width: 1024px) {
-  .header {
+  .first-image {
     background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.56)), to(rgba(0, 0, 0, 0.56))), url(../images/header_desc@2x.jpg);
     background-image: linear-gradient(to top, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/header_desc@2x.jpg);
+  }
+}
+
+.second-image {
+  background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.56)), to(rgba(0, 0, 0, 0.56))), url(../images/library_mobile.jpg);
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/library_mobile.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+}
+
+@media (min-width: 768px) {
+  .second-image {
+    background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.56)), to(rgba(0, 0, 0, 0.56))), url(../images/library_tablet.jpg);
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/library_tablet.jpg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .second-image {
+    background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.56)), to(rgba(0, 0, 0, 0.56))), url(../images/library_desc@2x.jpg);
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/library_desc@2x.jpg);
   }
 }
 
@@ -136,6 +157,7 @@ button {
 .logo__icon {
   width: 24px;
   height: 24px;
+  cursor: pointer;
 }
 
 .logo__title {
@@ -263,12 +285,11 @@ button {
   color: #ffffff;
 }
 
-.search__text:hover,
-.search__text:focus {
+.search__text:hover, .search__text:focus {
   outline: none;
 }
 
-.library_form {
+.site__nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -298,18 +319,76 @@ button {
   border-bottom: 3px solid #ff6b09;
 }
 
+.my-library {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 45px auto 0 320px;
+}
+
+.button {
+  background-color: transparent;
+  color: white;
+  width: 130px;
+  height: 45px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border: 1px solid #ffffff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.button:first-child {
+  margin-right: 15px;
+}
+
+.button:focus, .button:hover {
+  background: #ff6b01;
+  -webkit-box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+          box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+  border: 1px solid #ff6b01;
+  border-radius: 5px;
+}
+
+.is-active {
+  background: #ff6b01;
+  -webkit-box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+          box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+  border: 1px solid #ff6b01;
+  border-radius: 5px;
+}
+
 .main {
   min-height: calc(100vh - 280px);
 }
 
 .film__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   margin-top: -30px;
   margin-left: -30px;
 }
 
 .film__item {
+  width: 274px;
+  height: 350px;
   margin-top: 30px;
   margin-left: 30px;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 .footer {
