@@ -19,5 +19,7 @@ export  const refs = {
 
         addToWatched: document.querySelector('.addToWatched__btn'),
         addToQueue: document.querySelector('.addToQueue__btn'),
+        
+        observerElement: document.querySelector('.observer'),
     }
 
