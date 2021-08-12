@@ -1,5 +1,8 @@
+import { refs } from './getRefs';
+import MovieApiService from './apiService';
+import cardMarkup from '../templates/main-card-markup.hbs';
 
-import  {refs}  from './getRefs';
+const apiService = new MovieApiService();
 
 const header = document.querySelector('header');
 const libraryBtn = document.querySelector ('.library__btn');
@@ -23,6 +26,9 @@ function openLibrary(evt) {
 function openHome(evt) {
 	evt.preventDefault();
 
+refs.filmList.innerHTML = '';
+	getTrendFilms();
+
 	changeHidden(myLibrary, searshForm, 'first-image', 'second-image');
 }
 
@@ -34,3 +40,19 @@ function changeHidden(addHidden, remoteHidden, addImage, remoteImage) {
 	header.classList.add(addImage);
 }
 
+
+
+
+
+async function getTrendFilms() {
+	try {
+		let films = await apiService.fetchTrendingMovies();
+		appendMarkup(films);
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+function appendMarkup(data) {
+	refs.filmList.insertAdjacentHTML('beforeend', cardMarkup(data))
+}
