@@ -18,7 +18,7 @@ export default class FilmApiService {
     )
       .then(response => response.json())
       .then(({ results }) => {
-        console.log(results);
+        //console.log(results);
         return this.fetchFilmGenre().then(genres => {
           return results.map(result => ({
             ...result,
@@ -36,7 +36,7 @@ export default class FilmApiService {
     return fetch(url)
       .then(response => response.json())
       .then(({ results }) => {
-        console.log(results);
+        //console.log(results);
         return this.fetchFilmGenre().then(genres => {
           return results.map(result => ({
             ...result,
