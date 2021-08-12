@@ -27,37 +27,47 @@
   </head>
   <body>
     <div class="wrapper">
-      <header class="header">
+      <header class="header first-image">
         <div class="container">
           <div class="header__box">
 
-            <p class="logo__title">
-              <svg class="logo__icon">
-                <use href="./images/icons.svg#icon-logo"></use>
-              </svg>
-              Filmoteka
-            </p>
+            <nav class="site__nav">
 
-            <form class="library_form">
+              <h1 class="logo__title">
+                <svg class="logo__icon">
+                  <use href="./images/icons.svg#icon-logo"></use>
+                </svg>
+                Filmoteka
+              </h1>
+
               <button class="home__btn">Home</button>
               <button class="library__btn">My Library</button>
-            </form>
+            </nav>
           
             <form class="search__form">
-              <input type="text" class="search__text" placeholder="Поиск фильмов">
+              <input type="text" name="searchQuery" class="search__text" placeholder="Поиск фильмов">
               <button class="search__btn" type="submit">
                 <svg class="search__logo">
                   <use href="./images/icons.svg#icon-search"></use>
                 </svg>
               </button>
             </form>
+<<<<<<< HEAD
             
             <nav class="filter">
               <button class="watched button">WATCHED</button>
                <button class="queue button">QUEUE</button>
               </nav>
             
+=======
+>>>>>>> 2f098023ad9fd16f7a628cfdb119136ba3437f61
           </div>
+
+          <div class="my-library hidden">
+            <button class="watched button">WATCHED</button>
+            <button class="queue button">QUEUE</button>
+          </div>
+
         </div>
       </header>
     
@@ -67,6 +77,8 @@
             
           </ul>
         </div>
+
+        <div class="observer"></div>
       </main>
       
       <footer class="footer">
