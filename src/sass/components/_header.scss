@@ -162,39 +162,7 @@
   border-bottom: 3px solid $accent-color;
 }
 
-<<<<<<< HEAD
-.filter {
-  display:none;
-  visibility: hidden;
-  margin-top: 45px;
-}
-
- .button {
-background-color: transparent;
-color: white;
-width: 130px;
-height: 45px;
-justify-content: space-between;
-border: 1px solid #FFFFFF;
-box-sizing: border-box;
-border-radius: 5px;
-cursor: pointer;
-
-&:focus,
-&:hover {
-  background: #FF6B01;      
-  box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
-  border: 1px solid #FF6B01;
-  border-radius: 5px;
-}
-}   
-
-.main {
-  min-height: calc(100vh - 280px);
-}
-=======
 // My-library
->>>>>>> 2f098023ad9fd16f7a628cfdb119136ba3437f61
 
 .my-library {
   display: flex;
