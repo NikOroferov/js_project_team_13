@@ -14,12 +14,12 @@ import './js/showModal';
 
 const apiService = new FilmApiService();
 
-getTrendFilms();
+getTrendMovies();
 
-async function getTrendFilms() {
+async function getTrendMovies() {
   try {
-    let movies = await apiService.fetchPopularMovie();
-    appendMarkup(movies[0]);
+    let movies = await apiService.fetchTrendMovies();
+    appendMarkup(movies.moviesData)
   } catch (error) {
     console.log(error);
   }
@@ -35,11 +35,11 @@ async function onClick(e) {
   apiService.resetPage();
 
   try {
-    let films = await apiService.fetchSearch();
+    let movies = await apiService.fetchSearchMovies();
 
-    if (films.length !== 0) {
+    if (movies.moviesData.length !== 0) {
       clearGallery();
-      appendMarkup(films);
+      appendMarkup(movies.moviesData);
       apiService.incrementPage();
       loadMore();
     }
