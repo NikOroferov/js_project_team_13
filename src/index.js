@@ -92,3 +92,4 @@ function clearGallery() {
 function appendMarkup(data) {
   refs.filmList.insertAdjacentHTML('beforeend', cardMarkup(data));
 }
+

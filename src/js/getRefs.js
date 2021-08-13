@@ -1,6 +1,6 @@
 export const refs = {
   headerLogo: document.querySelector('.logo__title'),
-
+  
   searchForm: document.querySelector('.search__form'),
   searchInput: document.querySelector('.search__text'),
   searchButton: document.querySelector('.search__btn'),

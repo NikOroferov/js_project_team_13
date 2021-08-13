@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = '92ffb34e08e714eb390805a25b0a06d3';
 
@@ -10,6 +12,12 @@ export default class FilmApiService {
     this.searchQuery = '';
     this.page = '1';
     this.id = '';
+  }
+
+  async fetchTotalHits() {
+    const totalHits = await axios.get(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}&language=en-US`);
+    console.log(totalHits.data);
+    return totalHits.data;
   }
 
   fetchTrendingMovies() {
@@ -36,7 +44,6 @@ export default class FilmApiService {
     return fetch(url)
       .then(response => response.json())
       .then(({ results }) => {
-        //console.log(results);
         return this.fetchFilmGenre().then(genres => {
           return results.map(result => ({
             ...result,
@@ -47,19 +54,6 @@ export default class FilmApiService {
           }));
         });
       });
-      // .then(({ results }) => {
-      //   console.log(results);
-      //   return this.fetchFilmGenre().then(genres => {
-      //     console.log(genres);
-      //     return results.map(result => ({
-      //       ...result,
-      //       release_date: result.release_date
-      //         ? result.release_date.slice(0, 4)
-      //         : result.release_date,
-      //       genres: this.filterGenres(genres, result),
-      //     }));
-      //   });
-      // });
   }
 
   fetchPagination(currentPage) {
