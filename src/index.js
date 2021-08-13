@@ -18,8 +18,8 @@ getTrendFilms();
 
 async function getTrendFilms() {
   try {
-    let films = await apiService.fetchPopularMovie();
-    appendMarkup(films);
+    let movies = await apiService.fetchPopularMovie();
+    appendMarkup(movies[0]);
   } catch (error) {
     console.log(error);
   }

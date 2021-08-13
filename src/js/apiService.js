@@ -22,13 +22,13 @@ export default class FilmApiService {
 
   async fetchPopularMovie() {
     const movies = await axios.get(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}&language=en-US&page=${this.page}`);
-    console.log(movies);
+    // console.log(movies);
 
     const moviesResults = movies.data.results;
-    console.log(moviesResults);
+    // console.log(moviesResults);
 
     const genres = await this.fetchFilmGenre();
-    console.log(genres);
+    // console.log(genres);
     
     const moviesArr = moviesResults.map(result => ({
       ...result,
@@ -38,9 +38,11 @@ export default class FilmApiService {
       genres: this.filterGenres(genres, result),
       total_results: movies.data.total_results,
     }))
-    console.log(moviesArr);
+    
+    const infoMoviesArr = [moviesArr, movies.data.total_results, movies.data.total_pages, movies.data.page];
+    // console.log(infoMoviesArr);
 
-    return moviesArr;
+    return infoMoviesArr;
   }
 
   // fetchTrendingMovies() {
