@@ -1,4 +1,4 @@
-export  const refs = {
+export const refs = {
 
         headerLogo: document.querySelector('.logo__title'),
 

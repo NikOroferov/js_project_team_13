@@ -5,7 +5,7 @@ import axios from 'axios';
 import Notiflix from 'notiflix';
 import { debounce } from 'lodash';
 import cardMarkup from './templates/main-card-markup.hbs';
-import {refs} from './js/getRefs';
+import { refs } from './js/getRefs';
 import FilmApiService from './js/apiService';
 
 const apiService = new FilmApiService();
@@ -27,7 +27,6 @@ refs.searchForm.addEventListener('submit', onClick);
 async function onClick(e) {
 	e.preventDefault();
 	apiService.query = e.currentTarget.elements.searchQuery.value.trim('');
-	//console.log(apiService.query);
 	
 	apiService.resetPage();
 
@@ -85,3 +84,4 @@ function clearGallery () {
 function appendMarkup(data) {
 	refs.filmList.insertAdjacentHTML('beforeend', cardMarkup(data))
 }
+
