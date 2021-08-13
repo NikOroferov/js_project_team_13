@@ -18,7 +18,7 @@ getTrendFilms();
 
 async function getTrendFilms() {
   try {
-    let films = await apiService.fetchTrendingMovies();
+    let films = await apiService.fetchPopularMovie();
     appendMarkup(films);
   } catch (error) {
     console.log(error);
@@ -32,9 +32,6 @@ async function onClick(e) {
   e.preventDefault();
 
   apiService.query = e.currentTarget.elements.searchQuery.value.trim('');
-
-  //console.log(apiService.query);
-
   apiService.resetPage();
 
   try {
