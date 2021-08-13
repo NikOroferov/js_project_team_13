@@ -20,24 +20,50 @@ export default class FilmApiService {
     return totalHits.data;
   }
 
-  fetchTrendingMovies() {
-    return fetch(
-      `${BASE_URL}/trending/movie/week?api_key=${API_KEY}&language=en-US&page=${this.page}`,
-    )
-      .then(response => response.json())
-      .then(({ results }) => {
-        //console.log(results);
-        return this.fetchFilmGenre().then(genres => {
-          return results.map(result => ({
-            ...result,
-            release_date: result.release_date
-              ? result.release_date.slice(0, 4)
-              : result.release_date,
-            genres: this.filterGenres(genres, result),
-          }));
-        });
-      });
+  async fetchPopularMovie() {
+    const movies = await axios.get(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}&language=en-US&page=${this.page}`);
+    console.log(movies);
+
+    const moviesResults = movies.data.results;
+    console.log(moviesResults);
+
+    const genres = await this.fetchFilmGenre();
+    console.log(genres);
+    
+    const moviesArr = moviesResults.map(result => ({
+      ...result,
+      release_date: result.release_date
+          ? result.release_date.slice(0, 4)
+          : result.release_date,
+      genres: this.filterGenres(genres, result),
+      total_results: movies.data.total_results,
+    }))
+    console.log(moviesArr);
+
+    return moviesArr;
   }
+
+  // fetchTrendingMovies() {
+  //   return fetch(
+  //     `${BASE_URL}/trending/movie/week?api_key=${API_KEY}&language=en-US&page=${this.page}`,
+  //   )
+  //     .then(response => {
+  //       return response.json();
+  //     })
+  //     .then(({ results }) => {
+  //       console.log(this.fetchFilmGenre());
+  //       return this.fetchFilmGenre().then(genres => {
+  //         console.log(genres);
+  //         return results.map(result => ({
+  //           ...result,
+  //           release_date: result.release_date
+  //             ? result.release_date.slice(0, 4)
+  //             : result.release_date,
+  //           genres: this.filterGenres(genres, result),
+  //         }));
+  //       });
+  //     });
+  // }
 
   fetchSearch() {
     const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&page=${this.page}&query=${this.searchQuery}`;
@@ -119,13 +145,10 @@ export default class FilmApiService {
       }));
   }
 
-  fetchFilmGenre() {
+  async fetchFilmGenre() {
     const url = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`;
-    return fetch(url)
-      .then(response => response.json())
-      .then(({ genres }) => {
-        return genres;
-      });
+    const genres = await (await axios.get(url)).data.genres;
+    return genres;
   }
   
   filterGenres(genres, result) {
