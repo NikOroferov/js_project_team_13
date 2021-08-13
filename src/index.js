@@ -1,47 +1,56 @@
 import './sass/main.scss';
 import './js/headerLibrary.js';
 
+import { showSpinner } from './js/spinner';
+import { hideSpinner } from './js/spinner';
+
 import axios from 'axios';
 import Notiflix from 'notiflix';
 import { debounce } from 'lodash';
 import cardMarkup from './templates/main-card-markup.hbs';
 import { refs } from './js/getRefs';
 import FilmApiService from './js/apiService';
+import './js/showModal';
 
 const apiService = new FilmApiService();
-
 
 getTrendFilms();
 
 async function getTrendFilms() {
-	try {
-		let films = await apiService.fetchTrendingMovies();
-		appendMarkup(films);
-	} catch (error) {
-		console.log(error);
-	}
+  try {
+    let films = await apiService.fetchTrendingMovies();
+    appendMarkup(films);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 refs.searchForm.addEventListener('submit', onClick);
 
 async function onClick(e) {
-	e.preventDefault();
-	apiService.query = e.currentTarget.elements.searchQuery.value.trim('');
-	
-	apiService.resetPage();
+  showSpinner();
+  e.preventDefault();
 
-	try {
-		let films = await apiService.fetchSearch();
+  apiService.query = e.currentTarget.elements.searchQuery.value.trim('');
 
-		if (films.length !== 0) {
-			clearGallery();
-			appendMarkup(films);
-			apiService.incrementPage();
-			loadMore()
-		}
-	} catch (error) {
-		console.log(error);
-	}
+  //console.log(apiService.query);
+
+  apiService.resetPage();
+
+  try {
+    let films = await apiService.fetchSearch();
+
+    if (films.length !== 0) {
+      clearGallery();
+      appendMarkup(films);
+      apiService.incrementPage();
+      loadMore();
+    }
+
+    hideSpinner();
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function loadMore() {
@@ -61,27 +70,26 @@ function loadMore() {
 }
 
 async function getNewPage() {
-	let data = await apiService.fetchSearch();
-	
-	setTimeout(renderingNewPage, 300);
+  let data = await apiService.fetchSearch();
 
-	function renderingNewPage() {
-		apiService.incrementPage();
-		appendMarkup(data);
-	}
+  setTimeout(renderingNewPage, 300);
 
-	if (data.length === 0) {
-		console.log("End of search results.")
-		return;
-    }
+  function renderingNewPage() {
+    apiService.incrementPage();
+    appendMarkup(data);
+  }
+
+  if (data.length === 0) {
+    console.log('End of search results.');
+    return;
+  }
 }
 
-
-function clearGallery () {
-    refs.filmList.innerHTML = '';
+function clearGallery() {
+  refs.filmList.innerHTML = '';
 }
 
 function appendMarkup(data) {
-	refs.filmList.insertAdjacentHTML('beforeend', cardMarkup(data))
+  refs.filmList.insertAdjacentHTML('beforeend', cardMarkup(data));
 }
 

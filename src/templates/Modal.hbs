@@ -1,12 +1,16 @@
 <article class="card-film">
 
-    
+
     <div class="card-image">
         {{#if poster_path}}
-        <img class="card-poster" src="https://image.tmdb.org/t/p/w300/{{poster_path}}" onerror="this.onerror=null;this.src='https://payload.cargocollective.com/1/23/758880/13104445/NO-MOVIE-POSTERS-02-03-003_2000_c.jpg'" alt="{{original_title}}" />
+        <img class="card-poster" src="https://image.tmdb.org/t/p/w300/{{poster_path}}"
+            onerror="this.onerror=null;this.src='https://payload.cargocollective.com/1/23/758880/13104445/NO-MOVIE-POSTERS-02-03-003_2000_c.jpg'"
+            alt="{{original_title}}" />
         {{/if}}
         {{#unless poster_path}}
-        <img class="card-poster" src="https://payload.cargocollective.com/1/23/758880/13104445/NO-MOVIE-POSTERS-02-03-003_2000_c.jpg" alt="foto film" />
+        <img class="card-poster"
+            src="https://payload.cargocollective.com/1/23/758880/13104445/NO-MOVIE-POSTERS-02-03-003_2000_c.jpg"
+            alt="foto film" />
         {{/unless}}
     </div>
 
@@ -18,8 +22,9 @@
 
             <tr class="card-line">
                 <td class="card-description-cell">Vote / Votes</td>
-                <td class="card-description-details"> <span class="movie-vote">{{this.vote_average}}</span> / 
-                <span class="movie-votes">{{this.vote_count}}</span> </td>
+                <td class="card-description-details"> <span class="movie-vote">{{this.vote_average}}</span> /
+                    <span class="movie-votes">{{this.vote_count}}</span>
+                </td>
             </tr>
 
             <tr class="card-line">
@@ -27,7 +32,7 @@
                 <td class="card-description-details">
                     {{this.popularity}}
                 </td>
-            </tr>  
+            </tr>
 
             <tr class="card-line">
                 <td class="card-description-cell">Original title </td>
@@ -39,7 +44,7 @@
                 <td class="card-description-cell">Genre</td>
                 <td class="card-description-details">{{genres}}</td>
             </tr>
-                
+
         </table>
 
         <div class="movie-about">
@@ -51,10 +56,10 @@
             <button type="button" class="add-to-watched" id="add-to-watched" data-act='{{id}}'>add to watched</button>
             <button type="button" class="add-to-queue" id="add-to-queue" data-act='{{id}}'>add to queue</button>
 
-         <button  type="button" class="watch-trailer" data-id='{{id}}'>watch the trailer</button> 
+            <button type="button" class="watch-trailer" data-id='{{id}}'>watch the trailer</button>
 
         </div>
-        <button type="button" class="modal-button-close"></button>
+        <button type="button" class="modal-button-close" id="btnclose"></button>
 
     </div>
 </article>
