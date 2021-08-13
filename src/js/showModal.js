@@ -18,8 +18,6 @@ function getFullMovieInfo(id) {
       const modal = basicLightbox.create(markup);
       modal.show();
 
-      addToLibrary(id);
-
       const buttonCls = document.querySelector('button#btnclose');
       buttonCls.addEventListener('click', closeModal);
       window.addEventListener('keydown', closeModalHandler);
