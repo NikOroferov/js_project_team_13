@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = '92ffb34e08e714eb390805a25b0a06d3';
 
@@ -12,55 +14,65 @@ export default class FilmApiService {
     this.id = '';
   }
 
-  fetchTrendingMovies() {
-    return fetch(
-      `${BASE_URL}/trending/movie/week?api_key=${API_KEY}&language=en-US&page=${this.page}`,
-    )
-      .then(response => response.json())
-      .then(({ results }) => {
-        //console.log(results);
-        return this.fetchFilmGenre().then(genres => {
-          return results.map(result => ({
-            ...result,
-            release_date: result.release_date
-              ? result.release_date.slice(0, 4)
-              : result.release_date,
-            genres: this.filterGenres(genres, result),
-          }));
-        });
-      });
+  async fetchTotalHits() {
+    const totalHits = await axios.get(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}&language=en-US`);
+    //console.log(totalHits.data);
+    return totalHits.data;
   }
 
-  fetchSearch() {
-    const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&page=${this.page}&query=${this.searchQuery}`;
-    return fetch(url)
-      .then(response => response.json())
-      .then(({ results }) => {
-        //console.log(results);
-        return this.fetchFilmGenre().then(genres => {
-          return results.map(result => ({
-            ...result,
-            release_date: result.release_date
-              ? result.release_date.slice(0, 4)
-              : result.release_date,
-            genres: this.filterGenres(genres, result),
-          }));
-        });
-      });
-      // .then(({ results }) => {
-      //   console.log(results);
-      //   return this.fetchFilmGenre().then(genres => {
-      //     console.log(genres);
-      //     return results.map(result => ({
-      //       ...result,
-      //       release_date: result.release_date
-      //         ? result.release_date.slice(0, 4)
-      //         : result.release_date,
-      //       genres: this.filterGenres(genres, result),
-      //     }));
-      //   });
-      // });
+  async fetchTrendMovies() {
+    const movies = await axios.get(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}&language=en-US&page=${this.page}`);
+
+    const moviesResults = movies.data.results;
+    const totalResults = movies.data.total_results;
+    const totalPages = movies.data.total_pages;
+    const page = movies.data.page;
+
+    const genres = await this.fetchFilmGenre();
+    
+    const moviesArr = moviesResults.map(result => ({
+      ...result,
+      release_date: result.release_date.slice(0, 4),
+      genres: this.filterGenres(genres, result)
+    }))
+    
+    const infoMoviesArr = {
+      moviesData: moviesArr,
+      totalResults: totalResults,
+      totalPages: totalPages,
+      page: page
+    };
+
+    return infoMoviesArr;
   }
+
+  async fetchSearchMovies() {
+    const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&page=${this.page}&query=${this.searchQuery}`;
+    const movies = await axios.get(url);
+
+    const moviesResults = movies.data.results;
+    const totalResults = movies.data.total_results;
+    const totalPages = movies.data.total_pages;
+    const page = movies.data.page;
+
+    const genres = await this.fetchFilmGenre();
+    
+    const moviesArr = moviesResults.map(result => ({
+      ...result,
+      release_date: result.release_date.slice(0, 4),
+      genres: this.filterGenres(genres, result)
+    }));
+    
+    const infoMoviesArr = {
+      moviesData: moviesArr,
+      totalResults: totalResults,
+      totalPages: totalPages,
+      page: page
+    };
+
+    return infoMoviesArr;
+  }
+
 
   fetchPagination(currentPage) {
     return fetch(
@@ -125,13 +137,10 @@ export default class FilmApiService {
       }));
   }
 
-  fetchFilmGenre() {
+  async fetchFilmGenre() {
     const url = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`;
-    return fetch(url)
-      .then(response => response.json())
-      .then(({ genres }) => {
-        return genres;
-      });
+    const genres = await (await axios.get(url)).data.genres;
+    return genres;
   }
   
   filterGenres(genres, result) {

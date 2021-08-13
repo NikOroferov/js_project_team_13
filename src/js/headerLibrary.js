@@ -10,19 +10,26 @@ const myLibrary = document.querySelector ('.my-library');
 const searshForm = document.querySelector ('.search__form');
 const logoEl = document.querySelector ('.logo__icon');
 const homeEl = document.querySelector ('.home__btn');
+//const queueBtn = document.querySelector ('.queue');
+//const watchedBtn = document.querySelector ('.watched');
 
 
 libraryBtn.addEventListener ('click', openLibrary);
 logoEl.addEventListener ('click', openHome);
 homeEl.addEventListener ('click', openHome);
 
+queueBtn.addEventListener ('click', changeActive);
+watchedBtn.addEventListener ('click', changeActive);
+
 function openLibrary(evt) {
 	evt.preventDefault();
 
-	changeHidden(searshForm, myLibrary, 'second-image', 'first-image')
-	
+	changeHidden(searshForm, myLibrary, 'second-image', 'first-image');
+
+	//queueBtn.classList.add('is-active');
 }
 
+ 
 function openHome(evt) {
 	evt.preventDefault();
 

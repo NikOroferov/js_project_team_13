@@ -5,7 +5,7 @@ import FilmApiService from './apiService';
 
 const filmsApiService = new FilmApiService();
 
-const cardFilm = document.querySelector('.gallery');
+const cardFilm = document.querySelector('.film__list');
 cardFilm.addEventListener('click', openModal);
 
 //функція отримання фільму по id
@@ -18,9 +18,7 @@ function getFullMovieInfo(id) {
       const modal = basicLightbox.create(markup);
       modal.show();
 
-      addToLibrary(id);
-
-      const buttonCls = document.querySelector('.modal-button-close');
+      const buttonCls = document.querySelector('button#btnclose');
       buttonCls.addEventListener('click', closeModal);
       window.addEventListener('keydown', closeModalHandler);
 
