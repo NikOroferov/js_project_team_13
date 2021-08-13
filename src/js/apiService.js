@@ -16,7 +16,7 @@ export default class FilmApiService {
 
   async fetchTotalHits() {
     const totalHits = await axios.get(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}&language=en-US`);
-    console.log(totalHits.data);
+    //console.log(totalHits.data);
     return totalHits.data;
   }
 
