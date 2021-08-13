@@ -67,18 +67,24 @@ function loadMore() {
 }
 
 async function getNewPage() {
-  let data = await apiService.fetchSearch();
+  let movies = await apiService.fetchSearchMovies();
 
-  setTimeout(renderingNewPage, 300);
+  
 
-  function renderingNewPage() {
-    apiService.incrementPage();
-    appendMarkup(data);
-  }
-
-  if (data.length === 0) {
+  if (movies.moviesData.length === 0) {
     console.log('End of search results.');
     return;
+  }
+  else {
+    showSpinner();
+  setTimeout(renderingNewPage, 450);
+ 
+  function renderingNewPage() {
+    
+    apiService.incrementPage();
+    appendMarkup(movies.moviesData);
+    hideSpinner();
+  }
   }
 }
 

@@ -1,7 +1,7 @@
 import { refs } from './getRefs';
 
 export function showSpinner() {
-  console.log('frfr');
+  //console.log('frfr');
   refs.spinnerLoader.classList.toggle('visible');
   refs.backdrop.classList.remove('is-hidden');
 }
