@@ -12,6 +12,8 @@ import { refs } from './js/getRefs';
 import FilmApiService from './js/apiService';
 import './js/showModal';
 
+import btnUp from './js/button-up'
+
 const apiService = new FilmApiService();
 
 getTrendMovies();
@@ -96,3 +98,4 @@ function appendMarkup(data) {
   refs.filmList.insertAdjacentHTML('beforeend', cardMarkup(data));
 }
 
+btnUp();
