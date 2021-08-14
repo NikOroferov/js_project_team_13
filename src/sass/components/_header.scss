@@ -166,8 +166,10 @@
 
 .my-library {
   display: flex;
-  // margin-top: 45px;
-  margin: 45px auto 0 320px;
+  margin-top: 45px;
+  justify-content: center;
+  //margin-top: 40px;
+  //margin: 45px auto auto auto;
 }
 
 .button {
@@ -210,3 +212,4 @@
   border: 1px solid #ff6b01;
   border-radius: 5px;
 }
+ 
