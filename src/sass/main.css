@@ -179,9 +179,7 @@ button {
   .logo__title {
     margin-right: 300px;
     width: 165px;
-    color: white;
-    font-family: Roboto;
-    font-style: normal;
+    color: $light-text-color;
     font-weight: 500;
     font-size: 30px;
     line-height: 1.16;
@@ -222,16 +220,16 @@ button {
   height: 20px;
   background-color: transparent;
   cursor: pointer;
-  border-bottom: 0.5px solid #ffffff;
+  border-bottom: 0.5px solid $light-text-color;
 }
 
 .search__text {
   width: 260px;
   height: 20px;
   background-color: transparent;
-  color: #ffffff;
+  color: $light-text-color;
   border: none;
-  border-bottom: 0.5px solid #ffffff;
+  border-bottom: 0.5px solid $light-text-color;
 }
 
 @media (min-width: 768px) {
@@ -241,8 +239,6 @@ button {
 }
 
 .search__text::-webkit-input-placeholder {
-  font-family: Roboto;
-  font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 16px;
@@ -250,12 +246,10 @@ button {
   display: flex;
   -webkit-box-align: center;
           align-items: center;
-  color: #ffffff;
+  color: $light-text-color;
 }
 
 .search__text:-ms-input-placeholder {
-  font-family: Roboto;
-  font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 16px;
@@ -263,12 +257,10 @@ button {
   display: flex;
   -ms-flex-align: center;
       align-items: center;
-  color: #ffffff;
+  color: $light-text-color;
 }
 
 .search__text::-ms-input-placeholder {
-  font-family: Roboto;
-  font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 16px;
@@ -276,12 +268,10 @@ button {
   display: flex;
   -ms-flex-align: center;
       align-items: center;
-  color: #ffffff;
+  color: $light-text-color;
 }
 
 .search__text::placeholder {
-  font-family: Roboto;
-  font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 16px;
@@ -291,7 +281,7 @@ button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #ffffff;
+  color: $light-text-color;
 }
 
 .search__text:hover, .search__text:focus {
@@ -313,9 +303,7 @@ button {
 
 .home__btn,
 .library__btn {
-  color: white;
-  font-family: Roboto;
-  font-style: normal;
+  color:$light-text-color;
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
@@ -328,7 +316,7 @@ button {
 .home__btn:focus,
 .library__btn:hover,
 .library__btn:focus {
-  border-bottom: 3px solid #ff6b09;
+  border-bottom: 3px solid $accent-color;
 }
 
 .my-library {
@@ -340,19 +328,17 @@ button {
 
 .button {
   background-color: transparent;
-  color: white;
+  color: $light-text-color;
   width: 130px;
   height: 45px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  border: 1px solid #ffffff;
+  border: 1px solid $light-text-color;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border-radius: 5px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
+   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
   text-align: center;
@@ -365,18 +351,19 @@ button {
 }
 
 .button:focus, .button:hover {
-  background: #ff6b01;
-  -webkit-box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
-          box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
-  border: 1px solid #ff6b01;
+  background: $accent-color;
+  -webkit-box-shadow: 0px 8px 43px $accent-color-shadow;
+          box-shadow: 0px 8px 43px $accent-color-shadow;
+  border: 1px solid $accent-color;
   border-radius: 5px;
 }
 
 .is-active {
-  background: #ff6b01;
-  -webkit-box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
-          box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
-  border: 1px solid #ff6b01;
+  background: #$accent-color;
+  color: $light-text-color;
+  -webkit-box-shadow: 0px 4px 4px $accent-color-shadow;
+          box-shadow: 0px 4px 4px $accent-color-shadow;
+  border: 1px solid $accent-color;
   border-radius: 5px;
 }
 
@@ -411,8 +398,6 @@ button {
 }
 
 .film__name {
-  font-family: Roboto;
-  font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
@@ -421,12 +406,10 @@ button {
 
 .film__genres,
 .film__year {
-  font-family: Roboto;
-  font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
-  color: #ff6b08;
+  color: $accent-color;
 }
 
 .film__info {
@@ -439,8 +422,6 @@ button {
 }
 
 .film__grade {
-  font-family: Roboto;
-  font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
@@ -453,16 +434,14 @@ button {
           align-items: center;
   text-align: center;
   text-transform: uppercase;
-  background-color: #ff6b08;
-  color: #ffffff;
+  background-color: $accent-color;
+  color: $light-text-color;
 }
 
 .footer {
   height: 80px;
   padding: 30px 0;
-  background-color: #f7f7f7;
-  font-family: Roboto;
-  font-style: normal;
+  background-color: $light-text-color;
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
@@ -479,9 +458,7 @@ button {
 }
 
 .footer__info {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
+ font-weight: normal;
   font-size: 14px;
   line-height: 1.16;
   -webkit-box-align: center;
@@ -491,8 +468,8 @@ button {
 }
 
 .loader {
-  border: 16px solid #f3f3f3;
-  border-top: 16px solid #ff6b08;
+  border: 16px solid $light-background-color;
+  border-top: 16px solid $accent-color;
   border-radius: 50%;
   width: 120px;
   height: 120px;
@@ -539,7 +516,7 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: dark-background-color;
   opacity: 1;
   -webkit-transition: opacity 250ms var(--time-function);
   transition: opacity 250ms var(--time-function);

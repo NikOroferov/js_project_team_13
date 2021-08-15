@@ -17,11 +17,8 @@
 }
 
 .footer__info {
-  //font-family: Roboto;
-  // font-style: normal;
+  display: inline-flex;
   font-weight: normal;
   font-size: 14px;
-  line-height: 1.16;
-  align-items: center;
-  text-align: center;
+  line-height: 1.16; 
 }

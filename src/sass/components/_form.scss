@@ -5,9 +5,9 @@
   font-size: 12px;
   font-weight: 500;
   overflow: auto;
-  background-color: #ffffff;
+  background-color: $light-background-color;
   border-radius: 5px;
-  color: #000000;
+  color:$primary-text-color;
   @media screen and (min-width: 768px) {
     display: flex;
     width: 640px;
@@ -83,7 +83,7 @@
     text-align: left;
     width: 108px;
     line-height: 16px;
-    color: #8c8c8c;
+    color: $secondary-text-color;
     padding-bottom: 10px;
 
     @media screen and (min-width: 1024px) {
@@ -107,8 +107,8 @@
 }
 
 .movie-vote {
-  background-color: #ff6b01;
-  color: #ffffff;
+  background-color: $accent-color;
+  color: $light-text-color;
   display: inline-block;
   text-align: center;
   border-radius: 5px;
@@ -123,8 +123,8 @@
 }
 
 .movie-votes {
-  background: #f7f7f7;
-  color: #000000;
+  background: $light-background-color;
+  color: $primary-text-color;
   display: inline-block;
   text-align: center;
   border-radius: 5px;
@@ -161,6 +161,7 @@
   display: flex;
   margin-bottom: 40px;
 }
+
 .add-to-watched {
   padding: 14px, 10px, 12px;
   margin-right: 10px;
@@ -177,7 +178,7 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: #ffffff;
+  background-color: $light-background-color;
   border: 1px solid transparent;
   border-radius: 50%;
   width: 25px;
@@ -190,18 +191,16 @@
 
 .add-to-watched,
 .add-to-queue {
-  background: #ff6b01;
-  border: 1px solid #ff6b01;
+  background: $light-background-color;
+  border: 1px solid $primary-text-color;
   border-radius: 5px;
-  color: white;
+  color: $primary-text-color;
   width: 130px;
   height: 45px;
-  border: 1px solid #ffffff;
+
   box-sizing: border-box;
   border-radius: 5px;
 
-  font-family: Roboto;
-  font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
@@ -211,11 +210,20 @@
 
   cursor: pointer;
 
-  &:hover,
-  &:focus {
-    background: #ff6b01;
-    box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
-    border: 1px solid #ff6b01;
+  &:focus,
+  &:hover {
+    color:$light-text-color;
+    background: $accent-color;
+    box-shadow: 0px 4px 4px $accent-color-shadow;
+    border: 1px solid $accent-color;
     border-radius: 5px;
   }
+}
+
+.is-active {
+  background: $accent-color;
+  color: $light-text-color;
+  box-shadow: 0px 4px 4px $accent-color-shadow;
+  border: 1px solid $accent-color;
+  border-radius: 5px;
 }

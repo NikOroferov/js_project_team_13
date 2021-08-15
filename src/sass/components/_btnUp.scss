@@ -8,7 +8,7 @@
   height: 50px;
   border-radius: 50%;
   background-color: transparent;
-  border: 2px solid #4b4a4a79;
+  border: 2px solid $secondary-text-color;
 
   opacity: 0;
   visibility: hidden;
@@ -16,7 +16,7 @@
   &:hover,
   &:focus {
     cursor: pointer;
-    border: 2px solid #4b4a4a;
+    border: 2px solid $third-text-color;
 
     &::after {
       opacity: 1;
