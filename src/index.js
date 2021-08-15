@@ -16,6 +16,8 @@ const apiService = new FilmApiService();
 
 getTrendMovies();
 
+console.log(refs);
+
 async function getTrendMovies() {
   try {
     let movies = await apiService.fetchTrendMovies();
@@ -69,8 +71,6 @@ function loadMore() {
 async function getNewPage() {
   let movies = await apiService.fetchSearchMovies();
 
-  
-
   if (movies.moviesData.length === 0) {
     console.log('End of search results.');
     return;
@@ -96,3 +96,8 @@ function appendMarkup(data) {
   refs.filmList.insertAdjacentHTML('beforeend', cardMarkup(data));
 }
 
+
+document.addEventListener('click', (e) => {
+  console.log(document.querySelector('.add-to-watched'));
+  console.log(document.querySelector('.add-to-queue'));
+})
