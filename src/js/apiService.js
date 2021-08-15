@@ -14,12 +14,6 @@ export default class FilmApiService {
     this.id = '';
   }
 
-  async fetchTotalHits() {
-    const totalHits = await axios.get(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}&language=en-US`);
-    //console.log(totalHits.data);
-    return totalHits.data;
-  }
-
   async fetchTrendMovies() {
     const movies = await axios.get(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}&language=en-US&page=${this.page}`);
 
@@ -29,13 +23,13 @@ export default class FilmApiService {
     const page = movies.data.page;
 
     const genres = await this.fetchFilmGenre();
-    
+
     const moviesArr = moviesResults.map(result => ({
       ...result,
       release_date: result.release_date.slice(0, 4),
       genres: this.filterGenres(genres, result)
     }))
-    
+
     const infoMoviesArr = {
       moviesData: moviesArr,
       totalResults: totalResults,
@@ -56,13 +50,13 @@ export default class FilmApiService {
     const page = movies.data.page;
 
     const genres = await this.fetchFilmGenre();
-    
+
     const moviesArr = moviesResults.map(result => ({
       ...result,
       release_date: result.release_date.slice(0, 4),
       genres: this.filterGenres(genres, result)
     }));
-    
+
     const infoMoviesArr = {
       moviesData: moviesArr,
       totalResults: totalResults,
@@ -114,17 +108,17 @@ export default class FilmApiService {
       });
   }
 
-  insertGenresToMovieObj() {
-    return this.fetchPopularArticles().then(data => {
-      return this.fetchGenres().then(genresList => {
-        return data.map(movie => ({
-          ...movie,
-          release_date: movie.release_date.split('-')[0],
-          genres: movie.genre_ids.map(id => genresList.filter(el => el.id === id)).flat(),
-        }));
-      });
-    });
-  }
+  // insertGenresToMovieObj() {
+  //   return this.fetchPopularArticles().then(data => {
+  //     return this.fetchGenres().then(genresList => {
+  //       return data.map(movie => ({
+  //         ...movie,
+  //         release_date: movie.release_date.split('-')[0],
+  //         genres: movie.genre_ids.map(id => genresList.filter(el => el.id === id)).flat(),
+  //       }));
+  //     });
+  //   });
+  // }
 
   getFullMovieInfo(movie_id) {
     const url = `${BASE_URL}/movie/${movie_id}?api_key=${API_KEY}&language=en-US`;
@@ -132,7 +126,7 @@ export default class FilmApiService {
       .then(response => response.json())
       .then(result => ({
         ...result,
-        release_date: result.release_date ? result.release_date.slice(0, 4) : result.release_date,
+        release_date: result.release_date.slice(0, 4),
         genres: this.filterGenresLibrary(result),
       }));
   }
