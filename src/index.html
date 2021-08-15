@@ -44,13 +44,17 @@
       <header class="header first-image">
         <div class="container">
           <div class="header__box">
+
             <nav class="site__nav">
-              <h1 class="logo__title">
+
+              <div class="logo__container">
                 <svg class="logo__icon">
                   <use href="./images/icons.svg#icon-logo"></use>
                 </svg>
-                Filmoteka
-              </h1>
+                <h1 class="logo__title">
+                  Filmoteka
+                </h1>
+              </div>
 
               <button class="home__btn">Home</button>
               <button class="library__btn">My Library</button>
@@ -69,10 +73,11 @@
                 </svg>
               </button>
             </form>
+
           </div>
 
           <div class="my-library hidden">
-            <button class="watched button">WATCHED</button>
+            <button class="watched button is-active">WATCHED</button>
             <button class="queue button">QUEUE</button>
           </div>
         </div>
@@ -81,9 +86,11 @@
       <main class="main">
         <div class="container">
           <ul class="film__list"></ul>
+
+          
+          <div class="observer"></div>
         </div>
 
-        <div class="observer"></div>
       </main>
 
       <a class="button-up" id="button-up"></a>

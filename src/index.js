@@ -1,24 +1,28 @@
 import './sass/main.scss';
-import './js/headerLibrary.js';
 
-import { showSpinner } from './js/spinner';
-import { hideSpinner } from './js/spinner';
 
 import axios from 'axios';
 import Notiflix from 'notiflix';
 import { debounce } from 'lodash';
 import cardMarkup from './templates/main-card-markup.hbs';
 import { refs } from './js/getRefs';
+import { showSpinner } from './js/spinner';
+import { hideSpinner } from './js/spinner';
 import FilmApiService from './js/apiService';
-import './js/showModal';
-
 import btnUp from './js/button-up'
+<<<<<<< HEAD
 import appendErrorMessage from './js/errorMessage';
 import appendBlankPage from './js/blankPage';
+=======
+import './js/headerLibrary.js';
+import './js/showModal';
+>>>>>>> main
 
 const apiService = new FilmApiService();
 
 getTrendMovies();
+
+console.log(refs);
 
 async function getTrendMovies() {
   try {
@@ -88,8 +92,6 @@ function loadMore() {
 async function getNewPage() {
   let movies = await apiService.fetchSearchMovies();
 
-  
-
   if (movies.moviesData.length === 0) {
     console.log('End of search results.');
     return;
@@ -114,5 +116,6 @@ function clearGallery() {
 function appendMarkup(data) {
   refs.filmList.insertAdjacentHTML('beforeend', cardMarkup(data));
 }
+
 
 btnUp();

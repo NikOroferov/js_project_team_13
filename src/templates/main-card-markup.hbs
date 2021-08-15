@@ -2,7 +2,7 @@
 <li id="{{id}}" class="film__item">
 	<div class="poster__thumb">
 		{{#if poster_path}}
-		<img src=https://image.tmdb.org/t/p/w500{{poster_path}} alt="{{title}}" class="film__poster">
+		<img src=https://image.tmdb.org/t/p/w500{{poster_path}} alt="{{title}}" data-action='{{id}}' class="film__poster">
 		{{/if}}
 		{{#unless poster_path}}
 		<img class="film__poster"
@@ -12,17 +12,17 @@
 	</div>
 	<div class="film__info">
 		<h2 class="film__name">
-			{{title}}
+			{{title}} 
 		</h2>
+		<div class='film__genres__year'>
 		<p class="film__genres">
-			{{genres}}
+			{{genres}} | 
 		</p>
 		<p class="film__year">
-			{{release_date}}
+			 {{release_date}}
 		</p>
-		<p class="film__grade">
-			{{vote_average}}
-		</p>
+		</div>
+		 
 	</div>
 </li>
 {{/each}}
