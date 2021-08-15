@@ -1,18 +1,17 @@
 import './sass/main.scss';
-import './js/headerLibrary.js';
 
-import { showSpinner } from './js/spinner';
-import { hideSpinner } from './js/spinner';
 
 import axios from 'axios';
 import Notiflix from 'notiflix';
 import { debounce } from 'lodash';
 import cardMarkup from './templates/main-card-markup.hbs';
 import { refs } from './js/getRefs';
+import { showSpinner } from './js/spinner';
+import { hideSpinner } from './js/spinner';
 import FilmApiService from './js/apiService';
-import './js/showModal';
-
 import btnUp from './js/button-up'
+import './js/headerLibrary.js';
+import './js/showModal';
 
 const apiService = new FilmApiService();
 

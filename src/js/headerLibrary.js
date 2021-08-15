@@ -19,39 +19,36 @@ homeEl.addEventListener ('click', openHome);
 function openLibrary(evt) {
 	evt.preventDefault();
 
-	changeHidden(searshForm, myLibrary, 'second-image', 'first-image')
-	
-}
+	refs.filmList.innerHTML = '';
+
+	changeHidden(searshForm, myLibrary, 'second-image', 'first-image');
+};
 
 function openHome(evt) {
 	evt.preventDefault();
 
-refs.filmList.innerHTML = '';
-	getTrendFilms();
+	refs.filmList.innerHTML = '';
+	getTrendMovies();
 
 	changeHidden(myLibrary, searshForm, 'first-image', 'second-image');
-}
-
+};
 
 function changeHidden(addHidden, remoteHidden, addImage, remoteImage) {
 	remoteHidden.classList.remove('hidden');
 	addHidden.classList.add('hidden');
 	header.classList.remove(remoteImage);
 	header.classList.add(addImage);
-}
+};
 
-
-
-
-
-async function getTrendFilms() {
+async function getTrendMovies() {
 	try {
-		let films = await apiService.fetchTrendingMovies();
-		appendMarkup(films);
+		refs.filmList.innerHTML = '';
+		let movies = await apiService.fetchTrendMovies();
+		appendMarkup(movies.moviesData);
 	} catch (error) {
 		console.log(error);
 	}
-}
+};
 
 function appendMarkup(data) {
 	refs.filmList.insertAdjacentHTML('beforeend', cardMarkup(data))
