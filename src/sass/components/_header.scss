@@ -53,7 +53,6 @@
 .logo__icon {
   width: 24px;
   height: 24px;
-
   cursor: pointer;
   margin-right: 10px;
 }
@@ -69,8 +68,8 @@
     margin-right: 300px;
     width: 165px;
     color: $light-text-color;
-    font-family: Roboto;
-    font-style: normal;
+    //font-family: Roboto;
+    //font-style: normal;
     font-weight: 500;
     font-size: 30px;
     line-height: 1.16;
@@ -84,7 +83,6 @@
 .search__form {
   display: flex;
   margin-top: 45px;
-  // margin-right: 107px;
   height: 20px;
 }
 
@@ -100,31 +98,31 @@
   height: 20px;
   background-color: transparent;
   cursor: pointer;
-  border-bottom: 0.5px solid #ffffff;
+  border-bottom: 0.5px solid $light-text-color;
 }
 
 .search__text {
   width: 260px;
   height: 20px;
   background-color: transparent;
-  color: #ffffff;
+  color: $light-text-color;
   border: none;
-  border-bottom: 0.5px solid #ffffff;
+  border-bottom: 0.5px solid $light-text-color;
 
   @media (min-width: $tablet) {
     width: 320px;
   }
 
   &::placeholder {
-    font-family: Roboto;
-    font-style: normal;
+    //font-family: Roboto;
+   // font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 16px;
     display: flex;
     align-items: center;
 
-    color: #ffffff;
+    color: $light-text-color;
   }
 
   &:hover,
@@ -145,8 +143,8 @@
 .home__btn,
 .library__btn {
   color: $light-text-color;
-  font-family: Roboto;
-  font-style: normal;
+  //font-family: Roboto;
+  //font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
@@ -166,26 +164,25 @@
 
 .my-library {
   display: flex;
-  // margin-top: 45px;
-  margin: 45px auto 0 320px;
+  margin-top: 45px;
+  justify-content: center;
 }
 
 .button {
   background-color: transparent;
-  color: white;
+  color: $light-text-color;
   width: 130px;
   height: 45px;
   justify-content: space-between;
-  border: 1px solid #ffffff;
+  border: 1px solid $light-text-color;
   box-sizing: border-box;
   border-radius: 5px;
 
-  font-family: Roboto;
-  font-style: normal;
+ // font-family: Roboto;
+ // font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
-
   text-align: center;
   text-transform: uppercase;
 
@@ -197,16 +194,17 @@
 
   &:focus,
   &:hover {
-    background: #ff6b01;
+    background: $accent-color;
     box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
-    border: 1px solid #ff6b01;
+    border: 1px solid $accent-color;
     border-radius: 5px;
   }
 }
 
 .is-active {
-  background: #ff6b01;
+  background: $accent-color;
   box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
-  border: 1px solid #ff6b01;
+  border: 1px solid $accent-color;
   border-radius: 5px;
 }
+ 

@@ -1,9 +1,10 @@
 .footer {
   height: 80px;
   padding: 30px 0;
-  background-color: #f7f7f7;
-  font-family: Roboto;
-  font-style: normal;
+  background-color: $light-background-color;
+ // font-family: Roboto;
+ // font-style: normal;
+  color: $third-text-color;
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
@@ -18,8 +19,8 @@
 }
 
 .footer__info {
-  font-family: Roboto;
-  font-style: normal;
+  //font-family: Roboto;
+ // font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 1.16;
