@@ -1,12 +1,18 @@
 {{#each this}}
 <li id="{{id}}" class="film__item">
 	<div class="poster__thumb">
-		<img src=https://image.tmdb.org/t/p/w500{{poster_path}} alt="{{title}}" data-action='{{id}}'
-			class="film__poster">
+		{{#if poster_path}}
+		<img src=https://image.tmdb.org/t/p/w500{{poster_path}} alt="{{title}}" data-action='{{id}}' class="film__poster">
+		{{/if}}
+		{{#unless poster_path}}
+		<img class="film__poster"
+			src="https://payload.cargocollective.com/1/23/758880/13104445/NO-MOVIE-POSTERS-02-03-003_2000_c.jpg"
+			alt="foto film" />
+		{{/unless}}
 	</div>
 	<div class="film__info">
 		<h2 class="film__name">
-			{{title}}
+			{{title}} data-action='{{id}}'
 		</h2>
 		<p class="film__genres">
 			{{genres}}

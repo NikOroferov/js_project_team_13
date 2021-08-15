@@ -23,4 +23,6 @@ export const refs = {
   backdrop: document.querySelector('.backdrop'),
   spinnerLoader: document.querySelector('.loader'),
 
+  btn: document.querySelector('#button-up')
+
 };

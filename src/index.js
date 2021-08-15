@@ -12,6 +12,8 @@ import { refs } from './js/getRefs';
 import FilmApiService from './js/apiService';
 import './js/showModal';
 
+import btnUp from './js/button-up'
+
 const apiService = new FilmApiService();
 
 getTrendMovies();
@@ -97,7 +99,4 @@ function appendMarkup(data) {
 }
 
 
-document.addEventListener('click', (e) => {
-  console.log(document.querySelector('.add-to-watched'));
-  console.log(document.querySelector('.add-to-queue'));
-})
+btnUp();
