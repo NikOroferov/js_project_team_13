@@ -6,7 +6,7 @@ import { refs } from './js/getRefs';
 import { showSpinner, hideSpinner } from './js/spinner';
 
 import FilmApiService from './js/apiService';
-import btnUp from './js/button-up'
+import btnUp from './js/button-up';
 import appendErrorMessage from './js/errorMessage';
 import appendBlankPage from './js/blankPage';
 
@@ -22,7 +22,7 @@ getTrendMovies();
 async function getTrendMovies() {
   try {
     let movies = await apiService.fetchTrendMovies();
-    appendMarkup(movies.moviesData)
+    appendMarkup(movies.moviesData);
   } catch (error) {
     console.log(error);
   }
@@ -36,8 +36,12 @@ async function onClick(e) {
 
   const arrorMessage = document.querySelector('.searchQueryIncorrect');
   const elBlankPage = document.querySelector('.blankPage');
-  if (arrorMessage) { arrorMessage.remove() };
-  if (arrorMessage) { elBlankPage.remove() };
+  if (arrorMessage) {
+    arrorMessage.remove();
+  }
+  if (arrorMessage) {
+    elBlankPage.remove();
+  }
 
   apiService.query = e.currentTarget.elements.searchQuery.value.trim('');
   apiService.resetPage();
@@ -48,10 +52,12 @@ async function onClick(e) {
     if (movies.moviesData.length === 0) {
       appendErrorMessage(apiService.query);
       appendBlankPage();
-		}
+    }
 
-		if (movies.moviesData.length !== 0) {
-			if (elBlankPage) {elBlankPage.remove()}
+    if (movies.moviesData.length !== 0) {
+      if (elBlankPage) {
+        elBlankPage.remove();
+      }
       clearGallery();
       appendMarkup(movies.moviesData);
       apiService.incrementPage();
@@ -63,6 +69,7 @@ async function onClick(e) {
     console.log(error);
     appendErrorMessage(apiService.query);
     appendBlankPage();
+    hideSpinner();
   }
 
   refs.searchForm.reset();
@@ -90,13 +97,11 @@ async function getNewPage() {
   if (movies.moviesData.length === 0) {
     console.log('End of search results.');
     return;
-  }
-  else {
+  } else {
     showSpinner();
     setTimeout(renderingNewPage, 450);
- 
+
     function renderingNewPage() {
-      
       apiService.incrementPage();
       appendMarkup(movies.moviesData);
       hideSpinner();
