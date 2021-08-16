@@ -61,7 +61,6 @@ export default class FilmApiService {
       });
   }
 
-
   getFullMovieInfo(movie_id) {
     const url = `${BASE_URL}/movie/${movie_id}?api_key=${API_KEY}&language=${this.language}`;
 

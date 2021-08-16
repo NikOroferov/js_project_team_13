@@ -4,13 +4,13 @@
 
 .first-image {
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-    url(../images/header_mobile.jpg);
+    url(../images/header_mobile@2x.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 
   @media (min-width: $tablet) {
     background-image: linear-gradient(to top, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url(../images/header_tablet.jpg);
+      url(../images/header_tablet@2x.jpg);
   }
 
   @media (min-width: $desktop) {
@@ -21,14 +21,14 @@
 
 .second-image {
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-    url(../images/library_mobile.jpg);
+    url(../images/library_mobile@2x.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
 
   @media (min-width: $tablet) {
     background-image: linear-gradient(to top, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url(../images/library_tablet.jpg);
+      url(../images/library_tablet@2x.jpg);
   }
 
   @media (min-width: $desktop) {
@@ -49,7 +49,7 @@
   }
 }
 
-.logo__container {
+.logo__box {
   @include flex-center;
 }
 

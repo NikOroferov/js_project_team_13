@@ -2,6 +2,7 @@ export const refs = {
   body: document.querySelector('body'),
   header: document.querySelector('header'),
   headerLogo: document.querySelector('.logo__title'),
+  headerLogoEl: document.querySelector ('.logo__icon'),
   
   searchForm: document.querySelector('.search__form'),
   searchInput: document.querySelector('.search__text'),
@@ -12,7 +13,6 @@ export const refs = {
   homeButton: document.querySelector('.home__btn'),
   libraryButton: document.querySelector('.library__btn'),
 
- 
   watchedBtn: document.querySelector('.watched'),
   queueBtn: document.querySelector('.queue'),
 
@@ -27,5 +27,4 @@ export const refs = {
   spinnerLoader: document.querySelector('.loader'),
 
   btn: document.querySelector('#button-up')
-
 };

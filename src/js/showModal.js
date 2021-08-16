@@ -1,7 +1,7 @@
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 import MoviesApiService from './apiService';
-import filmTpl from '../templates/Modal.hbs';
+import filmTpl from '../templates/modal-markup.hbs';
 import { refs } from './getRefs';
 
 const apiService = new MoviesApiService();
