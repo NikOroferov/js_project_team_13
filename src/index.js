@@ -11,6 +11,7 @@ import cardMarkup from './templates/main-card-markup.hbs';
 import { refs } from './js/getRefs';
 import FilmApiService from './js/apiService';
 import './js/showModal';
+import './js/localStorage';
 
 import btnUp from './js/button-up'
 
