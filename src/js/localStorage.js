@@ -4,17 +4,10 @@ import FilmApiService from './apiService';
 const movieApiService = new FilmApiService();
 
 async function getMoviebyId(id) {
-    const movieById = await movieApiService.getFullMovieInfo(id)
-    console.log(movieById);
-  
+    const movieById = await movieApiService.getMovieInfo(id)
     return movieById
-  };
+};
 
-
-console.log(getMoviebyId(385128));
-
-
-console.log(getMoviebyId(385128));
 
 // const modalWindow = document.querySelector('.card-film');
 // console.log(modalWindow);
@@ -22,14 +15,9 @@ console.log(getMoviebyId(385128));
 document.addEventListener('click', (e) => {
     const watchedBtn = document.querySelector('.add-to-watched');
     const queueBtn = document.querySelector('.add-to-queue');
-    console.log(watchedBtn);
-    console.log(queueBtn);
 
     watchedBtn.addEventListener('click', setMoviesArrayForLocalStorage);
     queueBtn.addEventListener('click', setMoviesArrayForLocalStorage);
-    
-    console.log(e.target.dataset.act);
-    console.log(e.target.textContent);
     
     function getWatchedArray() {
             if (localStorage.getItem("Watched") !== null) {
@@ -68,12 +56,12 @@ document.addEventListener('click', (e) => {
         if (keyName === 'add to watched') {
             watchedArray.push(selectedMovie);
             localStorage.setItem("Watched", JSON.stringify(watchedArray))
-            e.target.textContent = "Remove from watched";
+            e.target.textContent = "Done";
         }
         else if (keyName === 'add to queue') {
             queueArray.push(selectedMovie);
             localStorage.setItem("Queue", JSON.stringify(queueArray));
-            e.target.textContent = "Remove from queue";
+            e.target.textContent = "Done";
         }
     });
     };
