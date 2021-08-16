@@ -1,12 +1,12 @@
-import filmTpl from '../templates/Modal.hbs';
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
-import FilmApiService from './apiService';
+import MoviesApiService from './apiService';
+import filmTpl from '../templates/Modal.hbs';
+import { refs } from './getRefs';
 
-const apiService = new FilmApiService();
+const apiService = new MoviesApiService();
 
-const cardFilm = document.querySelector('.film__list');
-cardFilm.addEventListener('click', openModal);
+refs.filmList.addEventListener('click', openModal);
 
 //функція отримання фільму по id
 
@@ -18,8 +18,10 @@ function getFullMovieInfo(id) {
       const modal = basicLightbox.create(markup);
       modal.show();
 
-      const buttonCls = document.querySelector('button#btnclose');
-      buttonCls.addEventListener('click', closeModal);
+      const closeBtn = document.querySelector('button#btnclose');
+      
+
+      closeBtn.addEventListener('click', closeModal);
       window.addEventListener('keydown', closeModalHandler);
 
       //функція закриття форми по клавіші Esc
@@ -37,6 +39,7 @@ function getFullMovieInfo(id) {
     })
     .catch(error => console.log('error', error));
   
+  
 }
 
 function openModal(evt) {
@@ -46,6 +49,4 @@ function openModal(evt) {
     return;
   }
   getFullMovieInfo(id);
-  
-  toastify.joySuccess();
 }

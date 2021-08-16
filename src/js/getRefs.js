@@ -1,5 +1,6 @@
 export const refs = {
   body: document.querySelector('body'),
+  header: document.querySelector('header'),
   headerLogo: document.querySelector('.logo__title'),
   
   searchForm: document.querySelector('.search__form'),
@@ -7,9 +8,11 @@ export const refs = {
   searchButton: document.querySelector('.search__btn'),
   searchLogo: document.querySelector('.search__logo'),
 
+  myLibrary: document.querySelector ('.my-library'),
   homeButton: document.querySelector('.home__btn'),
   libraryButton: document.querySelector('.library__btn'),
 
+ 
   watchedBtn: document.querySelector('.watched'),
   queueBtn: document.querySelector('.queue'),
 

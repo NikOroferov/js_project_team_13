@@ -25,20 +25,26 @@
   overflow: hidden;
 }
 
+.poster__thumb {
+  height: 400px;
+}
+
 .film__poster {
   max-width: auto;
+  height: 100%;
   @media screen and (min-width: $tablet) {
     max-width: 294px;
   }
 
   @media screen and (min-width: $desktop) {
-    max-width: 273px;
+    width: 273px;
   }
 
   border-radius: 5px;
 }
 
 .film__name {
+  max-width: 200px;
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
@@ -48,6 +54,7 @@
 
 .film__genres,
 .film__year {
+  text-transform: capitalize;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;

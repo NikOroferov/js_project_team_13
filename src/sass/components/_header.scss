@@ -40,12 +40,11 @@
 .header__box {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
   padding-top: 45px;
+  height: 35px;
 
   @media (min-width: $tablet) {
     padding-top: 40px;
-    display: flex;
     justify-content: center;
   }
 }
@@ -125,7 +124,7 @@
   }
 
   &::placeholder {
-      font-weight: normal;
+    font-weight: normal;
     font-size: 14px;
     line-height: 16px;
     display: flex;
@@ -143,6 +142,7 @@
 .site__nav {
   display: flex;
   align-items: center;
+  height: 35px;
 }
 
 .home__btn {
@@ -172,8 +172,8 @@
 
 .my-library {
   display: flex;
-  margin-top: 45px;
   justify-content: center;
+  margin-top: 80px;
 }
 
 .button {
@@ -198,19 +198,19 @@
     margin-right: 15px;
   }
 
-&:focus,
-&:hover {
-  background: $accent-color;
-  box-shadow: 0px 4px 4px $accent-color-shadow;
-  border: 1px solid $accent-color;
-  border-radius: 5px;
-}
+  &:focus,
+  &:hover {
+    background: $accent-color;
+    box-shadow: 0px 4px 4px $accent-color-shadow;
+    border: 1px solid $accent-color;
+    border-radius: 5px;
+  }
 }
 
 .is-active {
-background: $accent-color;
-color: $light-text-color;
-box-shadow: 0px 4px 4px $accent-color-shadow;
-border: 1px solid $accent-color;
-border-radius: 5px;
+  background: $accent-color;
+  color: $light-text-color;
+  box-shadow: 0px 4px 4px $accent-color-shadow;
+  border: 1px solid $accent-color;
+  border-radius: 5px;
 }
