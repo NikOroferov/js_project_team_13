@@ -1,14 +1,13 @@
 import axios from "axios";
 
 const BASE_URL = 'https://api.themoviedb.org/3';
-const API_KEY = '92ffb34e08e714eb390805a25b0a06d3';
+const API_KEY = '05b379a62bb2f2e51c79837a2df0fc22';
 
 export default class FilmApiService {
 
   constructor() {
     this.searchQuery = '';
     this.page = '1';
-    this.id = '';
     this.language = 'en-En'
   }
 
@@ -32,13 +31,13 @@ export default class FilmApiService {
     const totalPages = movies.data.total_pages;
     const page = movies.data.page;
 
-    const genres = await this.fetchFilmGenre();
+    const genres = await this.fetchMoviesGenre();
 
     const moviesArr = moviesResults.map(result => ({
       ...result,
       release_date: result.release_date
           ? result.release_date.slice(0, 4)
-          : "Дата неизвестна",
+          : "Date unknown",
       genres: this.filterGenres(genres, result)
     }));
 
@@ -52,16 +51,7 @@ export default class FilmApiService {
     return infoMoviesArr;
   }
 
-  fetchGenres() {
-    const url = `${BASE_URL}/genre/movie/list?api_key=${KEY}`;
-    return fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        return data.genres;
-      });
-  }
-
-  getFullMovieInfo(movie_id) {
+  getMovieInfo(movie_id) {
     const url = `${BASE_URL}/movie/${movie_id}?api_key=${API_KEY}&language=${this.language}`;
 
     return fetch(url)
@@ -71,12 +61,12 @@ export default class FilmApiService {
         ...result,
         release_date: result.release_date
           ? result.release_date.slice(0, 4)
-          : 'дата отсутствует',
+          : 'Date unknown',
         genres: this.filterGenresLibrary(result),
       }));
   }
 
-  async fetchFilmGenre() {
+  async fetchMoviesGenre() {
     const url = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=${this.language}`;
 
     const genres = await (await axios.get(url)).data.genres;
