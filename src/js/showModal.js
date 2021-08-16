@@ -17,6 +17,22 @@ function getFullMovieInfo(id) {
       const markup = filmTpl(movieInfo);
       const modal = basicLightbox.create(markup);
       modal.show();
+      
+      const watchedArray = JSON.parse(localStorage.getItem("Watched"));     //отрисовка правильных кнопочек. Начало
+      const queueArray = JSON.parse(localStorage.getItem("Queue"));         
+      const btn = document.querySelector('.add-to-watched');                
+      const btnQ = document.querySelector('.add-to-queue');                 
+      watchedArray.map((obj) => {                                           
+        if (obj.id === movieInfo.id) {                                      
+          btn.textContent = 'remove from watched';
+        }
+      });
+      queueArray.map((obj) => {
+        if (obj.id === movieInfo.id) {
+          btnQ.textContent = 'remove from queue';
+        }
+      });                                                                   //отрисовка правильных кнопочек. Конец
+      
 
       const closeBtn = document.querySelector('button#btnclose');
 
