@@ -29,12 +29,14 @@ function getFullMovieInfo(id) {
         if (evt.code === 'Escape') {
           modal.close();
           window.removeEventListener('keydown', closeModalHandler);
+          document.body.style.overflowY = "visible";
         }
       }
 
       function closeModal() {
         modal.close();
         window.removeEventListener('keydown', closeModalHandler);
+        document.body.style.overflowY = "visible";
       }
     })
     .catch(error => console.log('error', error));
@@ -48,6 +50,7 @@ function openModal(evt) {
   if (evt.target.nodeName !== 'IMG') {
     return;
   }
+  document.body.style.overflowY = "hidden";
   getFullMovieInfo(id);
   toastify.joySuccess();
 }
