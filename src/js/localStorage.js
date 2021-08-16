@@ -3,95 +3,55 @@ import FilmApiService from './apiService';
 
 const movieApiService = new FilmApiService();
 
-async function getMoviebyId(id) {
-    const movieById = await movieApiService.getMovieInfo(id)
-    return movieById
-};
-
 document.addEventListener('click', (e) => {
-    const watchedBtn = document.querySelector('.add-to-watched');
-    const queueBtn = document.querySelector('.add-to-queue');
+    const watchedArray = getWatchedArray();
+    const queueArray = getQueueArray();
 
-    watchedBtn.addEventListener('click', setMoviesArrayForLocalStorage);
-    queueBtn.addEventListener('click', setMoviesArrayForLocalStorage);
-    
-    function getWatchedArray() {
-            if (localStorage.getItem("Watched") !== null) {
-                const watchedArray = JSON.parse(localStorage.getItem("Watched"));
-                //console.log(watchedArray);
-                return watchedArray;
-            }
-            else {
-                const watchedArray = [];
-                //console.log(watchedArray);
-                return watchedArray;
-            }
-            
-    };
+    const keyName = e.target.textContent;
+    const movieId = +e.target.dataset.act;
         
+    function getWatchedArray() {
+                if (localStorage.getItem("Watched") !== null) {
+                    const watchedArray = JSON.parse(localStorage.getItem("Watched"));
+                    //console.log(watchedArray);
+                    return watchedArray;
+                }
+                else {
+                    const watchedArray = [];
+                    //console.log(watchedArray);
+                    return watchedArray;
+                }
+                
+    };
+            
     function getQueueArray() {
-            if (localStorage.getItem("Queue") !== null) {
-                const queueArray = JSON.parse(localStorage.getItem("Queue"));
-                return queueArray;
+                if (localStorage.getItem("Queue") !== null) {
+                    const queueArray = JSON.parse(localStorage.getItem("Queue"));
+                    return queueArray;
+                }
+                else {
+                    const queueArray = [];
+                    return queueArray;
+                }
+    };
+
+    async function getMoviebyId(id) {
+            const movieById = await movieApiService.getMovieInfo(id)
+            if (keyName === 'add to watched') {
+                watchedArray.push(movieById);
+                localStorage.setItem("Watched", JSON.stringify(watchedArray))
+                e.target.textContent = "Done";
             }
-            else {
-                const queueArray = [];
-                return queueArray;
+            else if (keyName === 'add to queue') {
+                queueArray.push(movieById);
+                localStorage.setItem("Queue", JSON.stringify(queueArray));
+                e.target.textContent = "Done";
             }
     };
 
-    function setMoviesArrayForLocalStorage() {                      // rename function
-        const watchedArray = getWatchedArray();
-        const queueArray = getQueueArray();
-
-        const keyName = e.target.textContent;
-        const movieId = +e.target.dataset.act;
-    
-        getMoviebyId(movieId)
-        .then ( (selectedMovie) => {
-        if (keyName === 'add to watched') {
-            watchedArray.push(selectedMovie);
-            localStorage.setItem("Watched", JSON.stringify(watchedArray))
-            e.target.textContent = "Done";
-        }
-        else if (keyName === 'add to queue') {
-            queueArray.push(selectedMovie);
-            localStorage.setItem("Queue", JSON.stringify(queueArray));
-            e.target.textContent = "Done";
-        }
-    });
-    };
+    getMoviebyId(movieId);  
 });
 
-// const addToWatchedBtn = document.querySelector(".movie-about");
-// console.log(addToWatchedBtn);
-// console.log(refs);
-
-
-// movieCards.forEach(card => card.addEventListener('click', getMovieInfo));
-
-// btnWpage.addEventListener('click', markupWatched);
-// btnQpage.addEventListener('click', markupQueue);
-
-// function getWatchedArray() {
-//     if (localStorage.getItem("Watched") !== null) {
-//         const watchedArray = JSON.parse(localStorage.getItem("Watched"));
-//         return watchedArray;
-//     }
-//     else {
-//         return [];
-//     }
-// };
-
-// function getQueueArray() {
-//     if (localStorage.getItem("Queue") !== null) {
-//         const queueArray = JSON.parse(localStorage.getItem("Queue"));
-//         return queueArray;
-//     }
-//     else {
-//         return [];
-//     }
-// };
 
 // function getMovieInfo(event) {                      // rename function
 //     const watchedArray = getWatchedArray();
