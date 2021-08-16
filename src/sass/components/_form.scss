@@ -7,7 +7,7 @@
   overflow: auto;
   background-color: $light-background-color;
   border-radius: 5px;
-  color:$primary-text-color;
+  color: $primary-text-color;
   @media screen and (min-width: 768px) {
     display: flex;
     width: 640px;
@@ -90,7 +90,9 @@
       width: 152px;
     }
   }
+
   &-details {
+    text-transform: capitalize;
     line-height: 14px;
     padding-bottom: 10px;
     font-size: 12px;
@@ -212,7 +214,7 @@
 
   &:focus,
   &:hover {
-    color:$light-text-color;
+    color: $light-text-color;
     background: $accent-color;
     box-shadow: 0px 4px 4px $accent-color-shadow;
     border: 1px solid $accent-color;

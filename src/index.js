@@ -1,27 +1,23 @@
 import './sass/main.scss';
 
-
 import axios from 'axios';
-import Notiflix from 'notiflix';
-import { debounce } from 'lodash';
 import cardMarkup from './templates/main-card-markup.hbs';
 import { refs } from './js/getRefs';
-import { showSpinner } from './js/spinner';
-import { hideSpinner } from './js/spinner';
+import { showSpinner, hideSpinner } from './js/spinner';
+
 import FilmApiService from './js/apiService';
 import btnUp from './js/button-up'
-
 import appendErrorMessage from './js/errorMessage';
 import appendBlankPage from './js/blankPage';
 
 import './js/headerLibrary.js';
 import './js/showModal';
+import './js/localStorage';
 
 const apiService = new FilmApiService();
 
+btnUp();
 getTrendMovies();
-
-console.log(refs);
 
 async function getTrendMovies() {
   try {
@@ -117,4 +113,5 @@ function appendMarkup(data) {
 }
 
 
-btnUp();
+
+
