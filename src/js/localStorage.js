@@ -5,11 +5,8 @@ const movieApiService = new FilmApiService();
 
 async function getMoviebyId(id) {
     const movieById = await movieApiService.getMovieInfo(id)
-    console.log(movieById);
-  
     return movieById
 };
-
 
 document.addEventListener('click', (e) => {
     const watchedBtn = document.querySelector('.add-to-watched');
@@ -17,7 +14,6 @@ document.addEventListener('click', (e) => {
 
     watchedBtn.addEventListener('click', setMoviesArrayForLocalStorage);
     queueBtn.addEventListener('click', setMoviesArrayForLocalStorage);
-    
     
     function getWatchedArray() {
             if (localStorage.getItem("Watched") !== null) {
