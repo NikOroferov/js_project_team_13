@@ -9,6 +9,8 @@ import FilmApiService from './js/apiService';
 import btnUp from './js/button-up';
 import appendErrorMessage from './js/errorMessage';
 import appendBlankPage from './js/blankPage';
+import deleteErrorMassage from './js/deleteErrorMassage';
+import clearBlankPage from './js/clearBlankPage';
 
 import './js/headerLibrary.js';
 import './js/showModal';
@@ -34,15 +36,8 @@ async function onClick(e) {
   showSpinner();
   e.preventDefault();
 
-  const arrorMessage = document.querySelector('.searchQueryIncorrect');
-  const elBlankPage = document.querySelector('.blankPage');
-  if (arrorMessage) {
-    arrorMessage.remove();
-  }
-  if (arrorMessage) {
-    elBlankPage.remove();
-  }
-
+  deleteErrorMassage(); 
+  clearBlankPage();
   apiService.query = e.currentTarget.elements.searchQuery.value.trim('');
   apiService.resetPage();
 
@@ -52,12 +47,10 @@ async function onClick(e) {
     if (movies.moviesData.length === 0) {
       appendErrorMessage(apiService.query);
       appendBlankPage();
-    }
+		}
 
-    if (movies.moviesData.length !== 0) {
-      if (elBlankPage) {
-        elBlankPage.remove();
-      }
+		if (movies.moviesData.length !== 0) {
+			clearBlankPage();
       clearGallery();
       appendMarkup(movies.moviesData);
       apiService.incrementPage();
@@ -100,8 +93,8 @@ async function getNewPage() {
   } else {
     showSpinner();
     setTimeout(renderingNewPage, 450);
-
-    function renderingNewPage() {
+ 
+    function renderingNewPage() {      
       apiService.incrementPage();
       appendMarkup(movies.moviesData);
       hideSpinner();
