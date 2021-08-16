@@ -3,7 +3,7 @@ import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 import FilmApiService from './apiService';
 
-const filmsApiService = new FilmApiService();
+const apiService = new FilmApiService();
 
 const cardFilm = document.querySelector('.film__list');
 cardFilm.addEventListener('click', openModal);
@@ -11,7 +11,7 @@ cardFilm.addEventListener('click', openModal);
 //функція отримання фільму по id
 
 function getFullMovieInfo(id) {
-  filmsApiService
+  apiService
     .getFullMovieInfo(id)
     .then(movieInfo => {
       const markup = filmTpl(movieInfo);
@@ -36,6 +36,7 @@ function getFullMovieInfo(id) {
       }
     })
     .catch(error => console.log('error', error));
+  
 }
 
 function openModal(evt) {
@@ -45,5 +46,6 @@ function openModal(evt) {
     return;
   }
   getFullMovieInfo(id);
+  
   toastify.joySuccess();
 }

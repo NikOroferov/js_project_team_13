@@ -1,5 +1,7 @@
 .main {
-  padding: 60px 0;
+  position: relative;
+  padding: 30px 0;
+
   min-height: calc(100vh - 280px);
 }
 
@@ -7,12 +9,16 @@
   display: flex;
   flex-wrap: wrap;
   margin-top: -30px;
+  @media screen and (min-width: $tablet) {
+    margin-top: 0px;
+  }
+
   margin-left: -30px;
 }
 
 .film__item {
-  width: 274px;
-  height: 440px;
+  max-width: auto;
+  min-height: 453px;
   margin-top: 30px;
   margin-left: 30px;
   border-radius: 5px;
@@ -20,48 +26,39 @@
 }
 
 .film__poster {
-  width: 274px;
-  height: 398px;
+  max-width: auto;
+  @media screen and (min-width: $tablet) {
+    max-width: 294px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    max-width: 273px;
+  }
+
   border-radius: 5px;
 }
 
 .film__name {
-  font-family: Roboto;
-  font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
   text-transform: uppercase;
+  color: $primary-text-color;
 }
 
 .film__genres,
 .film__year {
-  font-family: Roboto;
-  font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
-  color: #ff6b08;
+  color: $accent-color;
 }
 
 .film__info {
-  display: flex;
-  justify-content: space-between;
+  margin-top: 10px;
+  display: inline-block;
 }
 
-.film__grade {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 14px;
-  /* identical to box height */
-
+.film__genres__year {
   display: flex;
-  align-items: center;
-  text-align: center;
-  text-transform: uppercase;
-
-  background-color: #ff6b08;
-  color: #ffffff;
 }

@@ -1,14 +1,18 @@
 $main-font: Roboto, sans-serif;
 
-$primary-text-color: rgba(17, 21, 24, 1);
-$secondary-text-color: rgba(185, 185, 185, 1);
-$third-text-color: rgba(61, 61, 61, 1);
+$primary-text-color: rgba(1, 1, 1, 1);
+$secondary-text-color: rgba(140, 140, 140, 1);
+$third-text-color: rgba(84, 84, 84, 1); //footer
+
 $light-text-color: rgba(255, 255, 255, 1);
-$accent-color: rgba(255, 107, 9, 1);
-$primary-dark-trnsparent: rgba(17, 21, 24, 0.8);
+$accent-color: rgba(255, 107, 8, 1);
+$accent-color-shadow: rgba(255, 107, 8, 0.25);
+$primary-dark-transparent: rgba(17, 21, 24, 0.8);
 $secondary-dark-transparent: rgba(0, 0, 0, 0.25);
-$dark-background-color: rgba(17, 21, 24, 1);
-$light-background-color: rgba(241, 241, 241, 1);
+//$dark-background-color: rgba(17, 21, 24, 1);
+$dark-background-color: rgba(0, 0, 0, 0.25);
+
+$light-background-color: rgba(247, 247, 247, 1);
 
 $mobile: 320px;
 $tablet: 768px;

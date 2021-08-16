@@ -1,23 +1,27 @@
 import './sass/main.scss';
-import './js/headerLibrary.js';
 
-import { showSpinner } from './js/spinner';
-import { hideSpinner } from './js/spinner';
 
 import axios from 'axios';
 import Notiflix from 'notiflix';
 import { debounce } from 'lodash';
 import cardMarkup from './templates/main-card-markup.hbs';
 import { refs } from './js/getRefs';
+import { showSpinner } from './js/spinner';
+import { hideSpinner } from './js/spinner';
 import FilmApiService from './js/apiService';
-import './js/showModal';
-import './js/localStorage';
-
 import btnUp from './js/button-up'
+
+import appendErrorMessage from './js/errorMessage';
+import appendBlankPage from './js/blankPage';
+
+import './js/headerLibrary.js';
+import './js/showModal';
 
 const apiService = new FilmApiService();
 
 getTrendMovies();
+
+console.log(refs);
 
 async function getTrendMovies() {
   try {
@@ -34,13 +38,24 @@ async function onClick(e) {
   showSpinner();
   e.preventDefault();
 
+  const arrorMessage = document.querySelector('.searchQueryIncorrect');
+  const elBlankPage = document.querySelector('.blankPage');
+  if (arrorMessage) { arrorMessage.remove() };
+  if (arrorMessage) { elBlankPage.remove() };
+
   apiService.query = e.currentTarget.elements.searchQuery.value.trim('');
   apiService.resetPage();
 
   try {
     let movies = await apiService.fetchSearchMovies();
 
-    if (movies.moviesData.length !== 0) {
+    if (movies.moviesData.length === 0) {
+      appendErrorMessage(apiService.query);
+      appendBlankPage();
+		}
+
+		if (movies.moviesData.length !== 0) {
+			if (elBlankPage) {elBlankPage.remove()}
       clearGallery();
       appendMarkup(movies.moviesData);
       apiService.incrementPage();
@@ -50,7 +65,11 @@ async function onClick(e) {
     hideSpinner();
   } catch (error) {
     console.log(error);
+    appendErrorMessage(apiService.query);
+    appendBlankPage();
   }
+
+  refs.searchForm.reset();
 }
 
 function loadMore() {
@@ -72,22 +91,20 @@ function loadMore() {
 async function getNewPage() {
   let movies = await apiService.fetchSearchMovies();
 
-  
-
   if (movies.moviesData.length === 0) {
     console.log('End of search results.');
     return;
   }
   else {
     showSpinner();
-  setTimeout(renderingNewPage, 450);
+    setTimeout(renderingNewPage, 450);
  
-  function renderingNewPage() {
-    
-    apiService.incrementPage();
-    appendMarkup(movies.moviesData);
-    hideSpinner();
-  }
+    function renderingNewPage() {
+      
+      apiService.incrementPage();
+      appendMarkup(movies.moviesData);
+      hideSpinner();
+    }
   }
 }
 
@@ -98,5 +115,6 @@ function clearGallery() {
 function appendMarkup(data) {
   refs.filmList.insertAdjacentHTML('beforeend', cardMarkup(data));
 }
+
 
 btnUp();

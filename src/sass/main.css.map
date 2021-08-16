@@ -8,10 +8,13 @@
         "base/_base.scss",
         "base/_container.scss",
         "base/_hidden.scss",
-        "components/_header.scss",
         "components/_main.scss",
+        "components/_header.scss",
         "components/_footer.scss",
-        "components/_spinner.scss"
+        "components/_spinner.scss",
+        "components/_form.scss",
+        "components/_btnUp.scss",
+
     ],
     "names": [],
     "file": "main.css"
