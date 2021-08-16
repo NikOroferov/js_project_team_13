@@ -14,12 +14,15 @@ function getFullMovieInfo(id) {
   apiService
     .getMovieInfo(id)
     .then(movieInfo => {
+      const watchedArray = JSON.parse(localStorage.getItem("Watched"));     //отрисовка правильных кнопочек. Начало
+      const queueArray = JSON.parse(localStorage.getItem("Queue"));  
+
       const markup = filmTpl(movieInfo);
       const modal = basicLightbox.create(markup);
       modal.show();
       
-      const watchedArray = JSON.parse(localStorage.getItem("Watched"));     //отрисовка правильных кнопочек. Начало
-      const queueArray = JSON.parse(localStorage.getItem("Queue"));         
+      // const watchedArray = JSON.parse(localStorage.getItem("Watched"));     //отрисовка правильных кнопочек. Начало
+      // const queueArray = JSON.parse(localStorage.getItem("Queue"));         
       const btn = document.querySelector('.add-to-watched');                
       const btnQ = document.querySelector('.add-to-queue');                 
       watchedArray.map((obj) => {                                           
@@ -34,7 +37,7 @@ function getFullMovieInfo(id) {
       });                                                                   //отрисовка правильных кнопочек. Конец
       
 
-      const closeBtn = document.querySelector('button#btnclose');
+      const closeBtn = document.querySelector('.modal-button-close');
 
       closeBtn.addEventListener('click', closeModal);
       window.addEventListener('keydown', closeModalHandler);
