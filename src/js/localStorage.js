@@ -46,7 +46,7 @@ document.addEventListener('click', (e) => {
 
         const keyName = e.target.textContent;
         const movieId = +e.target.dataset.act;
-        console.log(movieId);
+    
         getMoviebyId(movieId)
         .then ( (selectedMovie) => {
         if (keyName === 'add to watched') {
