@@ -12,7 +12,7 @@ refs.filmList.addEventListener('click', openModal);
 
 function getFullMovieInfo(id) {
   apiService
-    .getFullMovieInfo(id)
+    .getMovieInfo(id)
     .then(movieInfo => {
       const markup = filmTpl(movieInfo);
       const modal = basicLightbox.create(markup);
