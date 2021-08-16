@@ -49,4 +49,5 @@ function openModal(evt) {
     return;
   }
   getFullMovieInfo(id);
+  toastify.joySuccess();
 }
