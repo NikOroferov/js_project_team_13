@@ -125,9 +125,7 @@
   }
 
   &::placeholder {
-    //font-family: Roboto;
-    // font-style: normal;
-    font-weight: normal;
+      font-weight: normal;
     font-size: 14px;
     line-height: 16px;
     display: flex;
@@ -154,8 +152,6 @@
 .home__btn,
 .library__btn {
   color: $light-text-color;
-  //font-family: Roboto;
-  //font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
@@ -169,6 +165,7 @@
 .library__btn:hover,
 .library__btn:focus {
   border-bottom: 3px solid $accent-color;
+  margin-bottom: -3px;
 }
 
 // My-library
@@ -189,8 +186,6 @@
   box-sizing: border-box;
   border-radius: 5px;
 
-  // font-family: Roboto;
-  // font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
@@ -203,18 +198,19 @@
     margin-right: 15px;
   }
 
-  &:focus,
-  &:hover {
-    background: $accent-color;
-    box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
-    border: 1px solid $accent-color;
-    border-radius: 5px;
-  }
+&:focus,
+&:hover {
+  background: $accent-color;
+  box-shadow: 0px 4px 4px $accent-color-shadow;
+  border: 1px solid $accent-color;
+  border-radius: 5px;
+}
 }
 
 .is-active {
-  background: $accent-color;
-  box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
-  border: 1px solid $accent-color;
-  border-radius: 5px;
+background: $accent-color;
+color: $light-text-color;
+box-shadow: 0px 4px 4px $accent-color-shadow;
+border: 1px solid $accent-color;
+border-radius: 5px;
 }
