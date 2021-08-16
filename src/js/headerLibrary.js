@@ -7,32 +7,43 @@ const apiService = new MovieApiService();
 
 refs.libraryButton.addEventListener ('click', openLibrary);
 refs.headerLogoEl.addEventListener ('click', openHome);
-refs.homeButton.addEventListener ('click', openHome);
+refs.homeButton.addEventListener('click', openHome);
+refs.watchedBtn.addEventListener('click', (e) => {
+	e.preventDefault();
+	refs.watchedBtn.classList.add('is-active')
+	refs.queueBtn.classList.remove('is-active')
+})
+refs.queueBtn.addEventListener('click', (e) => {
+	e.preventDefault();
+	refs.watchedBtn.classList.remove('is-active')
+	refs.queueBtn.classList.add('is-active')
+})
 
 function openLibrary(evt) {
 	evt.preventDefault();
 
 	deleteErrorMessag();
+	clearGallery();
 
-	refs.filmList.innerHTML = '';
-
-	changeHidden(refs.searchForm, refs.myLibrary, 'second-image', 'first-image');
+	changeClass(refs.searchForm, refs.myLibrary, 'second-image', 'first-image');
 };
 
 function openHome(evt) {
 	evt.preventDefault();
 
 	deleteErrorMessag();
+	clearGallery();
 
-	refs.filmList.innerHTML = '';
 	getTrendMovies();
 
-	changeHidden(refs.myLibrary, refs.searchForm, 'first-image', 'second-image');
+	changeClass(refs.myLibrary, refs.searchForm, 'first-image', 'second-image');
 };
 
 async function getTrendMovies() {
 	try {
-		refs.filmList.innerHTML = '';
+		
+		clearGallery();
+
 		let movies = await apiService.fetchTrendMovies();
 		appendMarkup(movies.moviesData);
 	} catch (error) {
@@ -44,9 +55,13 @@ function appendMarkup(data) {
 	refs.filmList.insertAdjacentHTML('beforeend', cardMarkup(data))
 }
 
-function changeHidden(addHidden, remoteHidden, addImage, remoteImage) {
-	remoteHidden.classList.remove('hidden');
-	addHidden.classList.add('hidden');
+function changeClass(addClass, remoteClass, addImage, remoteImage) {
+	remoteClass.classList.remove('hidden');
+	addClass.classList.add('hidden');
 	refs.header.classList.remove(remoteImage);
 	refs.header.classList.add(addImage);
 };
+
+function clearGallery() {
+  refs.filmList.innerHTML = '';
+}
