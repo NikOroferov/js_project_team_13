@@ -8,10 +8,6 @@ async function getMoviebyId(id) {
     return movieById
 };
 
-
-// const modalWindow = document.querySelector('.card-film');
-// console.log(modalWindow);
-
 document.addEventListener('click', (e) => {
     const watchedBtn = document.querySelector('.add-to-watched');
     const queueBtn = document.querySelector('.add-to-queue');
