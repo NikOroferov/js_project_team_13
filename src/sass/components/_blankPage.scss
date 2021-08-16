@@ -1,0 +1,26 @@
+.blankPage {
+  position: absolute;
+  top: calc(50%);
+  width: 80vmin;
+  left: calc(50% - 40vmin);
+  text-align: center;
+  margin: 0 auto;
+  color: #4b4a4a;
+}
+
+.blankPage::after {
+  position: absolute;
+  right: 10px;
+  top: -40px;
+  content: '';
+  min-width: 100px;
+  height: 100px;
+  background-image: url('../images/search.svg');
+  opacity: 0.2;
+}
+
+.searchIncorrect {
+  font-size: 20px;
+  line-height: 1.5;
+  color: #4b4a4a;
+}

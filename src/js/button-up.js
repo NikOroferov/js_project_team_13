@@ -2,7 +2,6 @@ import {refs} from './getRefs';
 
 export default function buttonUp() {
     window.addEventListener('scroll', function () {
-	    console.log(pageYOffset)
         if (pageYOffset>400) {
             refs.btn.classList.add('show');
         } else {
