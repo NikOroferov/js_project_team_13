@@ -1,6 +1,7 @@
 import { refs } from './getRefs';
 import MovieApiService from './apiService';
 import cardMarkup from '../templates/main-card-markup.hbs';
+import deleteErrorMessag from './deleteErrorMassage';
 
 const apiService = new MovieApiService();
 
@@ -21,6 +22,7 @@ refs.queueBtn.addEventListener('click', (e) => {
 function openLibrary(evt) {
 	evt.preventDefault();
 
+	deleteErrorMessag();
 	clearGallery();
 
 	changeClass(refs.searchForm, refs.myLibrary, 'second-image', 'first-image');
@@ -29,7 +31,9 @@ function openLibrary(evt) {
 function openHome(evt) {
 	evt.preventDefault();
 
+	deleteErrorMessag();
 	clearGallery();
+
 	getTrendMovies();
 
 	changeClass(refs.myLibrary, refs.searchForm, 'first-image', 'second-image');
