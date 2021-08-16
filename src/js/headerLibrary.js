@@ -4,14 +4,9 @@ import cardMarkup from '../templates/main-card-markup.hbs';
 
 const apiService = new MovieApiService();
 
-
-const logoEl = document.querySelector ('.logo__icon');
-const homeEl = document.querySelector ('.home__btn');
-
-
 refs.libraryButton.addEventListener ('click', openLibrary);
-logoEl.addEventListener ('click', openHome);
-homeEl.addEventListener ('click', openHome);
+refs.headerLogoEl.addEventListener ('click', openHome);
+refs.homeButton.addEventListener ('click', openHome);
 
 function openLibrary(evt) {
 	evt.preventDefault();
@@ -30,13 +25,6 @@ function openHome(evt) {
 	changeHidden(refs.myLibrary, refs.searchForm, 'first-image', 'second-image');
 };
 
-function changeHidden(addHidden, remoteHidden, addImage, remoteImage) {
-	remoteHidden.classList.remove('hidden');
-	addHidden.classList.add('hidden');
-	refs.header.classList.remove(remoteImage);
-	refs.header.classList.add(addImage);
-};
-
 async function getTrendMovies() {
 	try {
 		refs.filmList.innerHTML = '';
@@ -50,3 +38,10 @@ async function getTrendMovies() {
 function appendMarkup(data) {
 	refs.filmList.insertAdjacentHTML('beforeend', cardMarkup(data))
 }
+
+function changeHidden(addHidden, remoteHidden, addImage, remoteImage) {
+	remoteHidden.classList.remove('hidden');
+	addHidden.classList.add('hidden');
+	refs.header.classList.remove(remoteImage);
+	refs.header.classList.add(addImage);
+};
