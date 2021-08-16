@@ -13,6 +13,7 @@ import appendBlankPage from './js/blankPage';
 import './js/headerLibrary.js';
 import './js/showModal';
 import './js/localStorage';
+import './js/markup-myLibrary';
 
 const apiService = new FilmApiService();
 
