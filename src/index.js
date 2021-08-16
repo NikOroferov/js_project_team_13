@@ -10,13 +10,12 @@ import { showSpinner } from './js/spinner';
 import { hideSpinner } from './js/spinner';
 import FilmApiService from './js/apiService';
 import btnUp from './js/button-up'
-<<<<<<< HEAD
+
 import appendErrorMessage from './js/errorMessage';
 import appendBlankPage from './js/blankPage';
-=======
+
 import './js/headerLibrary.js';
 import './js/showModal';
->>>>>>> main
 
 const apiService = new FilmApiService();
 
