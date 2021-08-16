@@ -19,7 +19,6 @@ function getFullMovieInfo(id) {
       modal.show();
 
       const closeBtn = document.querySelector('button#btnclose');
-      
 
       closeBtn.addEventListener('click', closeModal);
       window.addEventListener('keydown', closeModalHandler);
@@ -40,8 +39,6 @@ function getFullMovieInfo(id) {
       }
     })
     .catch(error => console.log('error', error));
-  
-  
 }
 
 function openModal(evt) {
