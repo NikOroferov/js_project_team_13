@@ -4,6 +4,7 @@ import axios from 'axios';
 import cardMarkup from './templates/main-card-markup.hbs';
 import { refs } from './js/getRefs';
 import { showSpinner, hideSpinner } from './js/spinner';
+import { changePageTheme } from './js/themeSwitcher';
 
 import FilmApiService from './js/apiService';
 import btnUp from './js/button-up';
@@ -31,6 +32,7 @@ async function getTrendMovies() {
   }
 }
 
+refs.switcherButton.addEventListener('change', changePageTheme);
 refs.searchForm.addEventListener('submit', onClick);
 
 async function onClick(e) {
