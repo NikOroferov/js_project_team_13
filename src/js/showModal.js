@@ -10,8 +10,6 @@ refs.filmList.addEventListener('click', openModal);
 
 //функція отримання фільму по id
 
-console.log(refs);
-
 function getFullMovieInfo(id) {
   apiService
     .getMovieInfo(id)
@@ -138,8 +136,8 @@ function getFullMovieInfo(id) {
 
       function closeModal() {
         modal.close();
-        window.removeEventListener('keydown', closeModalHandler);
         document.body.style.overflowY = "visible";
+        window.removeEventListener('keydown', closeModalHandler);
       }
     })
     .catch(error => console.log('error', error));
