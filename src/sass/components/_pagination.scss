@@ -19,3 +19,8 @@
   visibility: hidden;
   pointer-events: none;
 }
+
+.tui-pagination.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+}

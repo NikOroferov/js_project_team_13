@@ -2,8 +2,12 @@ import { refs } from './getRefs';
 import MovieApiService from './apiService';
 import cardMarkup from '../templates/main-card-markup.hbs';
 import deleteErrorMessage from './deleteErrorMassage';
+import LoadMoreBtn from './loadMoreBtn';
 
 const apiService = new MovieApiService();
+const loadMoreButton = new LoadMoreBtn({
+  selector: '[data-action = "load-more"]',
+});
 
 refs.libraryButton.addEventListener ('click', openLibrary);
 refs.headerLogoEl.addEventListener ('click', openHome);
@@ -18,6 +22,8 @@ refs.queueBtn.addEventListener('click', (e) => {
 })
 
 function openLibrary(evt) {
+	refs.containerPagination.classList.add('is-hidden');
+	loadMoreButton.hide();
 	evt.preventDefault();
 	
 	switchLibraryBtn(refs.watchedBtn, refs.queueBtn);
