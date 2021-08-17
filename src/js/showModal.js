@@ -151,6 +151,4 @@ function openModal(evt) {
   }
   document.body.style.overflowY = "hidden";
   getFullMovieInfo(id);
-  toastify.joySuccess();
-  console.log(refs);
 }
