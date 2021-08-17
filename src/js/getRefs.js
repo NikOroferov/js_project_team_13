@@ -29,8 +29,11 @@ export const refs = {
   btn: document.querySelector('#button-up'),
 
   containerPagination: document.getElementById('pagination'),
-  btnLoadMore: document.querySelector('[data-action = "load-more"]'), 
+  btnLoadMore: document.querySelector('[data-action = "load-more"]'),
 
   switcherButton: document.querySelector('.theme-switch__toggle'),
   page: document.querySelector('body'),
+  // filmTitle: document.querySelector('.film__name'),
+  // modalPage: document.querySelector('.card-film'),
+  darkFooter: document.querySelector('footer'),
 };

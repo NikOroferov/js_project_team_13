@@ -19,10 +19,12 @@ export function changePageTheme() {
   if (!refs.switcherButton.checked) {
     userChosenTheme = refs.page.classList.toggle('light-theme');
     userChosenTheme = refs.page.classList.remove('dark-theme');
+    // refs.filmTitle.classList.toggle;
     localStorage.setItem('userTheme', Theme.LIGHT);
   } else {
     userChosenTheme = refs.page.classList.toggle('dark-theme');
     userChosenTheme = refs.page.classList.remove('light-theme');
+    refs.darkFooter.classList.add('dark-theme');
     localStorage.setItem('userTheme', Theme.DARK);
   }
 }

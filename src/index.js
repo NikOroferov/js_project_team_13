@@ -27,7 +27,6 @@ const loadMoreButton = new LoadMoreBtn({
 });
 
 let scrollLoadMoreEventCounter = 0;
-
 btnUp();
 getTrendMovies();
 
