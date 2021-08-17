@@ -20,6 +20,7 @@ refs.queueBtn.addEventListener('click', (e) => {
 function openLibrary(evt) {
 	evt.preventDefault();
 
+	switchLibraryBtn(refs.watchedBtn, refs.queueBtn);
 	deleteErrorMessag();
 	clearGallery();
 
