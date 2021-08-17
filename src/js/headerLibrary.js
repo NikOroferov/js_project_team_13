@@ -10,13 +10,11 @@ refs.headerLogoEl.addEventListener ('click', openHome);
 refs.homeButton.addEventListener('click', openHome);
 refs.watchedBtn.addEventListener('click', (e) => {
 	e.preventDefault();
-	refs.watchedBtn.classList.add('is-active')
-	refs.queueBtn.classList.remove('is-active')
+	switchLibraryBtn(refs.watchedBtn, refs.queueBtn);
 })
 refs.queueBtn.addEventListener('click', (e) => {
 	e.preventDefault();
-	refs.watchedBtn.classList.remove('is-active')
-	refs.queueBtn.classList.add('is-active')
+	switchLibraryBtn(refs.queueBtn, refs.watchedBtn)
 })
 
 function openLibrary(evt) {
@@ -25,7 +23,7 @@ function openLibrary(evt) {
 	deleteErrorMessag();
 	clearGallery();
 
-	changeClass(refs.searchForm, refs.myLibrary, 'second-image', 'first-image');
+	changeHeader(refs.searchForm, refs.myLibrary, 'second-image', 'first-image');
 };
 
 function openHome(evt) {
@@ -36,7 +34,7 @@ function openHome(evt) {
 
 	getTrendMovies();
 
-	changeClass(refs.myLibrary, refs.searchForm, 'first-image', 'second-image');
+	changeHeader(refs.myLibrary, refs.searchForm, 'first-image', 'second-image');
 };
 
 async function getTrendMovies() {
@@ -55,9 +53,14 @@ function appendMarkup(data) {
 	refs.filmList.insertAdjacentHTML('beforeend', cardMarkup(data))
 }
 
-function changeClass(addClass, remoteClass, addImage, remoteImage) {
-	remoteClass.classList.remove('hidden');
-	addClass.classList.add('hidden');
+function switchLibraryBtn(add, remote) {
+	add.classList.add('is-active')
+	remote.classList.remove('is-active')
+}
+
+function changeHeader(addHidden, remoteHidden, addImage, remoteImage) {
+	remoteHidden.classList.remove('hidden');
+	addHidden.classList.add('hidden');
 	refs.header.classList.remove(remoteImage);
 	refs.header.classList.add(addImage);
 };
