@@ -15,7 +15,7 @@ import clearBlankPage from './js/clearBlankPage';
 
 import './js/headerLibrary.js';
 import './js/showModal';
-import './js/localStorage';
+//import './js/localStorage';
 import './js/markup-myLibrary';
 
 const apiService = new FilmApiService();
