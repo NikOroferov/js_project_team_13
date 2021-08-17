@@ -40,12 +40,34 @@ document.addEventListener('click', (e) => {
             if (keyName === 'add to watched') {
                 watchedArray.push(movieById);
                 localStorage.setItem("Watched", JSON.stringify(watchedArray))
-                e.target.textContent = "Done";
+                e.target.textContent = 'remove from watched';
             }
             else if (keyName === 'add to queue') {
                 queueArray.push(movieById);
                 localStorage.setItem("Queue", JSON.stringify(queueArray));
-                e.target.textContent = "Done";
+                e.target.textContent = 'remove from queue';
+            }
+            else if (keyName === 'remove from watched') {
+                watchedArray.map((obj) => {
+                    if (movieById.id === obj.id) {
+                        const objIndx = watchedArray.indexOf(obj)            
+                        watchedArray.splice(objIndx, 1);
+                        localStorage.removeItem("Watched");
+                        localStorage.setItem('Watched', JSON.stringify(watchedArray))
+                        e.target.textContent = 'add to watched';
+                    }
+                });
+            }
+            else if (keyName === 'remove from queue') {
+                queueArray.map((obj) => {
+                    if (movieById.id === obj.id) {
+                        const objIndx = queueArray.indexOf(obj)            
+                        queueArray.splice(objIndx, 1);
+                        localStorage.removeItem("Queue");
+                        localStorage.setItem('Queue', JSON.stringify(queueArray))
+                        e.target.textContent = 'add to queue';
+                    }
+                });
             }
     };
 
