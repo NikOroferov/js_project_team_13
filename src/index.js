@@ -1,14 +1,17 @@
 import './sass/main.scss';
 
-
 import axios from 'axios';
-import Notiflix from 'notiflix';
-import { debounce } from 'lodash';
+import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
 import cardMarkup from './templates/main-card-markup.hbs';
 import { refs } from './js/getRefs';
-import { showSpinner } from './js/spinner';
-import { hideSpinner } from './js/spinner';
+import { showSpinner, hideSpinner } from './js/spinner';
+import { changePageTheme } from './js/themeSwitcher';
+import { clearGallery, appendMarkup } from './js/supportFunction';
+import { getTrendMovies } from './js/trendPagination';
+
 import FilmApiService from './js/apiService';
+<<<<<<< HEAD
 import btnUp from './js/button-up'
 
 import appendErrorMessage from './js/errorMessage';
@@ -38,84 +41,30 @@ refs.searchForm.addEventListener('submit', onClick);
 async function onClick(e) {
   showSpinner();
   e.preventDefault();
+=======
+import btnUp from './js/button-up';
+import appendErrorMessage from './js/errorMessage';
+import appendBlankPage from './js/blankPage';
+import deleteErrorMassage from './js/deleteErrorMassage';
+import clearBlankPage from './js/clearBlankPage';
+import LoadMoreBtn from './js/loadMoreBtn';
+>>>>>>> ad8ef606cfa31c5676807ca4c3aea67f0b3773d4
 
-  const arrorMessage = document.querySelector('.searchQueryIncorrect');
-  const elBlankPage = document.querySelector('.blankPage');
-  if (arrorMessage) { arrorMessage.remove() };
-  if (arrorMessage) { elBlankPage.remove() };
+import showModalByStudents from './js/modalByStudents';
 
-  apiService.query = e.currentTarget.elements.searchQuery.value.trim('');
-  apiService.resetPage();
+import './js/headerLibrary.js';
+import './js/showModal';
+//import './js/localStorage';
+import './js/markup-myLibrary';
 
-  try {
-    let movies = await apiService.fetchSearchMovies();
 
-    if (movies.moviesData.length === 0) {
-      appendErrorMessage(apiService.query);
-      appendBlankPage();
-		}
 
-		if (movies.moviesData.length !== 0) {
-			if (elBlankPage) {elBlankPage.remove()}
-      clearGallery();
-      appendMarkup(movies.moviesData);
-      apiService.incrementPage();
-      loadMore();
-    }
-
-    hideSpinner();
-  } catch (error) {
-    console.log(error);
-    appendErrorMessage(apiService.query);
-    appendBlankPage();
-  }
-
-  refs.searchForm.reset();
-}
-
-function loadMore() {
-  const onEntry = entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && apiService.query !== '') {
-        getNewPage();
-      }
-    });
-  };
-
-  const options = {
-    rootMargin: '330px',
-  };
-  const observer = new IntersectionObserver(onEntry, options);
-  observer.observe(refs.observerElement);
-}
-
-async function getNewPage() {
-  let movies = await apiService.fetchSearchMovies();
-
-  if (movies.moviesData.length === 0) {
-    console.log('End of search results.');
-    return;
-  }
-  else {
-    showSpinner();
-    setTimeout(renderingNewPage, 450);
- 
-    function renderingNewPage() {
-      
-      apiService.incrementPage();
-      appendMarkup(movies.moviesData);
-      hideSpinner();
-    }
-  }
-}
-
-function clearGallery() {
-  refs.filmList.innerHTML = '';
-}
-
-function appendMarkup(data) {
-  refs.filmList.insertAdjacentHTML('beforeend', cardMarkup(data));
-}
-
+const apiService = new FilmApiService();
 
 btnUp();
+getTrendMovies();
+
+refs.switcherButton.addEventListener('change', changePageTheme);
+
+
+

@@ -1,55 +1,66 @@
-import { refs } from './getRefs';
-import MovieApiService from './apiService';
+import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
 import cardMarkup from '../templates/main-card-markup.hbs';
+import { refs } from './getRefs';
+import { clearGallery, appendMarkup } from './supportFunction';
+import { createPaginationTrend } from './trendPagination';
+import deleteErrorMessage from './deleteErrorMassage';
+import { getTrendMovies } from './trendPagination';
+import FilmApiService from './apiService';
+import LoadMoreBtn from './loadMoreBtn';
 
-const apiService = new MovieApiService();
+const apiService = new FilmApiService();
+const loadMoreButtonTrend = new LoadMoreBtn({
+  selector: '[data-action = "load-more-trend"]',
+});
+const loadMoreButton = new LoadMoreBtn({
+  selector: '[data-action = "load-more"]',
+});
 
-const header = document.querySelector('header');
-const libraryBtn = document.querySelector ('.library__btn');
-const myLibrary = document.querySelector ('.my-library');
-const searshForm = document.querySelector ('.search__form');
-const logoEl = document.querySelector ('.logo__icon');
-const homeEl = document.querySelector ('.home__btn');
+refs.libraryButton.addEventListener ('click', openLibrary);
+refs.headerLogoEl.addEventListener ('click', openHome);
+refs.homeButton.addEventListener('click', openHome);
+refs.watchedBtn.addEventListener('click', (e) => {
+	e.preventDefault();
+	switchLibraryBtn(refs.watchedBtn, refs.queueBtn);
+})
+refs.queueBtn.addEventListener('click', (e) => {
+	e.preventDefault();
+	switchLibraryBtn(refs.queueBtn, refs.watchedBtn)
+})
 
+function openLibrary(e) {
+	refs.containerPagination.classList.add('is-hidden');
+	loadMoreButton.hide();
+	loadMoreButtonTrend.hide();
+	e.preventDefault();
+	
+	switchLibraryBtn(refs.watchedBtn, refs.queueBtn);
+	deleteErrorMessage();
+	clearGallery();
 
-libraryBtn.addEventListener ('click', openLibrary);
-logoEl.addEventListener ('click', openHome);
-homeEl.addEventListener ('click', openHome);
-
-function openLibrary(evt) {
-	evt.preventDefault();
-
-	refs.filmList.innerHTML = '';
-
-	changeHidden(searshForm, myLibrary, 'second-image', 'first-image');
+	changeHeader(refs.searchForm, refs.myLibrary, 'second-image', 'first-image');
 };
 
-function openHome(evt) {
-	evt.preventDefault();
+function openHome(e) {
+	e.preventDefault();
 
-	refs.filmList.innerHTML = '';
+	deleteErrorMessage();
+	clearGallery();
+	
 	getTrendMovies();
 
-	changeHidden(myLibrary, searshForm, 'first-image', 'second-image');
+	changeHeader(refs.myLibrary, refs.searchForm, 'first-image', 'second-image');
 };
 
-function changeHidden(addHidden, remoteHidden, addImage, remoteImage) {
+function switchLibraryBtn(add, remote) {
+	add.classList.add('is-active')
+	remote.classList.remove('is-active')
+}
+
+function changeHeader(addHidden, remoteHidden, addImage, remoteImage) {
 	remoteHidden.classList.remove('hidden');
 	addHidden.classList.add('hidden');
-	header.classList.remove(remoteImage);
-	header.classList.add(addImage);
+	refs.header.classList.remove(remoteImage);
+	refs.header.classList.add(addImage);
 };
-
-async function getTrendMovies() {
-	try {
-		refs.filmList.innerHTML = '';
-		let movies = await apiService.fetchTrendMovies();
-		appendMarkup(movies.moviesData);
-	} catch (error) {
-		console.log(error);
-	}
-};
-
-function appendMarkup(data) {
-	refs.filmList.insertAdjacentHTML('beforeend', cardMarkup(data))
-}

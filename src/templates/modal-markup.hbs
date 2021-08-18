@@ -3,14 +3,14 @@
 
     <div class="card-image">
         {{#if poster_path}}
-        <img class="card-poster" src="https://image.tmdb.org/t/p/w300/{{poster_path}}"
-            onerror="this.onerror=null;this.src='https://payload.cargocollective.com/1/23/758880/13104445/NO-MOVIE-POSTERS-02-03-003_2000_c.jpg'"
-            alt="{{original_title}}" />
+        <img class="card-poster" 
+        src="https://image.tmdb.org/t/p/w300/{{poster_path}}" 
+        alt="{{original_title}}" />
         {{/if}}
         {{#unless poster_path}}
         <img class="card-poster"
             src="https://payload.cargocollective.com/1/23/758880/13104445/NO-MOVIE-POSTERS-02-03-003_2000_c.jpg"
-            alt="foto film" />
+            alt="{{original_title}}" />
         {{/unless}}
     </div>
 
@@ -54,26 +54,16 @@
 
         <div class="modal-btns" id="add-to-library">
             <button type="button" 
-                class="add-to-watched is-active"
+                class="add-to-watched"
                 name="add-to-watched"
                 id="add-to-watched"
-                data-act='{{id}}'>
-                add to watched
-            </button>
+                data-act='{{id}}'>add to watched</button>
 
             <button type="button" 
                 class="add-to-queue"
                 name="add-to-queue"
                 id="add-to-queue" 
-                data-act='{{id}}'>
-                add to queue
-            </button>
-
-            {{!-- <button type="button" 
-                class="watch-trailer" 
-                data-id='{{id}}'>
-                watch the trailer
-            </button> --}}
+                data-act='{{id}}'>add to queue</button>
 
         </div>
         <button type="button" class="modal-button-close" id="btnclose"></button>

@@ -1,12 +1,15 @@
 export const refs = {
   body: document.querySelector('body'),
+  header: document.querySelector('header'),
   headerLogo: document.querySelector('.logo__title'),
-  
+  headerLogoEl: document.querySelector('.logo__icon'),
+
   searchForm: document.querySelector('.search__form'),
   searchInput: document.querySelector('.search__text'),
   searchButton: document.querySelector('.search__btn'),
   searchLogo: document.querySelector('.search__logo'),
 
+  myLibrary: document.querySelector('.my-library'),
   homeButton: document.querySelector('.home__btn'),
   libraryButton: document.querySelector('.library__btn'),
 
@@ -15,14 +18,21 @@ export const refs = {
 
   filmList: document.querySelector('.film__list'),
 
-  addToWatched: document.getElementById('add-to-watched'),
-  addToQueue: document.getElementById('add-to-queue'),
-
   observerElement: document.querySelector('.observer'),
 
   backdrop: document.querySelector('.backdrop'),
   spinnerLoader: document.querySelector('.loader'),
 
-  btn: document.querySelector('#button-up')
+  btn: document.querySelector('#button-up'),
 
+  containerPagination: document.getElementById('pagination'),
+  btnLoadMore: document.querySelector('.btn-loadMore__item'),
+  btnLoadMoreTrend: document.querySelector('.btn-loadMore__item-trend'),
+
+  switcherButton: document.querySelector('.theme-switch__toggle'),
+  page: document.querySelector('body'),
+
+  openModalBtn: document.querySelector('[data-modal-open]'),
+  closeModalBtn: document.querySelector('[data-modal-close]'),
+  modal: document.querySelector('[data-modal]'),
 };
