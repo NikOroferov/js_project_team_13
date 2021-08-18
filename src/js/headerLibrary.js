@@ -1,7 +1,7 @@
 import { refs } from './getRefs';
 import MovieApiService from './apiService';
 import cardMarkup from '../templates/main-card-markup.hbs';
-import deleteErrorMessag from './deleteErrorMassage';
+import deleteErrorMessage from './deleteErrorMassage';
 
 const apiService = new MovieApiService();
 
@@ -19,9 +19,9 @@ refs.queueBtn.addEventListener('click', (e) => {
 
 function openLibrary(evt) {
 	evt.preventDefault();
-
+	
 	switchLibraryBtn(refs.watchedBtn, refs.queueBtn);
-	deleteErrorMessag();
+	deleteErrorMessage();
 	clearGallery();
 
 	changeHeader(refs.searchForm, refs.myLibrary, 'second-image', 'first-image');
@@ -30,7 +30,7 @@ function openLibrary(evt) {
 function openHome(evt) {
 	evt.preventDefault();
 
-	deleteErrorMessag();
+	deleteErrorMessage();
 	clearGallery();
 
 	getTrendMovies();
@@ -39,10 +39,9 @@ function openHome(evt) {
 };
 
 async function getTrendMovies() {
-	try {
-		
-		clearGallery();
+	clearGallery();
 
+	try {
 		let movies = await apiService.fetchTrendMovies();
 		appendMarkup(movies.moviesData);
 	} catch (error) {

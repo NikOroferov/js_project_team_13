@@ -18,7 +18,7 @@ export default class FilmApiService {
   }
 
   async fetchSearchMovies() {
-    const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&language=${this.language}&page=${this.page}&query=${this.searchQuery}`;
+    const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&language=${this.language}&query=${this.searchQuery}&page=${this.page}`;
     
     return this.fetchMovies(url);
   }

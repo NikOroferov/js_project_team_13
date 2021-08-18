@@ -213,6 +213,3 @@ function clearGallery() {
 function appendMarkup(data) {
   refs.filmList.insertAdjacentHTML('beforeend', cardMarkup(data));
 }
-
-console.log(apiService.asyncfetchGenres());
-console.log(apiService.fetchGenres());

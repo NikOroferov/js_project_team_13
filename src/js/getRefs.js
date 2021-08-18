@@ -18,9 +18,6 @@ export const refs = {
 
   filmList: document.querySelector('.film__list'),
 
-  addToWatched: document.getElementById('add-to-watched'),
-  addToQueue: document.getElementById('add-to-queue'),
-
   observerElement: document.querySelector('.observer'),
 
   backdrop: document.querySelector('.backdrop'),
