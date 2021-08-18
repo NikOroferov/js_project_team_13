@@ -18,23 +18,24 @@ function getFullMovieInfo(id) {
       const markup = filmTpl(movieInfo);
       const modal = basicLightbox.create(markup);
       modal.show();
-      
-      //отрисовка правильных кнопочек. Начало
-      const watchedArray = JSON.parse(localStorage.getItem("Watched"));     
-      const queueArray = JSON.parse(localStorage.getItem("Queue")); 
+      document.body.style.overflowY = "hidden";
 
-      const btnW = document.querySelector('.add-to-watched');                
-      const btnQ = document.querySelector('.add-to-queue');  
+      //отрисовка правильных кнопочек. Начало
+      const watchedArray = JSON.parse(localStorage.getItem("Watched"));
+      const queueArray = JSON.parse(localStorage.getItem("Queue"));
+
+      const btnW = document.querySelector('.add-to-watched');
+      const btnQ = document.querySelector('.add-to-queue');
 
       if (watchedArray) {
-        watchedArray.map((obj) => {                                           
-          if (obj.id === movieInfo.id) {                                      
+        watchedArray.map((obj) => {
+          if (obj.id === movieInfo.id) {
             btnW.textContent = 'remove from watched';
           }
         })
       };
 
-      if (watchedArray) { 
+      if (watchedArray) {
         queueArray.map((obj) => {
           if (obj.id === movieInfo.id) {
             btnQ.textContent = 'remove from queue';
@@ -42,7 +43,7 @@ function getFullMovieInfo(id) {
         });
       };
       //отрисовка правильных кнопочек. Конец  
-      
+
       //Local Storage. Start
       btnW.addEventListener('click', (e) => {
 
@@ -52,15 +53,15 @@ function getFullMovieInfo(id) {
         function getWatchedArray() {
           if (localStorage.getItem("Watched") !== null) {
             const watchedArray = JSON.parse(localStorage.getItem("Watched"));
-                        
+
             return watchedArray;
           }
           else {
             const watchedArray = [];
-                        
+
             return watchedArray;
           }
-                    
+
         };
 
         if (keyName === 'add to watched') {
@@ -70,21 +71,21 @@ function getFullMovieInfo(id) {
           if (!refs.myLibrary.classList.contains('hidden')) {
             markupWatched(e);
           };
-          
+
         }
 
         else if (keyName === 'remove from watched') {
           watchedArray.map((obj) => {
-              if (movieInfo.id === obj.id) {
-                  const objIndx = watchedArray.indexOf(obj)            
-                  watchedArray.splice(objIndx, 1);
-                  localStorage.removeItem("Watched");
-                  localStorage.setItem('Watched', JSON.stringify(watchedArray))
-                  e.target.textContent = 'add to watched';
-              }
-              if (!refs.myLibrary.classList.contains('hidden')) {
-                markupWatched(e);
-              };
+            if (movieInfo.id === obj.id) {
+              const objIndx = watchedArray.indexOf(obj)
+              watchedArray.splice(objIndx, 1);
+              localStorage.removeItem("Watched");
+              localStorage.setItem('Watched', JSON.stringify(watchedArray))
+              e.target.textContent = 'add to watched';
+            }
+            if (!refs.myLibrary.classList.contains('hidden')) {
+              markupWatched(e);
+            };
           });
         }
       });
@@ -96,12 +97,12 @@ function getFullMovieInfo(id) {
 
         function getQueueArray() {
           if (localStorage.getItem("Queue") !== null) {
-              const queueArray = JSON.parse(localStorage.getItem("Queue"));
-              return queueArray;
+            const queueArray = JSON.parse(localStorage.getItem("Queue"));
+            return queueArray;
           }
           else {
-              const queueArray = [];
-              return queueArray;
+            const queueArray = [];
+            return queueArray;
           }
         };
 
@@ -117,13 +118,14 @@ function getFullMovieInfo(id) {
 
         else if (keyName === 'remove from queue') {
           queueArray.map((obj) => {
-              if (movieInfo.id === obj.id) {
-                  const objIndx = queueArray.indexOf(obj)            
-                  queueArray.splice(objIndx, 1);
-                  localStorage.removeItem("Queue");
-                  localStorage.setItem('Queue', JSON.stringify(queueArray))
-                  e.target.textContent = 'add to queue';
-              }
+            if (movieInfo.id === obj.id) {
+              const objIndx = queueArray.indexOf(obj)
+              queueArray.splice(objIndx, 1);
+
+              localStorage.removeItem("Queue");
+              localStorage.setItem('Queue', JSON.stringify(queueArray))
+              e.target.textContent = 'add to queue';
+            }
           });
           if (!refs.myLibrary.classList.contains('hidden')) {
             markupQueue(e);
@@ -132,12 +134,13 @@ function getFullMovieInfo(id) {
       });
 
       //Local Storage. End
-      
+
 
       const closeBtn = document.querySelector('.modal-button-close');
 
       closeBtn.addEventListener('click', closeModal);
       window.addEventListener('keydown', closeModalHandler);
+      window.addEventListener('click', closeModalHandlerClick);
 
       //функція закриття форми по клавіші Esc
       function closeModalHandler(evt) {
@@ -148,10 +151,19 @@ function getFullMovieInfo(id) {
         }
       }
 
+      function closeModalHandlerClick(evt) {
+
+        modal.close();
+        window.removeEventListener('keydown', closeModalHandlerClick);
+        document.body.style.overflowY = "visible";
+
+      }
+
       function closeModal() {
         modal.close();
         document.body.style.overflowY = "visible";
         window.removeEventListener('keydown', closeModalHandler);
+        window.removeEventListener('keydown', closeModalHandlerClick);
       }
     })
     .catch(error => console.log('error', error));
@@ -164,9 +176,6 @@ function openModal(evt) {
     return;
   }
   document.body.style.overflowY = "hidden";
-  getFullMovieInfo(id);
-}
 
-document.onclick = function () {
-  document.body.style.overflowY = "visible";
+  getFullMovieInfo(id);
 }
