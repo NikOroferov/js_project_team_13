@@ -28,8 +28,6 @@ const loadMoreButton = new LoadMoreBtn({
   selector: '[data-action = "load-more"]',
 });
 
-let scrollLoadMoreEventCounter = 0;
-
 btnUp();
 getTrendMovies();
 
@@ -66,12 +64,25 @@ async function onClick(e) {
     }
 
     if (movies.moviesData.length !== 0) {
-      clearBlankPage();
-      clearGallery();
-      scrollLoadMoreEventCounter = 0;
-      appendMarkup(movies.moviesData);
-      apiService.incrementPage();
-      loadMoreSearch();
+      if (movies.moviesData.length === 1) {
+        clearBlankPage();
+        clearGallery();
+        appendMarkup(movies.moviesData);
+      }
+      if (movies.moviesData.length > 1 && movies.page != movies.totalPages) {
+        clearBlankPage();
+        clearGallery();
+        appendMarkup(movies.moviesData);
+        clearBlankPage();
+        clearGallery();
+        appendMarkup(movies.moviesData);
+        apiService.incrementPage();
+        createPagination(movies.totalPages, movies.page);
+        loadMoreButton.show();
+      }
+      if (movies.page == movies.totalPages) {
+        loadMoreButton.hide();
+      }
     }
 
     hideSpinner();
@@ -85,33 +96,6 @@ async function onClick(e) {
   refs.searchForm.reset();
 }
 
-async function loadMoreSearch() {
-  if (scrollLoadMoreEventCounter != 3) {
-    const onEntry = entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && apiService.query !== '') {
-          scrollLoadMoreEventCounter += 1;
-          if (scrollLoadMoreEventCounter === 3) {
-            loadMoreButton.show();
-          } else {
-            loadMoreButton.hide();
-            getNewPage();
-          }
-        }
-      });
-    };
-
-    const options = {
-      rootMargin: '330px',
-    };
-    const observer = new IntersectionObserver(onEntry, options);
-    observer.observe(refs.observerElement);
-  }
-  if (scrollLoadMoreEventCounter === 3) {
-    return;
-  }
-}
-
 async function getNewPage() {
   let movies = await apiService.fetchSearchMovies();
 
@@ -123,16 +107,22 @@ async function getNewPage() {
     setTimeout(renderingNewPage, 450);
 
     function renderingNewPage() {
-      createPagination(movies.totalPages, movies.page);
       apiService.incrementPage();
       appendMarkup(movies.moviesData);
-      loadMoreButton.hide();
+      createPagination(movies.totalPages, movies.page);
       hideSpinner();
+    }
+    if (movies.moviesData.length > 1 && movies.page !== movies.totalPages) {
+      loadMoreButton.show();
+    }
+    if (movies.moviesData.length > 1 && movies.page == movies.totalPages) {
+      loadMoreButton.hide();
     }
   }
 }
 
 function createPagination(totalPages, currentApiPage) {
+  refs.containerPagination.classList.remove('is-hidden');
   const container = refs.containerPagination;
 
   const options = {
@@ -165,46 +155,14 @@ function createPagination(totalPages, currentApiPage) {
   pagination.on('afterMove', event => {
     const currentPage = event.page;
     apiService.page = currentPage;
-    scrollLoadMoreEventCounter = 0;
     clearGallery();
     getNewPage();
   });
 }
 
 function onLoadMore(e) {
-  scrollLoadMoreEventCounter = 0;
   getNewPage();
 }
-
-// function loadMoreTrend() {
-//   const onEntry = entries => {
-//     entries.forEach(entry => {
-//       if (entry.isIntersecting) {
-//         let moviesTrend = apiService.fetchTrendMovies();
-//         console.log(moviesTrend);
-//         if (moviesTrend.moviesData.length === 0) {
-//           console.log('End of search results.');
-//           return;
-//         } else {
-//           showSpinner();
-//           setTimeout(renderingNewPage, 450);
-
-//           function renderingNewPage() {
-//             apiService.incrementPage();
-//             appendMarkup(moviesTrend.moviesData);
-//             hideSpinner();
-//           }
-//         }
-//       }
-//     });
-//   };
-
-//   const options = {
-//     rootMargin: '330px',
-//   };
-//   const observer = new IntersectionObserver(onEntry, options);
-//   observer.observe(refs.observerElement);
-// }
 
 function clearGallery() {
   refs.filmList.innerHTML = '';
