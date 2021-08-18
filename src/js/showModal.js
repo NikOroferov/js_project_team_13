@@ -67,7 +67,10 @@ function getFullMovieInfo(id) {
           watchedArray.push(movieInfo);
           localStorage.setItem("Watched", JSON.stringify(watchedArray))
           e.target.textContent = 'remove from watched';
-          //markupWatched(e);
+          if (!refs.myLibrary.classList.contains('hidden')) {
+            markupWatched(e);
+          };
+          
         }
 
         else if (keyName === 'remove from watched') {
@@ -79,7 +82,9 @@ function getFullMovieInfo(id) {
                   localStorage.setItem('Watched', JSON.stringify(watchedArray))
                   e.target.textContent = 'add to watched';
               }
-              //markupWatched(e);
+              if (!refs.myLibrary.classList.contains('hidden')) {
+                markupWatched(e);
+              };
           });
         }
       });
@@ -105,7 +110,9 @@ function getFullMovieInfo(id) {
           queueArray.push(movieInfo);
           localStorage.setItem("Queue", JSON.stringify(queueArray));
           e.target.textContent = 'remove from queue';
-          //markupQueue(e);
+          if (!refs.myLibrary.classList.contains('hidden')) {
+            markupQueue(e);
+          };
         }
 
         else if (keyName === 'remove from queue') {
@@ -118,7 +125,9 @@ function getFullMovieInfo(id) {
                   e.target.textContent = 'add to queue';
               }
           });
-          //markupQueue(e);
+          if (!refs.myLibrary.classList.contains('hidden')) {
+            markupQueue(e);
+          };
         }
       });
 
