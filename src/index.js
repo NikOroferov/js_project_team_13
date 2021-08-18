@@ -52,6 +52,10 @@ async function onClick(e) {
 
   deleteErrorMassage();
   clearBlankPage();
+  refs.containerPagination.classList.add('is-hidden');
+  loadMoreButton.hide();
+  
+	e.preventDefault();
   apiService.query = e.currentTarget.elements.searchQuery.value.trim('');
   apiService.resetPage();
 
@@ -60,22 +64,14 @@ async function onClick(e) {
 
     if (movies.moviesData.length === 0) {
       refs.containerPagination.classList.add('is-hidden');
-	loadMoreButton.hide();
-	evt.preventDefault();
+      loadMoreButton.hide();
+      evt.preventDefault();
       appendErrorMessage(apiService.query);
       appendBlankPage();
     }
 
     if (movies.moviesData.length !== 0) {
-      if (movies.moviesData.length === 1) {
-        clearBlankPage();
-        clearGallery();
-        appendMarkup(movies.moviesData);
-      }
-      if (movies.moviesData.length > 1 && movies.page != movies.totalPages) {
-        clearBlankPage();
-        clearGallery();
-        appendMarkup(movies.moviesData);
+      if (movies.page != movies.totalPages) {
         clearBlankPage();
         clearGallery();
         appendMarkup(movies.moviesData);
@@ -84,6 +80,9 @@ async function onClick(e) {
         loadMoreButton.show();
       }
       if (movies.page == movies.totalPages) {
+        clearBlankPage();
+        clearGallery();
+        appendMarkup(movies.moviesData);
         loadMoreButton.hide();
       }
     }
