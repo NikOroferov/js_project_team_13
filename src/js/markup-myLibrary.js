@@ -17,7 +17,7 @@ function markupWatched(event) {
   const parsedWatchedJson = JSON.parse(watchedJson);                  //function?
   const watchedMarkup = createItemCardsMarkup(parsedWatchedJson);     //function?
 
-   movieContainer.insertAdjacentHTML('beforeend', watchedMarkup);
+  movieContainer.insertAdjacentHTML('beforeend', watchedMarkup);
 };
 
 function markupQueue(event) {
@@ -35,3 +35,5 @@ function markupQueue(event) {
 function createItemCardsMarkup(card) {
   return menuCardTpl(card);
 };
+
+export { markupWatched, markupQueue };

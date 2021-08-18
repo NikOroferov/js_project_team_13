@@ -3,6 +3,7 @@ import 'basiclightbox/dist/basicLightbox.min.css';
 import MoviesApiService from './apiService';
 import filmTpl from '../templates/modal-markup.hbs';
 import { refs } from './getRefs';
+import { markupWatched, markupQueue } from './markup-myLibrary';
 
 const apiService = new MoviesApiService();
 
@@ -77,6 +78,7 @@ function getFullMovieInfo(id) {
                   localStorage.setItem('Watched', JSON.stringify(watchedArray))
                   e.target.textContent = 'add to watched';
               }
+              markupWatched(e);
           });
         }
       });
@@ -114,6 +116,7 @@ function getFullMovieInfo(id) {
                   e.target.textContent = 'add to queue';
               }
           });
+          markupQueue(e);
         }
       });
 
