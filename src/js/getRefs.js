@@ -36,4 +36,6 @@ export const refs = {
   // filmTitle: document.querySelector('.film__name'),
   // modalPage: document.querySelector('.card-film'),
   darkFooter: document.querySelector('footer'),
+  sunIcon: document.querySelector('.sun'),
+  moonIcon: document.querySelector('.moon'),
 };
