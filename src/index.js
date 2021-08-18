@@ -16,6 +16,8 @@ import deleteErrorMassage from './js/deleteErrorMassage';
 import clearBlankPage from './js/clearBlankPage';
 import LoadMoreBtn from './js/loadMoreBtn';
 
+import showModalByStudents from './js/modalByStudents';
+
 import './js/headerLibrary.js';
 import './js/showModal';
 //import './js/localStorage';

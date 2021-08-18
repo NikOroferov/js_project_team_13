@@ -1,0 +1,29 @@
+.modal_by_students {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+
+  width: 100vw;
+  height: 100vh;
+  background-color: #545454;
+}
+
+.modal_by_students__closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: $light-background-color;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.modal_by_students.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
