@@ -67,6 +67,7 @@ function getFullMovieInfo(id) {
           watchedArray.push(movieInfo);
           localStorage.setItem("Watched", JSON.stringify(watchedArray))
           e.target.textContent = 'remove from watched';
+          //markupWatched(e);
         }
 
         else if (keyName === 'remove from watched') {
@@ -78,7 +79,7 @@ function getFullMovieInfo(id) {
                   localStorage.setItem('Watched', JSON.stringify(watchedArray))
                   e.target.textContent = 'add to watched';
               }
-              markupWatched(e);
+              //markupWatched(e);
           });
         }
       });
@@ -104,6 +105,7 @@ function getFullMovieInfo(id) {
           queueArray.push(movieInfo);
           localStorage.setItem("Queue", JSON.stringify(queueArray));
           e.target.textContent = 'remove from queue';
+          //markupQueue(e);
         }
 
         else if (keyName === 'remove from queue') {
@@ -116,7 +118,7 @@ function getFullMovieInfo(id) {
                   e.target.textContent = 'add to queue';
               }
           });
-          markupQueue(e);
+          //markupQueue(e);
         }
       });
 
