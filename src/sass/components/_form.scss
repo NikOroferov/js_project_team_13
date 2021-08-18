@@ -124,6 +124,16 @@
   }
 }
 
+.library-vote {           // добавлены стили. Карпова
+  margin-left: 10px;
+  width: 36px;
+  height: 16px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  align-items: center;
+}
+
 .movie-votes {
   background: $light-background-color;
   color: $primary-text-color;
