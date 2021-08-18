@@ -166,3 +166,7 @@ function openModal(evt) {
   document.body.style.overflowY = "hidden";
   getFullMovieInfo(id);
 }
+
+document.onclick = function () {
+  document.body.style.overflowY = "visible";
+}
