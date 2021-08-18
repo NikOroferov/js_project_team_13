@@ -11,44 +11,12 @@ import { clearGallery, appendMarkup } from './js/supportFunction';
 import { getTrendMovies } from './js/trendPagination';
 
 import FilmApiService from './js/apiService';
-<<<<<<< HEAD
-import btnUp from './js/button-up'
-
-import appendErrorMessage from './js/errorMessage';
-import appendBlankPage from './js/blankPage';
-
-import './js/headerLibrary.js';
-import './js/showModal';
-
-
-const apiService = new FilmApiService();
-
-getTrendMovies();
-
-console.log(refs);
-
-async function getTrendMovies() {
-  try {
-    let movies = await apiService.fetchTrendMovies();
-    appendMarkup(movies.moviesData)
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-refs.searchForm.addEventListener('submit', onClick);
-
-async function onClick(e) {
-  showSpinner();
-  e.preventDefault();
-=======
 import btnUp from './js/button-up';
 import appendErrorMessage from './js/errorMessage';
 import appendBlankPage from './js/blankPage';
 import deleteErrorMassage from './js/deleteErrorMassage';
 import clearBlankPage from './js/clearBlankPage';
 import LoadMoreBtn from './js/loadMoreBtn';
->>>>>>> ad8ef606cfa31c5676807ca4c3aea67f0b3773d4
 
 import showModalByStudents from './js/modalByStudents';
 
