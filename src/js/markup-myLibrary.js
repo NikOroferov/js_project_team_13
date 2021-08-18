@@ -1,6 +1,6 @@
 import { refs } from './getRefs';
 
-import menuCardTpl from '../templates/main-card-markup.hbs';
+import menuCardTpl from '../templates/library-card-markup.hbs';
 
 const movieContainer = document.querySelector('.film__list');
 
