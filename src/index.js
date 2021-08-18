@@ -59,6 +59,9 @@ async function onClick(e) {
     let movies = await apiService.fetchSearchMovies();
 
     if (movies.moviesData.length === 0) {
+      refs.containerPagination.classList.add('is-hidden');
+	loadMoreButton.hide();
+	evt.preventDefault();
       appendErrorMessage(apiService.query);
       appendBlankPage();
     }
