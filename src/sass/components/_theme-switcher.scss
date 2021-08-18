@@ -105,3 +105,11 @@ header {
 .theme-switch__toggle:active + .theme-switch__track {
   box-shadow: 0 0 0 3px #2196f3;
 }
+
+.shown {
+  display: block;
+}
+
+.notshown {
+  display: none;
+}

@@ -42,6 +42,7 @@ async function getTrendMovies() {
 }
 
 refs.switcherButton.addEventListener('change', changePageTheme);
+// refs.switcherButton.addEventListener('change', imageToggle);
 refs.searchForm.addEventListener('submit', onClick);
 refs.btnLoadMore.addEventListener('click', onLoadMore);
 
