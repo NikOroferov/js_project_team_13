@@ -26,7 +26,8 @@ export const refs = {
   btn: document.querySelector('#button-up'),
 
   containerPagination: document.getElementById('pagination'),
-  btnLoadMore: document.querySelector('[data-action = "load-more"]'), 
+  btnLoadMore: document.querySelector('.btn-loadMore__item'),
+  btnLoadMoreTrend: document.querySelector('.btn-loadMore__item-trend'),
 
   switcherButton: document.querySelector('.theme-switch__toggle'),
   page: document.querySelector('body'),

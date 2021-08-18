@@ -7,7 +7,7 @@ export default class FilmApiService {
 
   constructor() {
     this.searchQuery = '';
-    this.page = '1';
+    this.page = 1;
     this.language = 'en-En'
   }
 
