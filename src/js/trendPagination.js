@@ -166,6 +166,7 @@ async function getTrendMovies() {
 }
 
 async function getNewPageTrend() {
+  backToTop();
   let movies = await apiService.fetchTrendMovies();
   if (movies.moviesData.length === 0) {
     console.log('End of search results.');
@@ -230,6 +231,10 @@ function createPaginationTrend(totalPages, currentApiPage) {
 function onLoadMoreTrend(e) {
   apiService.incrementPage();
   getNewPageTrend();
+}
+
+function backToTop() {
+  window.scrollTo(0, 0);
 }
 
 export { getTrendMovies, createPaginationTrend };
