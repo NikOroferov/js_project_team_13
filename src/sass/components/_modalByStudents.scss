@@ -4,15 +4,19 @@
   left: 0;
   z-index: 1001;
 
+  align-items: center;
+  justify-content: center;
+
   width: 100vw;
   height: 100vh;
-  background-color: $third-text-color;
+  
+  background-color: rgba(0, 0, 0, 0.438);
 }
 
 .modal_by_students__closeButton {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 12%;
+  right: 12%;
   background-color: $light-background-color;
   border: 1px solid transparent;
   border-radius: 50%;
@@ -20,10 +24,26 @@
   height: 25px;
   cursor: pointer;
   box-shadow: none;
+  z-index: 1002;
 }
 
 .modal_by_students.is-hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+}
+
+.students {
+  position: fixed;
+  top: calc(50% - 40vh);
+  left: calc(50% - 40vw);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  height: 80vh;
+  width: 80vw;
+  background-color: rgb(24, 24, 24);
 }

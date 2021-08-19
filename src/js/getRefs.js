@@ -45,4 +45,6 @@ export const refs = {
   closeModalBtn: document.querySelector('[data-modal-close]'),
   modal: document.querySelector('[data-modal]'),
 
+
+  studentCard: document.querySelector('.students'),
 };
