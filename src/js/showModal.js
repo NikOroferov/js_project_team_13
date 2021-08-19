@@ -156,7 +156,7 @@ function getFullMovieInfo(id) {
 
       function closeModalHandlerClick(evt) {
         document.body.style.overflowY = "visible";
-        window.removeEventListener('click', closeModalHandlerClick);
+
       }
 
       function closeModal() {
