@@ -19,7 +19,7 @@ import clearBlankPage from './js/clearBlankPage';
 import LoadMoreBtn from './js/loadMoreBtn';
 
 import showModalByStudents from './js/modalByStudents';
-import showStudentCard from './js/showStudent';
+//import showStudentCard from './js/showStudent';
 
 import './js/headerLibrary.js';
 import './js/showModal';

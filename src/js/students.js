@@ -2,47 +2,47 @@ export default [
      {
         name: 'Nikolai',
         link: 'https://github.com/NikOroferov',
-        description: 'Очень крутой человечек',
+        description: 'Главный режиссер, тим-лид команды',
     },
 
     {
         name: 'Nataliia',
         link: 'https://github.com/nelyaterry',
-        description: 'Очень крутой человечек',
+        description: 'Продюссер, скрам-мастер, помощник режиссера и художника по спецэффектам',
     },
 
     {
         name: 'Katerina',
         link: 'https://github.com/Kateryna286',
-        description: 'Властелин LocalStoreid',
+        description: 'Помощник режиссера, властелин LocalStorage',
     },
 
     {
-        name: 'Nastia',
+        name: 'Anastasia',
         link: 'https://github.com/Chantsova',
-        description: 'Очень крутой человечек',
+        description: 'Художник по спецэффектам, техник по пагинации и параллаксу',
     },
     {
         name: 'Maks',
         link: 'https://github.com/Maksym1994',
-        description: 'Покоритель get-запросов',
+        description: 'Дизайнер, покоритель get-запросов',
     },
     {
         name: 'Vasilisa',
         link: 'https://github.com/Vasiliska-A',
-        description: 'Поможет перейти Вам на тёмную сторону темы',
+        description: 'Художник по свету, главный консультант по переходу на тёмную сторону темы',
     },
 
     {
         name: 'Aleksei',
         link: 'https://github.com/alexey-chernov',
-        description: 'Очень крутой человечек',
+        description: 'Декоратор и главный оформитель модальных окон',
     },
 
     {
         name: 'Taisiia',
         link: 'https://github.com/kovalchuktaisiia',
-        description: 'Очень крутой человечек',
+        description: 'Художник-оформитель, дизайнер',
     }
 ]
 

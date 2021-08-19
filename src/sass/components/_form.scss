@@ -132,7 +132,6 @@
 
 // добавлены стили. Карпова
 
-
 .movie-votes {
   background-color: $accent-color;
   color: $light-text-color;
@@ -172,7 +171,6 @@
   display: flex;
   margin-bottom: 40px;
 }
-
 
 // .watch-trailer {
 // }
@@ -234,7 +232,7 @@
 .is-active {
   background: $accent-color;
   color: $light-text-color;
-  box-shadow: 0px 4px 4px $accent-color-shadow;
-  border: 1px solid $accent-color;
+  box-shadow: 0px 4px 4px grey;
+  border: 1px solid grey;
   border-radius: 5px;
 }

@@ -1,22 +1,40 @@
 .modal_by_students {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1001;
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  // z-index: 1001;
 
-  align-items: center;
-  justify-content: center;
+  // // align-items: center;
+  // // justify-content: center;
 
-  width: 100vw;
-  height: 100vh;
-  
-  background-color: rgba(0, 0, 0, 0.438);
+  // width: 100vw;
+  // height: 100vh;
+
+  // background-color: rgba(0, 0, 0, 0.438);
+
+  @media (min-width: $tablet) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+
+    // align-items: center;
+    // justify-content: center;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(0, 0, 0, 0.438);
+  }
 }
 
 .modal_by_students__closeButton {
   position: absolute;
-  top: 12%;
-  right: 12%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 5%;
+  right: 5%;
   background-color: $light-background-color;
   border: 1px solid transparent;
   border-radius: 50%;
@@ -24,7 +42,9 @@
   height: 25px;
   cursor: pointer;
   box-shadow: none;
-  z-index: 1002;
+  z-index: 102;
+  margin: 0;
+  padding: 0;
 }
 
 .modal_by_students.is-hidden {
@@ -34,7 +54,12 @@
 }
 
 .students {
-  position: fixed;
+  display: none;
+}
+
+.students.is-active {
+  display: block;
+  position: absolute;
   top: calc(50% - 40vh);
   left: calc(50% - 40vw);
   margin: auto;
@@ -43,7 +68,143 @@
   align-items: center;
   justify-content: center;
   color: #fff;
-  height: 80vh;
-  width: 80vw;
+  min-width: 730px;
+  min-height: 620px;
+  max-width: 1030px;
+  max-height: 670px;
+  z-index: 1200;
   background-color: rgb(24, 24, 24);
+  z-index: 20;
+  animation: showBlock 1s linear forwards;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+
+  @keyframes showBlock {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+.parallax {
+  min-height: 100vh;
+}
+
+.parallax.is-hidden {
+  display: none;
+}
+
+.parallax__body {
+  @media (min-width: 768px) {
+    z-index: 12;
+    display: block;
+    position: fixed;
+    width: 80%;
+    height: 80%;
+    min-width: 730px;
+    min-height: 620px;
+    max-width: 1030px;
+    max-height: 670px;
+    cursor: pointer;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  @media (min-width: 1024px) {
+    max-width: 1050px;
+    max-height: 670px;
+    width: 80%;
+    height: 80%;
+  }
+}
+.parallax__container {
+  position: relative;
+  text-transform: uppercase;
+  transform: translate(0, 50%);
+}
+.parallax__images {
+  position: absolute;
+  min-width: 100%;
+  height: 100%;
+  top: -5%;
+  left: -5%;
+
+  z-index: 1;
+}
+
+.images-parallax__item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  // top: 0;
+  // left: 5%;
+}
+
+.images-parallax__screen,
+.images-parallax__hall,
+.images-parallax__sittings {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+
+  @media (max-aspect-ratio: 3/1) {
+    top: -20%;
+  }
+}
+
+.images-parallax__screen {
+  background: url('../images/screen.png') top/cover no-repeat;
+  top: -5%;
+  z-index: 6;
+}
+
+.images-parallax__hall {
+  background: url('../images/hallMain.png') top/cover no-repeat;
+  top: -5%;
+  z-index: 3;
+}
+
+.images-parallax__sittings {
+  background: url('../images/sittings.png') left/cover no-repeat;
+  top: -11%;
+  left: 0;
+  right: 1%;
+  bottom: -10%;
+  z-index: 4;
+
+  @media (max-aspect-ratio: 3/1) {
+    .images-parallax__sittings {
+      background-position: 25% top;
+    }
+  }
+}
+
+.students__presentation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: showBlock 100ms linear forwards;
+
+  @keyframes showBlock {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+.student_link {
+  color: grey;
 }
