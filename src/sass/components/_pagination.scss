@@ -32,7 +32,9 @@
   color: $light-text-color;
   background-color: $accent-color;
 
-  &:hover {
+  &:hover,
+  &:focus {
+    box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
     cursor: pointer;
   }
 }
