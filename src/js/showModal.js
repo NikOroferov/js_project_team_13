@@ -26,6 +26,7 @@ function getFullMovieInfo(id) {
 
       const btnW = document.querySelector('.add-to-watched');
       const btnQ = document.querySelector('.add-to-queue');
+      const modalBtn = document.querySelector('.modal-btns');
 
       if (watchedArray) {
         watchedArray.map((obj) => {
@@ -35,7 +36,7 @@ function getFullMovieInfo(id) {
         })
       };
 
-      if (watchedArray) {
+      if (queueArray) {
         queueArray.map((obj) => {
           if (obj.id === movieInfo.id) {
             btnQ.textContent = 'remove from queue';
@@ -45,94 +46,84 @@ function getFullMovieInfo(id) {
       //отрисовка правильных кнопочек. Конец  
 
       //Local Storage. Start
-      btnW.addEventListener('click', (e) => {
 
+      modalBtn.addEventListener('click', (e) => {
         const watchedArray = getWatchedArray();
-        const keyName = e.target.textContent;
-
-        function getWatchedArray() {
-          if (localStorage.getItem("Watched") !== null) {
-            const watchedArray = JSON.parse(localStorage.getItem("Watched"));
-
-            return watchedArray;
-          }
-          else {
-            const watchedArray = [];
-
-            return watchedArray;
-          }
-
-        };
+        const queueArray = getQueueArray();
+        let keyName = e.target.textContent;
 
         if (keyName === 'add to watched') {
-          watchedArray.push(movieInfo);
-          localStorage.setItem("Watched", JSON.stringify(watchedArray))
-          e.target.textContent = 'remove from watched';
-          if (!refs.myLibrary.classList.contains('hidden')) {
-            markupWatched(e);
-          };
+          addElementToLocalStorage (watchedArray, "Watched", 'remove from watched');
+          createNewMarkupWatched();
+        }
 
+        else if (keyName === 'add to queue') {
+          addElementToLocalStorage(queueArray, "Queue", 'remove from queue');
+          createNewMarkupQueue();
         }
 
         else if (keyName === 'remove from watched') {
-          watchedArray.map((obj) => {
-            if (movieInfo.id === obj.id) {
-              const objIndx = watchedArray.indexOf(obj)
-              watchedArray.splice(objIndx, 1);
-              localStorage.removeItem("Watched");
-              localStorage.setItem('Watched', JSON.stringify(watchedArray))
-              e.target.textContent = 'add to watched';
-            }
-            if (!refs.myLibrary.classList.contains('hidden')) {
-              markupWatched(e);
-            };
-          });
+          removeElementFromLocalStorage (watchedArray, "Watched", 'add to watched');
+          createNewMarkupWatched();
         }
-      });
+      
+        else if (keyName === 'remove from queue') {
+          removeElementFromLocalStorage (queueArray, "Queue", 'add to queue');
+          createNewMarkupQueue();
+        };
 
-      btnQ.addEventListener('click', (e) => {
+        function getWatchedArray() {
+          if (localStorage.getItem("Watched") !== null) {
+            return JSON.parse(localStorage.getItem("Watched"));
+          }
+          else {
+            return [];
+          }
 
-        const queueArray = getQueueArray();
-        const keyName = e.target.textContent;
+        };
 
         function getQueueArray() {
           if (localStorage.getItem("Queue") !== null) {
-            const queueArray = JSON.parse(localStorage.getItem("Queue"));
-            return queueArray;
+            return JSON.parse(localStorage.getItem("Queue"));
           }
           else {
-            const queueArray = [];
-            return queueArray;
+            return [];
           }
         };
 
+        function addElementToLocalStorage (currentArray, localStorageKey, newKeyName) {
+          currentArray.push(movieInfo);
+          localStorage.setItem(localStorageKey, JSON.stringify(currentArray));
+          keyName = newKeyName;
+        };
 
-        if (keyName === 'add to queue') {
-          queueArray.push(movieInfo);
-          localStorage.setItem("Queue", JSON.stringify(queueArray));
-          e.target.textContent = 'remove from queue';
-          if (!refs.myLibrary.classList.contains('hidden')) {
-            markupQueue(e);
-          };
-        }
-
-        else if (keyName === 'remove from queue') {
-          queueArray.map((obj) => {
+        function removeElementFromLocalStorage (currentArray, localStorageKey, newKeyName) {
+          currentArray.map((obj) => {
             if (movieInfo.id === obj.id) {
-              const objIndx = queueArray.indexOf(obj)
-              queueArray.splice(objIndx, 1);
-
-              localStorage.removeItem("Queue");
-              localStorage.setItem('Queue', JSON.stringify(queueArray))
-              e.target.textContent = 'add to queue';
+              const objIndx = currentArray.indexOf(obj)
+              currentArray.splice(objIndx, 1);
+              localStorage.removeItem(localStorageKey);
+              localStorage.setItem(localStorageKey, JSON.stringify(currentArray))
+              keyName = newKeyName;
             }
           });
+        };
+
+        function createNewMarkupWatched() {
+          if (!refs.myLibrary.classList.contains('hidden')) {
+            markupWatched(e);
+          }
+        };
+
+        function createNewMarkupQueue() {
           if (!refs.myLibrary.classList.contains('hidden')) {
             markupQueue(e);
           };
-        }
+        };
       });
 
+
+      
       //Local Storage. End
 
 
@@ -156,7 +147,6 @@ function getFullMovieInfo(id) {
 
       function closeModalHandlerClick(evt) {
         document.body.style.overflowY = "visible";
-        window.removeEventListener('click', closeModalHandlerClick);
       }
 
       function closeModal() {
