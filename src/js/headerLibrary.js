@@ -1,9 +1,21 @@
-import { refs } from './getRefs';
-import MovieApiService from './apiService';
+import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
 import cardMarkup from '../templates/main-card-markup.hbs';
-import deleteErrorMessag from './deleteErrorMassage';
+import { refs } from './getRefs';
+import { clearGallery, appendMarkup } from './supportFunction';
+import { createPaginationTrend } from './trendPagination';
+import deleteErrorMessage from './deleteErrorMassage';
+import { getTrendMovies } from './trendPagination';
+import FilmApiService from './apiService';
+import LoadMoreBtn from './loadMoreBtn';
 
-const apiService = new MovieApiService();
+const apiService = new FilmApiService();
+const loadMoreButtonTrend = new LoadMoreBtn({
+  selector: '[data-action = "load-more-trend"]',
+});
+const loadMoreButton = new LoadMoreBtn({
+  selector: '[data-action = "load-more"]',
+});
 
 refs.libraryButton.addEventListener ('click', openLibrary);
 refs.headerLogoEl.addEventListener ('click', openHome);
@@ -17,42 +29,29 @@ refs.queueBtn.addEventListener('click', (e) => {
 	switchLibraryBtn(refs.queueBtn, refs.watchedBtn)
 })
 
-function openLibrary(evt) {
-	evt.preventDefault();
-
+function openLibrary(e) {
+	refs.containerPagination.classList.add('is-hidden');
+	loadMoreButton.hide();
+	loadMoreButtonTrend.hide();
+	e.preventDefault();
+	
 	switchLibraryBtn(refs.watchedBtn, refs.queueBtn);
-	deleteErrorMessag();
+	deleteErrorMessage();
 	clearGallery();
 
 	changeHeader(refs.searchForm, refs.myLibrary, 'second-image', 'first-image');
 };
 
-function openHome(evt) {
-	evt.preventDefault();
+function openHome(e) {
+	e.preventDefault();
 
-	deleteErrorMessag();
+	deleteErrorMessage();
 	clearGallery();
-
+	
 	getTrendMovies();
 
 	changeHeader(refs.myLibrary, refs.searchForm, 'first-image', 'second-image');
 };
-
-async function getTrendMovies() {
-	try {
-		
-		clearGallery();
-
-		let movies = await apiService.fetchTrendMovies();
-		appendMarkup(movies.moviesData);
-	} catch (error) {
-		console.log(error);
-	}
-};
-
-function appendMarkup(data) {
-	refs.filmList.insertAdjacentHTML('beforeend', cardMarkup(data))
-}
 
 function switchLibraryBtn(add, remote) {
 	add.classList.add('is-active')
@@ -65,7 +64,3 @@ function changeHeader(addHidden, remoteHidden, addImage, remoteImage) {
 	refs.header.classList.remove(remoteImage);
 	refs.header.classList.add(addImage);
 };
-
-function clearGallery() {
-  refs.filmList.innerHTML = '';
-}

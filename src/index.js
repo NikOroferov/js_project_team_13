@@ -7,6 +7,8 @@ import cardMarkup from './templates/main-card-markup.hbs';
 import { refs } from './js/getRefs';
 import { showSpinner, hideSpinner } from './js/spinner';
 import { changePageTheme } from './js/themeSwitcher';
+import { clearGallery, appendMarkup } from './js/supportFunction';
+import { getTrendMovies } from './js/trendPagination';
 
 import FilmApiService from './js/apiService';
 import btnUp from './js/button-up';
@@ -16,32 +18,25 @@ import deleteErrorMassage from './js/deleteErrorMassage';
 import clearBlankPage from './js/clearBlankPage';
 import LoadMoreBtn from './js/loadMoreBtn';
 
+import showModalByStudents from './js/modalByStudents';
+
 import './js/headerLibrary.js';
 import './js/showModal';
 //import './js/localStorage';
 import './js/markup-myLibrary';
+import './js/smoothScrollBar';
 
-const apiService = new FilmApiService();
-const loadMoreButton = new LoadMoreBtn({
-  selector: '[data-action = "load-more"]',
-});
+
 
 let scrollLoadMoreEventCounter = 0;
+
+const apiService = new FilmApiService();
+
 btnUp();
 getTrendMovies();
 
-async function getTrendMovies() {
-  try {
-    let movies = await apiService.fetchTrendMovies();
-    appendMarkup(movies.moviesData);
-    // apiService.incrementPage();
-    // loadMoreTrend();
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 refs.switcherButton.addEventListener('change', changePageTheme);
+
 // refs.switcherButton.addEventListener('change', imageToggle);
 refs.searchForm.addEventListener('submit', onClick);
 refs.btnLoadMore.addEventListener('click', onLoadMore);
@@ -204,13 +199,6 @@ function onLoadMore(e) {
 //   observer.observe(refs.observerElement);
 // }
 
-function clearGallery() {
-  refs.filmList.innerHTML = '';
-}
 
-function appendMarkup(data) {
-  refs.filmList.insertAdjacentHTML('beforeend', cardMarkup(data));
-}
 
-console.log(apiService.asyncfetchGenres());
-console.log(apiService.fetchGenres());
+

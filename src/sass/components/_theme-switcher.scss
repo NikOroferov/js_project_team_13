@@ -7,13 +7,13 @@ body {
 }
 
 body.light-theme {
-  background-color: #fff;
+  background-color: $light-background-color;
   color: #333333;
 }
 
 .dark-theme {
   background-color: #333333;
-  color: #fff;
+  color: $light-background-color;
 }
 
 header {
@@ -23,7 +23,7 @@ header {
 .toolbar {
   display: flex;
   justify-content: flex-end;
-  padding: 16px;
+  padding: 5px;
   position: absolute;
   top: 160px;
   right: 5px;
@@ -88,7 +88,7 @@ header {
   border-radius: 50%;
   z-index: 2;
   pointer-events: none;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 1px $dark-background-color;
   transform: translateX(3px);
   transition: transform 250ms var(--timing-function);
 }
@@ -103,7 +103,7 @@ header {
 
 .theme-switch__toggle:focus + .theme-switch__track,
 .theme-switch__toggle:active + .theme-switch__track {
-  box-shadow: 0 0 0 3px #2196f3;
+  box-shadow: 0 0 0 2px $light-background-color;
 }
 
 .shown {

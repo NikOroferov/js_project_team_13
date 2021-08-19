@@ -9,13 +9,38 @@
   visibility: visible;
   margin: 20px;
   padding: 10px 40px;
-  border: 1px solid #478fdb;
+  border: 1px solid $accent-color;
+  //border: 1px solid #478fdb;
   border-radius: 8px;
-  background-color: #4b96e6;
+  background-color: $accent-color;
 }
 
 .btn-loadMore__item.is-hidden {
+  display: none;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+}
+
+.btn-loadMore__item-trend {
+  opacity: 1;
+  visibility: visible;
+  margin: 20px;
+  padding: 10px 40px;
+  border: 1px solid $accent-color;
+  border-radius: 8px;
+  color: $light-text-color;
+  background-color: $accent-color;
+}
+
+.btn-loadMore__item-trend.is-hidden {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.tui-pagination.is-hidden {
+  opacity: 0;
+  visibility: hidden;
 }

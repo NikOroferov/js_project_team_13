@@ -18,9 +18,6 @@ export const refs = {
 
   filmList: document.querySelector('.film__list'),
 
-  addToWatched: document.getElementById('add-to-watched'),
-  addToQueue: document.getElementById('add-to-queue'),
-
   observerElement: document.querySelector('.observer'),
 
   backdrop: document.querySelector('.backdrop'),
@@ -29,6 +26,7 @@ export const refs = {
   btn: document.querySelector('#button-up'),
 
   containerPagination: document.getElementById('pagination'),
+
   btnLoadMore: document.querySelector('[data-action = "load-more"]'),
 
   switcherButton: document.querySelector('.theme-switch__toggle'),
@@ -36,4 +34,15 @@ export const refs = {
   darkFooter: document.querySelector('footer'),
   sunIcon: document.querySelector('.sun'),
   moonIcon: document.querySelector('.moon'),
+
+  btnLoadMore: document.querySelector('.btn-loadMore__item'),
+  btnLoadMoreTrend: document.querySelector('.btn-loadMore__item-trend'),
+
+  switcherButton: document.querySelector('.theme-switch__toggle'),
+  page: document.querySelector('body'),
+
+  openModalBtn: document.querySelector('[data-modal-open]'),
+  closeModalBtn: document.querySelector('[data-modal-close]'),
+  modal: document.querySelector('[data-modal]'),
+
 };
