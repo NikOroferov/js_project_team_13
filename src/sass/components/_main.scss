@@ -72,9 +72,24 @@
 
 .tui-pagination .tui-page-btn.tui-is-selected {
   background-color: $accent-color;
-  border-color: #ddd;
+  border-color: transparent;
+
+  &:hover,
+  &:focus {
+    background-color: $accent-color;
+  }
 }
 
 .tui-pagination .tui-page-btn {
+  border-radius: 5px;
   background-color: #ddd;
+  border: 10px solid black;
+
+  &:not(:last-child) {
+    margin-right: 5px;
+  }
+}
+
+.tui-page-btn.tui-is-disabled.tui-prev {
+  margin-right: 15px;
 }
