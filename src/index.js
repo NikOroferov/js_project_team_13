@@ -30,3 +30,4 @@ btnUp();
 getTrendMovies();
 
 refs.switcherButton.addEventListener('change', changePageTheme);
+
