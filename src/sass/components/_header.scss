@@ -4,18 +4,18 @@
 
 .first-image {
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-    url(../images/header_mobile@2x.jpg);
+    url(../images/kinozal_mobile@2x.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 
   @media (min-width: $tablet) {
     background-image: linear-gradient(to top, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url(../images/header_tablet@2x.jpg);
+      url(../images/kinozal_desc@2x.jpg);
   }
 
   @media (min-width: $desktop) {
     background-image: linear-gradient(to top, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url(../images/header_desc@2x.jpg);
+      url(../images/kinozal_desc@2x.jpg);
   }
 }
 
