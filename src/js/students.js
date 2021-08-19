@@ -1,4 +1,9 @@
 export default [
+    {
+        name: 'Команда',
+        link: '',
+        description: 'Apocalypse Now',
+    },
      {
         name: 'Nikolai',
         link: 'https://github.com/NikOroferov',
@@ -25,7 +30,7 @@ export default [
     {
         name: 'Maks',
         link: 'https://github.com/Maksym1994',
-        description: 'Дизайнер, покоритель get-запросов',
+        description: 'Дизайнер, постановщик get-запросов',
     },
     {
         name: 'Vasilisa',
