@@ -8,32 +8,34 @@
   height: 50px;
   border-radius: 50%;
   background-color: transparent;
-  border: 2px solid $secondary-text-color;
+  border: 2px solid $accent-color-shadow;
 
   opacity: 0;
   visibility: hidden;
+  fill: $accent-color;
 
   &:hover,
   &:focus {
     cursor: pointer;
-    border: 2px solid $third-text-color;
+    border: 2px solid $accent-color;
 
     &::after {
       opacity: 1;
+      fill: $accent-color;
     }
   }
 }
 
 .button-up::after {
   position: absolute;
+  content: '';
   left: 11px;
   top: 11px;
-  content: '';
   min-width: 24px;
   height: 24px;
   background-image: url('../images/arrowup.svg');
   opacity: 0.5;
-  fill: currentColor;
+  fill: $accent-color;
 }
 
 .button-up.show {

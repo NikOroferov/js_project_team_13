@@ -51,12 +51,21 @@
 
 .logo__box {
   @include flex-center;
+  width: 175px;
+  cursor: pointer;
+
+  @media (min-width: $tablet) {
+    margin-right: 275px;
+  }
+
+  @media (min-width: $desktop) {
+    margin-right: 540px;
+  }
 }
 
 .logo__icon {
   width: 24px;
   height: 24px;
-  cursor: pointer;
   margin-right: 10px;
 
   @media (max-width: 767px) {
@@ -75,17 +84,12 @@
   }
 
   @media (min-width: $tablet) {
-    margin-right: 275px;
     width: 165px;
 
     color: $light-text-color;
     font-weight: 500;
     font-size: 30px;
     line-height: 1.16;
-  }
-
-  @media (min-width: $desktop) {
-    margin-right: 540px;
   }
 }
 

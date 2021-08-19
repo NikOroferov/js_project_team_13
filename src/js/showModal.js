@@ -142,7 +142,7 @@ function getFullMovieInfo(id) {
       closeBtn.addEventListener('click', closeModal);
       window.addEventListener('keydown', closeModalHandler);
       window.addEventListener('keydown', closeModalHandler);
-      // window.addEventListener('click', closeModalHandlerClick);
+      window.addEventListener('click', closeModalHandlerClick);
      
 
       //функція закриття форми по клавіші Esc
@@ -154,21 +154,16 @@ function getFullMovieInfo(id) {
         }
       }
 
-      // function closeModalHandlerClick(evt) {
-      //   console.log(evt.);
-      //   modal.close();
-        
-      //   window.removeEventListener('keydown', closeModalHandlerClick);
-      //   document.body.style.overflowY = "visible";
-
-      // }
+      function closeModalHandlerClick(evt) {
+        document.body.style.overflowY = "visible";
+        window.removeEventListener('click', closeModalHandlerClick);
+      }
 
       function closeModal() {
         modal.close();
         document.body.style.overflowY = "visible";
 
         window.removeEventListener('keydown', closeModalHandler);
-        // window.removeEventListener('keydown', closeModalHandlerClick);
       }
     })
     .catch(error => console.log('error', error));
