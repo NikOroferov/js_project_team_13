@@ -27,8 +27,6 @@ import './js/showModal';
 import './js/markup-myLibrary';
 import './js/smoothScrollBar';
 
-document.body.style.overflow = 'hidden'; // Убирает кастомную полосу прокрутки браузера
-
 let scrollLoadMoreEventCounter = 0;
 
 const apiService = new FilmApiService();
