@@ -78,13 +78,9 @@
           </div>
         </div>
 
+        <!-- Разметка переключателя темы -->
         <div class="toolbar">
-          <!-- Разметка переключателя темы -->
           <div class="theme-switch">
-            <svg class="theme-switch__icon" role="img" aria-label="Иконка солнца">
-              <use href="./images/icons.svg#sun"></use>
-            </svg>
-
             <div class="theme-switch__control">
               <input
                 class="theme-switch__toggle"
@@ -97,9 +93,9 @@
               </label>
               <div aria-hidden="true" class="theme-switch__marker"></div>
             </div>
-
-            <svg class="theme-switch__icon" aria-label="Иконка луны">
-              <use href="./images/icons.svg#moon"></use>
+            <svg class="theme-switch__icon" role="img" aria-label="Иконка">
+              <use class="sun shown" href="./images/icons.svg#sun"></use>
+              <use class="moon" href="./images/icons.svg#moon"></use>
             </svg>
           </div>
         </div>
@@ -111,12 +107,16 @@
         </div>
 
         <div class="btn-loadMore__container">
-          <button type="button" class="btn-loadMore__item is-hidden" data-action="load-more">Load more</button>
+          <button type="button" class="btn-loadMore__item is-hidden" data-action="load-more">
+            Load more
+          </button>
         </div>
+
         <div class="btn-loadMore__container">
           <button type="button" class="btn-loadMore__item-trend is-hidden" data-action="load-more-trend">Load more</button>
         </div>
         
+
         <div id="tui-pagination-container" class="tui-pagination">
           <div id="pagination" class="tui-pagination"></div>
         </div>

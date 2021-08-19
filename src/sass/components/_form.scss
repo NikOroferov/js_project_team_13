@@ -108,46 +108,45 @@
   }
 }
 
-.movie-vote {
+.movie-vote,
+.library-vote {
   background-color: $accent-color;
   color: $light-text-color;
   display: inline-block;
   text-align: center;
+  align-items: center;
   border-radius: 5px;
-  width: 36px;
-  height: 16px;
-  padding-top: 1px;
-  padding-bottom: 1px;
-  @media screen and (min-width: 1024px) {
-    padding-top: 1.5px;
-    padding-bottom: 1.5px;
-  }
-}
-
-.library-vote {           // добавлены стили. Карпова
-  margin-left: 10px;
-  width: 36px;
-  height: 16px;
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
-  align-items: center;
-}
-
-.movie-votes {
-  background: $light-background-color;
-  color: $primary-text-color;
-  display: inline-block;
-  text-align: center;
-  border-radius: 5px;
   width: 36px;
   height: 16px;
   padding-top: 1px;
   padding-bottom: 1px;
+  margin-left: 10px;
   @media screen and (min-width: 1024px) {
     padding-top: 1.5px;
     padding-bottom: 1.5px;
   }
+}
+
+// добавлены стили. Карпова
+
+
+.movie-votes {
+  background-color: $accent-color;
+  color: $light-text-color;
+  display: inline-block;
+  text-align: center;
+  align-items: center;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  width: 36px;
+  height: 16px;
+  padding-top: 1px;
+  padding-bottom: 1px;
 }
 
 .movie-about {
@@ -174,17 +173,9 @@
   margin-bottom: 40px;
 }
 
-.add-to-watched {
-  padding: 14px, 10px, 12px;
-  margin-right: 10px;
-}
 
-.add-to-queue {
-  margin-right: 10px;
-}
-
-.watch-trailer {
-}
+// .watch-trailer {
+// }
 .modal-button-close {
   font-size: 18px;
   position: absolute;
@@ -203,6 +194,10 @@
 
 .add-to-watched,
 .add-to-queue {
+  justify-content: space-between;
+  @media (min-width: $desktop) {
+    justify-content: flex-start;
+  }
   background: $light-background-color;
   border: 1px solid $primary-text-color;
   border-radius: 5px;
@@ -221,6 +216,10 @@
   text-transform: uppercase;
 
   cursor: pointer;
+
+  &:first-child {
+    margin-right: 15px;
+  }
 
   &:focus,
   &:hover {
