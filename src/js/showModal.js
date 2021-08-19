@@ -146,11 +146,7 @@ function getFullMovieInfo(id) {
       }
 
       function closeModalHandlerClick(evt) {
-        modal.close();
-        
-        window.removeEventListener('keydown', closeModalHandlerClick);
         document.body.style.overflowY = "visible";
-
       }
 
       function closeModal() {
@@ -158,7 +154,6 @@ function getFullMovieInfo(id) {
         document.body.style.overflowY = "visible";
 
         window.removeEventListener('keydown', closeModalHandler);
-        window.removeEventListener('keydown', closeModalHandlerClick);
       }
     })
     .catch(error => console.log('error', error));

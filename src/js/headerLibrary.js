@@ -1,15 +1,10 @@
-import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-import cardMarkup from '../templates/main-card-markup.hbs';
 import { refs } from './getRefs';
 import { clearGallery, appendMarkup } from './supportFunction';
-import { createPaginationTrend } from './trendPagination';
 import deleteErrorMessage from './deleteErrorMassage';
 import { getTrendMovies } from './trendPagination';
-import FilmApiService from './apiService';
 import LoadMoreBtn from './loadMoreBtn';
 
-const apiService = new FilmApiService();
 const loadMoreButtonTrend = new LoadMoreBtn({
   selector: '[data-action = "load-more-trend"]',
 });
@@ -18,7 +13,7 @@ const loadMoreButton = new LoadMoreBtn({
 });
 
 refs.libraryButton.addEventListener ('click', openLibrary);
-refs.headerLogoEl.addEventListener ('click', openHome);
+refs.logoBox.addEventListener ('click', openHome);
 refs.homeButton.addEventListener('click', openHome);
 refs.watchedBtn.addEventListener('click', (e) => {
 	e.preventDefault();
@@ -47,7 +42,6 @@ function openHome(e) {
 
 	deleteErrorMessage();
 	clearGallery();
-	
 	getTrendMovies();
 
 	changeHeader(refs.myLibrary, refs.searchForm, 'first-image', 'second-image');

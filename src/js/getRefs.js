@@ -1,6 +1,7 @@
 export const refs = {
   body: document.querySelector('body'),
   header: document.querySelector('header'),
+  logoBox: document.querySelector('.logo__box'),
   headerLogo: document.querySelector('.logo__title'),
   headerLogoEl: document.querySelector('.logo__icon'),
 
