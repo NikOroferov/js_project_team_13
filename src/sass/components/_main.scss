@@ -69,3 +69,12 @@
 .film__genres__year {
   display: flex;
 }
+
+.tui-pagination .tui-page-btn.tui-is-selected {
+  background-color: $accent-color;
+  border-color: white;
+}
+
+.tui-pagination .tui-page-btn {
+  background-color: whitesmoke;
+}
