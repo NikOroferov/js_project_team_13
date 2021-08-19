@@ -50,5 +50,6 @@ export const refs = {
   studentCard: document.querySelector('.students'),
   parallaxBody: document.querySelector('.parallax__body'),
   studentCard: document.querySelector('.students'),
+  studentsCardList: document.querySelector('.goit_students__list'),
   parallax: document.querySelector('.parallax'),
 };
