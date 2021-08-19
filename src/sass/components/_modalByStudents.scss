@@ -273,8 +273,14 @@
 }
 
 .goit_students__link {
+  font-size: 12px;
   color: rgb(173, 182, 206);
 }
+
+.goit_students__desc {
+  font-size: 12px;
+}
+
 .desc {
   color: rgb(219, 219, 219);
 }
@@ -286,13 +292,14 @@
 }
 
 .goit_students__name {
-  margin-bottom: 10px;
+  font-size: 16px;
+  margin-bottom: 5px;
   color: rgb(209, 216, 238);
 }
 
 .desc__item {
   padding: 30px 0;
-  color: rgb(76, 79, 88);
+  color: rgb(76, 79, 88) goit_students__link;
 }
 
 .desc__position-lead {
