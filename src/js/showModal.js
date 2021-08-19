@@ -137,12 +137,10 @@ function getFullMovieInfo(id) {
 
       const closeBtn = document.querySelector('.modal-button-close');
       const backdrop = document.querySelector('.basicLightbox ');
-      console.log(backdrop);
 
       closeBtn.addEventListener('click', closeModal);
       window.addEventListener('keydown', closeModalHandler);
-      window.addEventListener('keydown', closeModalHandler);
-      window.addEventListener('click', closeModalHandlerClick);
+      backdrop.addEventListener('click', closeModalHandlerClick);
      
 
       //функція закриття форми по клавіші Esc
@@ -156,9 +154,7 @@ function getFullMovieInfo(id) {
 
     
       function closeModalHandlerClick(evt) {
-        if (backdrop) {
-          // modal.close();
-          // console.log(backdrop);
+        if (evt.target === backdrop) {
           window.removeEventListener('keydown', closeModalHandlerClick);
           document.body.style.overflowY = "visible";
         }
@@ -169,7 +165,6 @@ function getFullMovieInfo(id) {
         document.body.style.overflowY = "visible";
 
         window.removeEventListener('keydown', closeModalHandler);
-        window.removeEventListener('keydown', closeModalHandlerClick);
       }
     })
     .catch(error => console.log('error', error));
