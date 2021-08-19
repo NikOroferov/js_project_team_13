@@ -450,7 +450,7 @@ button {
   font-size: 12px;
   line-height: 14px;
   text-transform: uppercase;
-  color: #010101;
+  color: inherit;
 }
 
 .film__genres,
@@ -915,7 +915,7 @@ body.light-theme {
   color: #333333;
 }
 
-body.dark-theme {
+.dark-theme {
   background-color: #333333;
   color: #fff;
 }
@@ -1031,5 +1031,33 @@ header {
 .theme-switch__toggle:active + .theme-switch__track {
   -webkit-box-shadow: 0 0 0 3px #2196f3;
           box-shadow: 0 0 0 3px #2196f3;
+}
+
+.btn-loadMore__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.btn-loadMore__item {
+  opacity: 1;
+  visibility: visible;
+  margin: 20px;
+  padding: 10px 40px;
+  border: 1px solid #478fdb;
+  border-radius: 8px;
+  background-color: #4b96e6;
+}
+
+.btn-loadMore__item.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 /*# sourceMappingURL=main.css.map */
