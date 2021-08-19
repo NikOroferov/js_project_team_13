@@ -35,44 +35,41 @@ function showStudent() {
         const markup = cardsMarkup(students[number]);
             refs.studentCard.innerHTML = markup;
             const endMarkup = `<p class='thanks'>Спасибо за внимание!</p>
-            <table>
+            <table class="desc__table">
     
-  <tr>
-    <td>Продюссер, скрам-мастер, помощник режиссера и художника по спецэффектам</td>
-    <td>Nataliia</td>
-    <td>https://github.com/nelyaterry</td>
-  </tr>
-  
-    <td>Помощник режиссера, властелин LocalStorage</td>
-    <td>Katerina</td>
-    <td>https://github.com/Kateryna286</td>
-    <tr>
-    <td>Художник по спецэффектам, техник по пагинации и параллаксу</td>
-    <td>Anastasia</td>
-    <td>https://github.com/Chantsova</td>
-    <tr>
-    <td>Дизайнер, покоритель get-запросов</td>
-    <td>Maks</td>
-    <td>https://github.com/Maksym1994</td>
-    <tr>
-    <td>Художник по свету, главный консультант по переходу на тёмную сторону</td>
-    <td>Vasilisa</td>
-    <td>https://github.com/Vasiliska-A</td>
-    <tr>
-    <td>Декоратор и главный оформитель модальных окон</td>
-    <td>Aleksei</td>
-    <td>https://github.com/alexey-chernov</td>
-    <tr>
-    <td>Художник-оформитель, дизайнер</td>
-    <td>Taisiia</td>
-    <td>https://github.com/kovalchuktaisiia</td>
-  </tr>
-  <br>
-  <tr>
-  <th>Главный режиссер, тим-лид команды</th>
-    <th>Nikolai</th>
-    <th>'https://github.com/NikOroferov'</th>
-  </tr>
+  <tr class="decs__item">
+    <td class="desc">Cкрам-мастер, помощник режиссера и художника по спецэффектам</td>
+    <td class="desc__name">Nataliia</td>
+    <td class="desc__link">https://github.com/nelyaterry</td>
+    <tr class="decs__item">
+    <td class="desc">Помощник режиссера, властелин LocalStorage</td>
+    <td class="desc__name">Katerina</td>
+    <td class="desc__link">https://github.com/Kateryna286</td>
+    <tr class="decs__item">
+    <td class="desc">Художник по спецэффектам, техник по пагинации и параллаксу</td>
+    <td class="desc__name">Anastasia</td>
+    <td class="desc__link">https://github.com/Chantsova</td>
+    <tr class="decs__item">
+    <td class="desc">Дизайнер, покоритель get-запросов</td>
+    <td class="desc__name">Maks</td>
+    <td class="desc__link">https://github.com/Maksym1994</td>
+    <tr class="decs__item">
+    <td class="desc">Художник по свету,  консультант по переходу на тёмную сторону</td>
+    <td class="desc__name">Vasilisa</td>
+    <td class="desc__link">https://github.com/Vasiliska-A</td>
+    <tr class="decs__item">
+    <td class="desc">Декоратор и оформитель модальных окон</td>
+    <td class="desc__name">Aleksei</td>
+    <td class="desc__link">https://github.com/alexey-chernov</td>
+    <tr class="decs__item">
+    <td class="desc">Художник-оформитель, дизайнер</td>
+    <td class="desc__name">Taisiia</td>
+    <td class="desc__link">https://github.com/kovalchuktaisiia</td>
+  <tr class="decs__item">
+    <td class="desc__lead">Главный режиссер, тим-лид команды</td>
+    <td class="desc__name">Nikolai</td>
+    <td class="desc__link">'https://github.com/NikOroferov'</td>
+  </p>
 </table>`;
             
             
@@ -81,12 +78,13 @@ function showStudent() {
         number += 1;
       } else {
         refs.studentCard.addEventListener('click', showStudent);
-          refs.studentCard.innerHTML = endMarkup;
+        refs.studentCard.innerHTML = endMarkup;
+        refs.studentCard.removeEventListener('click', showStudent);
 
         return;
       }
 
-      let timerId = setTimeout(onCreateCard, 1000);
+      let timerId = setTimeout(onCreateCard, 1500);
     }
 }
   

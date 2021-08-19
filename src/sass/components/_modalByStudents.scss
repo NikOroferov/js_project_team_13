@@ -61,6 +61,7 @@
   top: calc(50% - 40vh);
   left: calc(50% - 40vw);
   margin: auto;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,6 +79,7 @@
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
+  font-family: 'Raleway', sans-serif;
 
   @keyframes showBlock {
     0% {
@@ -205,4 +207,35 @@
 
 .student_link {
   color: grey;
+}
+
+.desc {
+  font-size: 15px;
+  color: rgb(154, 163, 163);
+}
+
+.desc__link {
+  font-size: 12px;
+  color: rgb(108, 119, 118);
+}
+
+.desc__lead {
+  font-size: 16px;
+}
+
+.desc__item {
+  padding: 15px;
+}
+
+.desc__table {
+  margin-top: 30px;
+}
+
+.desc__name {
+  padding: 5px;
+}
+
+.thanks {
+  font-size: 25px;
+  color: rgb(151, 167, 211);
 }
