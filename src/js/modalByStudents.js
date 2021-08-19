@@ -1,7 +1,11 @@
 import { refs } from './getRefs';
 import students from './students';
 import cardsMarkup from '../templates/students.hbs';
+import cardListMarkup from '../templates/students-list.hbs';
 import './parallax';
+
+
+onCreatestudentsCardList(students.slice(1));
 
 refs.openModalBtn.addEventListener('click', toggleModal);
 
@@ -100,3 +104,8 @@ function toggleModalClose(e) {
   refs.closeModalBtn.removeEventListener('click', toggleModalClose);
   refs.openModalBtn.addEventListener('click', toggleModal);
 }
+
+function onCreatestudentsCardList(students) {
+  const markup = cardListMarkup(students)
+  refs.studentsCardList.innerHTML = markup;
+};
