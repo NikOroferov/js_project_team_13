@@ -12,12 +12,23 @@
 
   // background-color: rgba(0, 0, 0, 0.438);
 
-  @media (min-width: $tablet) {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1001;
+  @media (max-width: 767px) {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+      url(../images/kinozal_modal.jpg);
+  }
 
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.438);
+
+  @media (min-width: $tablet) {
     // align-items: center;
     // justify-content: center;
 
@@ -43,6 +54,7 @@
   z-index: 102;
   margin: 0;
   padding: 0;
+  stroke: $accent-color;
 }
 
 .modal_by_students.is-hidden {
@@ -106,6 +118,10 @@
 }
 
 .parallax__body {
+  @media (max-width: 767px) {
+    display: none;
+  }
+
   @media (min-width: 768px) {
     z-index: 12;
     display: block;
