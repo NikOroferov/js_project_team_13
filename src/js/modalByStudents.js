@@ -7,6 +7,7 @@ refs.openModalBtn.addEventListener('click', toggleModal);
 
 function toggleModal(e) {
   e.preventDefault();
+  refs.openModalBtn.removeEventListener('click', toggleModal);
   refs.closeModalBtn.addEventListener('click', toggleModalClose);
   document.body.style.overflowY = 'hidden';
   refs.modal.classList.toggle('is-hidden');
@@ -16,7 +17,8 @@ function toggleModal(e) {
 
 function showStudent() {
         refs.studentCard.removeEventListener('click', showStudent);
-        refs.parallax.classList.add('is-hidden');
+  refs.parallax.classList.add('is-hidden');
+  refs.parallaxBody.removeEventListener('click', showStudent);  
     refs.studentCard.classList.add('is-active');
     let number = 0;
 
@@ -83,6 +85,7 @@ function showStudent() {
         refs.studentCard.addEventListener('click', showStudent);
           refs.studentCard.innerHTML = endMarkup;
 
+
         return;
       }
 
@@ -93,8 +96,10 @@ function showStudent() {
 function toggleModalClose(e) {
   e.preventDefault();
   document.body.style.overflowY = 'visible';
+   refs.parallax.classList.remove('is-hidden');
     refs.modal.classList.toggle('is-hidden');
     refs.studentCard.classList.remove('is-active');
     refs.studentCard.removeEventListener('click', showStudent);
   refs.closeModalBtn.removeEventListener('click', toggleModalClose);
+  refs.openModalBtn.addEventListener('click', toggleModal);
 }
