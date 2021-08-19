@@ -25,7 +25,6 @@ import './js/headerLibrary.js';
 import './js/showModal';
 //import './js/localStorage';
 import './js/markup-myLibrary';
-import './js/smoothScrollBar';
 
 let scrollLoadMoreEventCounter = 0;
 
