@@ -31,6 +31,10 @@
   border-radius: 8px;
   color: $light-text-color;
   background-color: $accent-color;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .btn-loadMore__item-trend.is-hidden {
