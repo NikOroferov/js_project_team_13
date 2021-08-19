@@ -54,7 +54,9 @@
   z-index: 102;
   margin: 0;
   padding: 0;
-  stroke: $accent-color;
+  stroke: black;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgb(236, 166, 14);
 }
 
 .modal_by_students.is-hidden {
