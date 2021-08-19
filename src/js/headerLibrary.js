@@ -42,6 +42,7 @@ function openHome(e) {
 
 	deleteErrorMessage();
 	clearGallery();
+	
 	getTrendMovies();
 
 	changeHeader(refs.myLibrary, refs.searchForm, 'first-image', 'second-image');

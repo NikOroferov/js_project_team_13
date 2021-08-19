@@ -26,7 +26,6 @@ function getFullMovieInfo(id) {
 
       const btnW = document.querySelector('.add-to-watched');
       const btnQ = document.querySelector('.add-to-queue');
-      const modalBtn = document.querySelector('.modal-btns');
 
       if (watchedArray) {
         watchedArray.map((obj) => {
@@ -36,7 +35,7 @@ function getFullMovieInfo(id) {
         })
       };
 
-      if (queueArray) {
+      if (watchedArray) {
         queueArray.map((obj) => {
           if (obj.id === movieInfo.id) {
             btnQ.textContent = 'remove from queue';
@@ -46,89 +45,99 @@ function getFullMovieInfo(id) {
       //отрисовка правильных кнопочек. Конец  
 
       //Local Storage. Start
+      btnW.addEventListener('click', (e) => {
 
-      modalBtn.addEventListener('click', (e) => {
         const watchedArray = getWatchedArray();
-        const queueArray = getQueueArray();
-        let keyName = e.target.textContent;
-
-        if (keyName === 'add to watched') {
-          addElementToLocalStorage (watchedArray, "Watched", 'remove from watched');
-          createNewMarkupWatched();
-        }
-
-        else if (keyName === 'add to queue') {
-          addElementToLocalStorage(queueArray, "Queue", 'remove from queue');
-          createNewMarkupQueue();
-        }
-
-        else if (keyName === 'remove from watched') {
-          removeElementFromLocalStorage (watchedArray, "Watched", 'add to watched');
-          createNewMarkupWatched();
-        }
-      
-        else if (keyName === 'remove from queue') {
-          removeElementFromLocalStorage (queueArray, "Queue", 'add to queue');
-          createNewMarkupQueue();
-        };
+        const keyName = e.target.textContent;
 
         function getWatchedArray() {
           if (localStorage.getItem("Watched") !== null) {
-            return JSON.parse(localStorage.getItem("Watched"));
+            const watchedArray = JSON.parse(localStorage.getItem("Watched"));
+
+            return watchedArray;
           }
           else {
-            return [];
+            const watchedArray = [];
+
+            return watchedArray;
           }
 
         };
+
+        if (keyName === 'add to watched') {
+          watchedArray.push(movieInfo);
+          localStorage.setItem("Watched", JSON.stringify(watchedArray))
+          e.target.textContent = 'remove from watched';
+          if (!refs.myLibrary.classList.contains('hidden')) {
+            markupWatched(e);
+          };
+
+        }
+
+        else if (keyName === 'remove from watched') {
+          watchedArray.map((obj) => {
+            if (movieInfo.id === obj.id) {
+              const objIndx = watchedArray.indexOf(obj)
+              watchedArray.splice(objIndx, 1);
+              localStorage.removeItem("Watched");
+              localStorage.setItem('Watched', JSON.stringify(watchedArray))
+              e.target.textContent = 'add to watched';
+            }
+            if (!refs.myLibrary.classList.contains('hidden')) {
+              markupWatched(e);
+            };
+          });
+        }
+      });
+
+      btnQ.addEventListener('click', (e) => {
+
+        const queueArray = getQueueArray();
+        const keyName = e.target.textContent;
 
         function getQueueArray() {
           if (localStorage.getItem("Queue") !== null) {
-            return JSON.parse(localStorage.getItem("Queue"));
+            const queueArray = JSON.parse(localStorage.getItem("Queue"));
+            return queueArray;
           }
           else {
-            return [];
+            const queueArray = [];
+            return queueArray;
           }
         };
 
-        function addElementToLocalStorage (currentArray, localStorageKey, newKeyName) {
-          currentArray.push(movieInfo);
-          localStorage.setItem(localStorageKey, JSON.stringify(currentArray));
-          keyName = newKeyName;
-        };
 
-        function removeElementFromLocalStorage (currentArray, localStorageKey, newKeyName) {
-          currentArray.map((obj) => {
-            if (movieInfo.id === obj.id) {
-              const objIndx = currentArray.indexOf(obj)
-              currentArray.splice(objIndx, 1);
-              localStorage.removeItem(localStorageKey);
-              localStorage.setItem(localStorageKey, JSON.stringify(currentArray))
-              keyName = newKeyName;
-            }
-          });
-        };
-
-        function createNewMarkupWatched() {
-          if (!refs.myLibrary.classList.contains('hidden')) {
-            markupWatched(e);
-          }
-        };
-
-        function createNewMarkupQueue() {
+        if (keyName === 'add to queue') {
+          queueArray.push(movieInfo);
+          localStorage.setItem("Queue", JSON.stringify(queueArray));
+          e.target.textContent = 'remove from queue';
           if (!refs.myLibrary.classList.contains('hidden')) {
             markupQueue(e);
           };
-        };
+        }
+
+        else if (keyName === 'remove from queue') {
+          queueArray.map((obj) => {
+            if (movieInfo.id === obj.id) {
+              const objIndx = queueArray.indexOf(obj)
+              queueArray.splice(objIndx, 1);
+
+              localStorage.removeItem("Queue");
+              localStorage.setItem('Queue', JSON.stringify(queueArray))
+              e.target.textContent = 'add to queue';
+            }
+          });
+          if (!refs.myLibrary.classList.contains('hidden')) {
+            markupQueue(e);
+          };
+        }
       });
 
-
-      
       //Local Storage. End
 
-
       const closeBtn = document.querySelector('.modal-button-close');
-
+      const backdrop = document.querySelector('.basicLightbox ');
+      console.log(backdrop);
 
       closeBtn.addEventListener('click', closeModal);
       window.addEventListener('keydown', closeModalHandler);
@@ -145,8 +154,14 @@ function getFullMovieInfo(id) {
         }
       }
 
+    
       function closeModalHandlerClick(evt) {
-        document.body.style.overflowY = "visible";
+        if (backdrop) {
+          // modal.close();
+          // console.log(backdrop);
+          window.removeEventListener('keydown', closeModalHandlerClick);
+          document.body.style.overflowY = "visible";
+        }
       }
 
       function closeModal() {
@@ -154,6 +169,7 @@ function getFullMovieInfo(id) {
         document.body.style.overflowY = "visible";
 
         window.removeEventListener('keydown', closeModalHandler);
+        window.removeEventListener('keydown', closeModalHandlerClick);
       }
     })
     .catch(error => console.log('error', error));
