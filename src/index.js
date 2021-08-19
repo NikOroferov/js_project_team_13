@@ -36,16 +36,16 @@ const apiService = new FilmApiService();
 btnUp();
 getTrendMovies();
 
-async function getTrendMovies() {
-  try {
-    let movies = await apiService.fetchTrendMovies();
-    appendMarkup(movies.moviesData);
-    // apiService.incrementPage();
-    // loadMoreTrend();
-  } catch (error) {
-    console.log(error);
-  }
-}
+// async function getTrendMovies() {
+//   try {
+//     let movies = await apiService.fetchTrendMovies();
+//     appendMarkup(movies.moviesData);
+//     // apiService.incrementPage();
+//     // loadMoreTrend();
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 
 refs.switcherButton.addEventListener('change', changePageTheme);
 refs.searchForm.addEventListener('submit', onClick);
@@ -169,12 +169,4 @@ function createPagination(totalPages, currentApiPage) {
 
 function onLoadMore(e) {
   getNewPage();
-}
-
-function clearGallery() {
-  refs.filmList.innerHTML = '';
-}
-
-function appendMarkup(data) {
-  refs.filmList.insertAdjacentHTML('beforeend', cardMarkup(data));
 }
