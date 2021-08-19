@@ -134,6 +134,7 @@ function createPagination(totalPages, currentApiPage) {
     const currentPage = event.page;
     apiService.page = currentPage;
     clearGallery();
+    backToTop();
     getNewPage();
   });
 }
@@ -166,7 +167,6 @@ async function getTrendMovies() {
 }
 
 async function getNewPageTrend() {
-  backToTop();
   let movies = await apiService.fetchTrendMovies();
   if (movies.moviesData.length === 0) {
     console.log('End of search results.');
@@ -224,6 +224,7 @@ function createPaginationTrend(totalPages, currentApiPage) {
     const currentPage = event.page;
     apiService.page = currentPage;
     clearGallery();
+    backToTop();
     getNewPageTrend();
   });
 }
