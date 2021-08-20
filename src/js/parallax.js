@@ -1,6 +1,7 @@
 "use strict"
 import { refs } from './getRefs';
 
+//Parallax
 export default
 window.onload = function () {
     const content = document.querySelector('.parallax-container');

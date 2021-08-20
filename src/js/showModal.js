@@ -9,8 +9,7 @@ const apiService = new MoviesApiService();
 
 refs.filmList.addEventListener('click', openModal);
 
-//функція отримання фільму по id
-
+//Get film by ID
 function getFullMovieInfo(id) {
   apiService
     .getMovieInfo(id)
@@ -20,7 +19,6 @@ function getFullMovieInfo(id) {
       modal.show();
       document.body.style.overflowY = "hidden";
 
-      //отрисовка правильных кнопочек. Начало
       const watchedArray = JSON.parse(localStorage.getItem("Watched"));
       const queueArray = JSON.parse(localStorage.getItem("Queue"));
 
@@ -45,9 +43,8 @@ function getFullMovieInfo(id) {
           }
         });
       };
-      //отрисовка правильных кнопочек. Конец  
-
-      //Local Storage. Start
+  
+      //Get and put elements to Local Storage
       modalBtn.addEventListener('click', (e) => {
         const watchedArray = getWatchedArray();
         const queueArray = getQueueArray();
@@ -127,8 +124,7 @@ function getFullMovieInfo(id) {
         };
       });
 
-      //Local Storage. End
-
+      //Close Film's card modal 
       const closeBtn = document.querySelector('.modal-button-close');
       const backdrop = document.querySelector('.basicLightbox ');
 
@@ -137,18 +133,18 @@ function getFullMovieInfo(id) {
       backdrop.addEventListener('click', closeModalHandlerClick);
      
 
-      //функція закриття форми по клавіші Esc
-      function closeModalHandler(evt) {
-        if (evt.code === 'Escape') {
+      //Close Film's card modal by key
+      function closeModalHandler(e) {
+        if (e.code === 'Escape') {
           modal.close();
           window.removeEventListener('keydown', closeModalHandler);
           document.body.style.overflowY = "visible";
         }
       }
 
-    
-      function closeModalHandlerClick(evt) {
-        if (evt.target === backdrop) {
+    //Close Film's card modal by click on backdrop
+      function closeModalHandlerClick(e) {
+        if (e.target === backdrop) {
           window.removeEventListener('keydown', closeModalHandlerClick);
           document.body.style.overflowY = "visible";
         }
@@ -164,10 +160,11 @@ function getFullMovieInfo(id) {
     .catch(error => console.log('error', error));
 }
 
-function openModal(evt) {
-  evt.preventDefault();
-  let id = evt.target.dataset.action;
-  if (evt.target.nodeName !== 'IMG') {
+//Open Film's card modal
+function openModal(e) {
+  e.preventDefault();
+  let id = e.target.dataset.action;
+  if (e.target.nodeName !== 'IMG') {
     return;
   }
   document.body.style.overflowY = "hidden";

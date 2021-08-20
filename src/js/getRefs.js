@@ -1,3 +1,5 @@
+//DOM references
+
 export const refs = {
   body: document.querySelector('body'),
   header: document.querySelector('header'),

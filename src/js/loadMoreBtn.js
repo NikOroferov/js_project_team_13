@@ -1,3 +1,5 @@
+//Load More Button
+
 export default class LoadMoreBtn {
   constructor({ selector }) {
     this.refs = this.getRefs(selector);

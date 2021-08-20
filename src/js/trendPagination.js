@@ -22,7 +22,7 @@ refs.btnLoadMore.addEventListener('click', onLoadMore);
 refs.btnLoadMoreTrend.addEventListener('click', onLoadMoreTrend);
 refs.searchForm.addEventListener('submit', onClick);
 
-//Search
+//Get search
 async function onClick(e) {
   showSpinner();
   e.preventDefault();
@@ -99,6 +99,7 @@ async function getNewPage() {
   }
 }
 
+//Search page numbers pagination
 function createPagination(totalPages, currentApiPage) {
   refs.containerPagination.classList.remove('is-hidden');
   const container = refs.containerPagination;
@@ -139,11 +140,12 @@ function createPagination(totalPages, currentApiPage) {
   });
 }
 
+//Search LoadMore Button
 function onLoadMore(e) {
   getNewPage();
 }
 
-//Trend
+//Get Trend
 async function getTrendMovies() {
     clearGallery();
     apiService.resetPage();
@@ -189,6 +191,7 @@ async function getNewPageTrend() {
   }
 }
 
+//Trend page numbers pagination
 function createPaginationTrend(totalPages, currentApiPage) {
   refs.containerPagination.classList.remove('is-hidden');
   const container = refs.containerPagination;
@@ -229,11 +232,13 @@ function createPaginationTrend(totalPages, currentApiPage) {
   });
 }
 
+//Trend LoadMore Button
 function onLoadMoreTrend(e) {
   apiService.incrementPage();
   getNewPageTrend();
 }
 
+//Opening page in the number pagination on top
 function backToTop() {
   window.scrollTo(0, 0);
 }

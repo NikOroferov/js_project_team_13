@@ -11,6 +11,7 @@ export default class FilmApiService {
     this.language = 'en-En'
   }
 
+  //Fetch of Trend
   async fetchTrendMovies() {
     const url = `${BASE_URL}/trending/movie/week?api_key=${API_KEY}&language=${this.language}&page=${this.page}`;
 
@@ -23,6 +24,7 @@ export default class FilmApiService {
     return this.fetchMovies(url);
   }
 
+  //General formation of the response
   async fetchMovies(url) {
     const movies = await axios.get(url);
 
@@ -51,6 +53,7 @@ export default class FilmApiService {
     return infoMoviesArr;
   }
 
+  //Fetch of Search
   getMovieInfo(movie_id) {
     const url = `${BASE_URL}/movie/${movie_id}?api_key=${API_KEY}&language=${this.language}`;
 
@@ -66,6 +69,7 @@ export default class FilmApiService {
       }));
   }
 
+  //Fetch of Genres
   async fetchMoviesGenre() {
     const url = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=${this.language}`;
 
@@ -73,6 +77,7 @@ export default class FilmApiService {
     return genres;
   }
   
+  //Genres filtration
   filterGenres(genres, result) {
     let genreList = result.genre_ids
       .map(id => genres.filter(genre => genre.id === id).map(genre => genre.name))
@@ -105,6 +110,7 @@ export default class FilmApiService {
     }
   }
 
+  //API page methods
   incrementPage() {
     this.page += 1;
   }

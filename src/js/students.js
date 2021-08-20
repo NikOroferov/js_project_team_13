@@ -1,3 +1,4 @@
+//Team's list for presentation
 export default [
     {
         name: 'Команда',

@@ -40,9 +40,7 @@
   border-radius: 5px;
 
   @media screen and (min-width: 1024px) {
-    // width: 90%;
     height: 100%;
-    //object-fit: contain;
   }
 }
 
@@ -50,11 +48,9 @@
   margin: 0px 20px;
   @media screen and (min-width: 768px) {
     width: 50%;
-    //margin-right: 20px;
   }
   @media screen and (min-width: 1024px) {
     width: 70%;
-    //margin-right: 20px;
   }
 
   &-title {
@@ -62,7 +58,6 @@
     line-height: 1.17;
     font-weight: 500;
     padding-bottom: 20px;
-    // margin-top: 30px;
     text-transform: uppercase;
 
     @media screen and (min-width: 768px) {
@@ -130,8 +125,6 @@
   }
 }
 
-// добавлены стили. Карпова
-
 .movie-votes {
   background-color: $accent-color;
   color: $light-text-color;
@@ -172,8 +165,6 @@
   margin-bottom: 40px;
 }
 
-// .watch-trailer {
-// }
 .modal-button-close {
   font-size: 18px;
   position: absolute;

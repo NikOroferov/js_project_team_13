@@ -5,6 +5,8 @@ import deleteErrorMessage from './deleteErrorMassage';
 import { getTrendMovies } from './trendPagination';
 import LoadMoreBtn from './loadMoreBtn';
 
+
+//Header navigation
 const loadMoreButtonTrend = new LoadMoreBtn({
   selector: '[data-action = "load-more-trend"]',
 });
