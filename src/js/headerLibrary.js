@@ -2,7 +2,7 @@ import 'tui-pagination/dist/tui-pagination.css';
 import { refs } from './getRefs';
 import { clearGallery, appendMarkup } from './supportFunction';
 import deleteErrorMessage from './deleteErrorMassage';
-import { getTrendMovies } from './trendPagination';
+import { getTrendMovies } from './pagination';
 import LoadMoreBtn from './loadMoreBtn';
 
 
