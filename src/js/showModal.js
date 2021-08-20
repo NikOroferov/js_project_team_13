@@ -53,24 +53,32 @@ function getFullMovieInfo(id) {
         if (e.target.textContent === 'add to watched') {
           addElementToLocalStorage (watchedArray, "Watched");
           e.target.textContent = 'remove from watched';
+          console.log(btnW);
+          btnW.classList.add('remove-from-watched');
           createNewMarkupWatched();
         }
 
         else if (e.target.textContent === 'add to queue') {
           addElementToLocalStorage(queueArray, "Queue");
           e.target.textContent = 'remove from queue';
+          console.log(btnQ);
+          btnQ.classList.add('remove-from-queue');
           createNewMarkupQueue();
         }
 
         else if (e.target.textContent === 'remove from watched') {
           removeElementFromLocalStorage (watchedArray, "Watched");
           e.target.textContent = 'add to watched';
+          console.log(btnW);
+          btnW.classList.remove('remove-from-watched');
           createNewMarkupWatched();
         }
       
         else if (e.target.textContent === 'remove from queue') {
           removeElementFromLocalStorage (queueArray, "Queue");
           e.target.textContent = 'add to queue';
+          console.log(btnQ);
+          btnQ.classList.remove('remove-from-queue');
           createNewMarkupQueue();
         };
 
