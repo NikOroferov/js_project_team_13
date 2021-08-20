@@ -4,7 +4,7 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import { refs } from './js/getRefs';
 import { changePageTheme } from './js/themeSwitcher';
-import { getTrendMovies } from './js/trendPagination';
+import { getTrendMovies } from './js/pagination';
 import btnUp from './js/button-up';
 import showModalByStudents from './js/modalByStudents';
 

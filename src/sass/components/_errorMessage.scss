@@ -1,7 +1,8 @@
 .searchQueryIncorrect {
   position: absolute;
   bottom: -50px;
-  color: #ff001b;
+  color: $accent-color;
   font-size: 14px;
   line-height: 1.14;
+  text-align: center;
 }
