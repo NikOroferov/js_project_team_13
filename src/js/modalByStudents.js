@@ -9,6 +9,7 @@ onCreatestudentsCardList(students.slice(1));
 
 refs.openModalBtn.addEventListener('click', toggleModal);
 
+//Open modal "About Us"
 function toggleModal(e) {
   e.preventDefault();
   refs.openModalBtn.removeEventListener('click', toggleModal);
@@ -18,7 +19,7 @@ function toggleModal(e) {
   refs.parallaxBody.addEventListener('click', showStudent);
 }
 
-
+//Open team presentation
 function showStudent() {
     refs.studentCard.removeEventListener('click', showStudent);
   refs.parallax.classList.add('is-hidden');
@@ -94,6 +95,7 @@ function showStudent() {
     }
 }
   
+//Close presentation/modal "About Us"
 function toggleModalClose(e) {
  e.preventDefault();
   document.body.style.overflowY = 'visible';

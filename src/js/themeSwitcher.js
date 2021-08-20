@@ -1,5 +1,6 @@
 import { refs } from './getRefs';
 
+//Theme switch
 const Theme = {
   LIGHT: 'light-theme',
   DARK: 'dark-theme',

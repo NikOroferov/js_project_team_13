@@ -1,5 +1,6 @@
-//import { refs } from './getRefs';
 import FilmApiService from './apiService';
+
+//Add data to Local Storage
 
 const movieApiService = new FilmApiService();
 

@@ -1,5 +1,6 @@
 import { refs } from './getRefs';
 
+//Spinner
 export function showSpinner() {
   document.body.style.overflowY = 'hidden';
   refs.spinnerLoader.classList.toggle('visible');
