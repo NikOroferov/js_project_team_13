@@ -1,4 +1,3 @@
-//import { refs } from './getRefs';
 import FilmApiService from './apiService';
 
 const movieApiService = new FilmApiService();

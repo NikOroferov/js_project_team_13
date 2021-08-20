@@ -35,13 +35,9 @@ refs.darkFooter.classList.add(`${userFooterTheme}`);
 refs.sunIcon.classList.add(`${userSunIcon}`);
 refs.moonIcon.classList.add(`${userMoonIcon}`);
 
-// console.log(userTheme);
-
 if (userTheme === Theme.DARK) {
   refs.switcherButton.checked = true;
 }
-
-// && userFooterChosenTheme === ThemeFooter.DARK
 
 export function changePageTheme() {
   if (!refs.switcherButton.checked) {
@@ -49,8 +45,6 @@ export function changePageTheme() {
     userChosenTheme = refs.page.classList.remove('dark-theme');
     userFooterChosenTheme = refs.darkFooter.classList.toggle('light-theme');
     userFooterChosenTheme = refs.darkFooter.classList.remove('dark-theme');
-
-    // refs.filmTitle.classList.toggle;
 
     userChosenSunIcon = refs.sunIcon.classList.toggle('shown');
     userChosenSunIcon = refs.sunIcon.classList.remove('notshown');

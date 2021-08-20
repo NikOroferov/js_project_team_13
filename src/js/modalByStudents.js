@@ -20,17 +20,15 @@ function toggleModal(e) {
 
 
 function showStudent() {
-    refs.studentCard.removeEventListener('click', showStudent);
+  refs.studentCard.removeEventListener('click', showStudent);
   refs.parallax.classList.add('is-hidden');
   refs.parallaxBody.removeEventListener('click', showStudent);  
-    refs.studentCard.classList.add('is-active');
-    let number = 0;
+  refs.studentCard.classList.add('is-active');
+  let number = 0;
 
     onCreateCard();
 
     function onCreateCard() {
-            
-            
       if (refs.modal.classList.contains('is-hidden')) {
           refs.studentCard.addEventListener('click', showStudent);
           

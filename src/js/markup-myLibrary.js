@@ -1,5 +1,4 @@
 import { refs } from './getRefs';
-
 import menuCardTpl from '../templates/library-card-markup.hbs';
 
 const movieContainer = document.querySelector('.film__list');
@@ -13,9 +12,9 @@ function markupWatched(event) {
 
   movieContainer.innerHTML = '';
 
-  const watchedJson = localStorage.getItem("Watched");                //function?
-  const parsedWatchedJson = JSON.parse(watchedJson);                  //function?
-  const watchedMarkup = createItemCardsMarkup(parsedWatchedJson);     //function?
+  const watchedJson = localStorage.getItem("Watched");                
+  const parsedWatchedJson = JSON.parse(watchedJson);                  
+  const watchedMarkup = createItemCardsMarkup(parsedWatchedJson);     
 
   movieContainer.insertAdjacentHTML('beforeend', watchedMarkup);
 };
@@ -25,9 +24,9 @@ function markupQueue(event) {
   
     movieContainer.innerHTML = '';
   
-    const queueJson = localStorage.getItem("Queue");                //function?
-    const parsedQueueJson = JSON.parse(queueJson);                  //function?
-    const watchedMarkup = createItemCardsMarkup(parsedQueueJson);     //function?
+    const queueJson = localStorage.getItem("Queue");                
+    const parsedQueueJson = JSON.parse(queueJson);                  
+    const watchedMarkup = createItemCardsMarkup(parsedQueueJson);   
   
     movieContainer.insertAdjacentHTML('beforeend', watchedMarkup);
 };

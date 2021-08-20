@@ -9,8 +9,6 @@ const apiService = new MoviesApiService();
 
 refs.filmList.addEventListener('click', openModal);
 
-//функція отримання фільму по id
-
 function getFullMovieInfo(id) {
   apiService
     .getMovieInfo(id)
@@ -20,7 +18,6 @@ function getFullMovieInfo(id) {
       modal.show();
       document.body.style.overflowY = "hidden";
 
-      //отрисовка правильных кнопочек. Начало
       const watchedArray = JSON.parse(localStorage.getItem("Watched"));
       const queueArray = JSON.parse(localStorage.getItem("Queue"));
 
@@ -45,9 +42,7 @@ function getFullMovieInfo(id) {
           }
         });
       };
-      //отрисовка правильных кнопочек. Конец  
 
-      //Local Storage. Start
       modalBtn.addEventListener('click', (e) => {
         const watchedArray = getWatchedArray();
         const queueArray = getQueueArray();
@@ -127,8 +122,6 @@ function getFullMovieInfo(id) {
         };
       });
 
-      //Local Storage. End
-
       const closeBtn = document.querySelector('.modal-button-close');
       const backdrop = document.querySelector('.basicLightbox ');
 
@@ -137,7 +130,6 @@ function getFullMovieInfo(id) {
       backdrop.addEventListener('click', closeModalHandlerClick);
      
 
-      //функція закриття форми по клавіші Esc
       function closeModalHandler(evt) {
         if (evt.code === 'Escape') {
           modal.close();
@@ -145,7 +137,6 @@ function getFullMovieInfo(id) {
           document.body.style.overflowY = "visible";
         }
       }
-
     
       function closeModalHandlerClick(evt) {
         if (evt.target === backdrop) {

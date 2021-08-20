@@ -1,7 +1,7 @@
 export default [
     {
         name: 'Команда',
-        link: '',
+        link: '13',
         description: 'Apocalypse Now',
     },
      {

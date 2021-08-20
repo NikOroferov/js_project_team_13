@@ -40,7 +40,6 @@ window.onload = function () {
         function moveMouse(e) {
                 const parallaxWidth = refs.parallax.offsetWidth;
                 const parallaxHeight = refs.parallax.offsetHeight;
-           
 
             const coordX = e.pageX - parallaxWidth / 2;
             const coordY = e.pageY - parallaxHeight / 2;

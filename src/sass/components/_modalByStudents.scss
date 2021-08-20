@@ -1,17 +1,4 @@
 .modal_by_students {
-  // position: fixed;
-  // top: 0;
-  // left: 0;
-  // z-index: 1001;
-
-  // // align-items: center;
-  // // justify-content: center;
-
-  // width: 100vw;
-  // height: 100vh;
-
-  // background-color: rgba(0, 0, 0, 0.438);
-
   @media (max-width: 767px) {
     background-repeat: no-repeat;
     background-size: cover;
@@ -29,12 +16,8 @@
   background-color: rgba(0, 0, 0, 0.438);
 
   @media (min-width: $tablet) {
-    // align-items: center;
-    // justify-content: center;
-
     width: 100vw;
     height: 100vh;
-
     background-color: rgba(0, 0, 0, 0.438);
   }
 }
@@ -95,7 +78,6 @@
   margin: auto;
   padding: 0 20px;
   display: flex;
-
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -186,8 +168,6 @@
   width: 100%;
   height: 100%;
   align-items: center;
-  // top: 0;
-  // left: 5%;
 }
 
 .images-parallax__screen,
