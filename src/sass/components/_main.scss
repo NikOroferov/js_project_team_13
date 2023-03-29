@@ -27,6 +27,7 @@
 
 .poster__thumb {
   height: 400px;
+  overflow: hidden;
 
   &:hover, &:focus{
     cursor: pointer;
