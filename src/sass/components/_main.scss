@@ -27,6 +27,10 @@
 
 .poster__thumb {
   height: 400px;
+
+  &:hover, &:focus{
+    cursor: pointer;
+  }
 }
 
 .film__poster {
@@ -38,6 +42,10 @@
 
   @media screen and (min-width: $desktop) {
     width: 273px;
+
+    &:hover, &:focus{
+      transform: scale(1.1);
+    }
   }
 
   border-radius: 5px;
